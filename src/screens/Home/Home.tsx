@@ -4,8 +4,11 @@ import { StatusBar } from "expo-status-bar";
 import { nowAsTime } from "../../utils";
 import Clock from "../../components/Clock";
 import styles from "./styles";
+import useStorageContent from "../../hooks/useStorageContent";
 
 const Home = (): JSX.Element => {
+  const [isStorageReady, storage, _] = useStorageContent();
+
   const [now, setNow] = useState(nowAsTime);
   useEffect(() => {
     const interval = setInterval(() => setNow(nowAsTime()), 1000);
@@ -17,12 +20,14 @@ const Home = (): JSX.Element => {
 
   return (
     <View style={styles.container}>
-      <Clock
-        curfewStart={{ hour: 20, minute: 30 }}
-        curfewEnd={{ hour: 4, minute: 30 }}
-        minutesToGoHome={30}
-        currentTime={now}
-      />
+      {isStorageReady && (
+        <Clock
+          curfewStart={storage!!.curfewStart}
+          curfewEnd={storage!!.curfewEnd}
+          minutesToGoHome={storage!!.minutesToGoHome}
+          currentTime={now}
+        />
+      )}
       <StatusBar style="auto" />
     </View>
   );
