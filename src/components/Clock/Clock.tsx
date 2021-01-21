@@ -1,7 +1,5 @@
 import React from "react";
 import Svg, { Circle, Text } from "react-native-svg";
-import { Time } from "../../types";
-import { formatTime, toMinutes } from "../../utils";
 import Arc from "./Arc";
 import Message from "./messages";
 import styles, {
@@ -11,8 +9,11 @@ import styles, {
   COLOR_EMPTY,
   COLOR_OK,
 } from "./styles";
+import { formatTime, Time, toMinutes } from "../../utils/time";
+import { getStatus } from "../../utils/status";
 
 type Props = {
+  isAtHome: boolean;
   currentTime: Time;
 
   curfewStart: Time;
@@ -22,6 +23,7 @@ type Props = {
 };
 
 const Clock = ({
+  isAtHome,
   currentTime,
   curfewStart,
   curfewEnd,
@@ -66,10 +68,13 @@ const Clock = ({
       {formatTime(currentTime)}
     </Text>
     <Message
-      currentTime={currentTime}
-      curfewStart={curfewStart}
-      curfewEnd={curfewEnd}
-      minutesToGoHome={minutesToGoHome}
+      status={getStatus(
+        isAtHome,
+        currentTime,
+        curfewStart,
+        curfewEnd,
+        minutesToGoHome,
+      )}
     />
   </Svg>
 );

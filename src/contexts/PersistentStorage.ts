@@ -1,10 +1,6 @@
 import { createContext } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-export interface IPersistentStorage {
-  getItem(key: string): Promise<string | null>;
-  setItem(key: string, value: string): Promise<void>;
-}
+import { IPersistentStorage } from "../dependencies";
 
 const PersistentStorage = createContext<IPersistentStorage>(AsyncStorage);
 

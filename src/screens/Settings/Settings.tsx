@@ -2,8 +2,8 @@ import React from "react";
 import { View } from "react-native";
 import SettingsForm, { TypedItemProps } from "../../components/SettingsForm";
 import useSettings from "../../hooks/useSettings";
-import { Time } from "../../types";
 import styles from "./styles";
+import { Time } from "../../utils/time";
 
 const Settings = () => {
   const [isSettingsReady, settings, updateSettings] = useSettings();

@@ -1,4 +1,4 @@
-import { Time } from "../../types";
+import { Time } from "../../utils/time";
 
 type TypedItemType = "time" | "number";
 

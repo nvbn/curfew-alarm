@@ -1,8 +1,14 @@
 import React from "react";
 import { COLOR_CURFEW, COLOR_DANGER, COLOR_OK } from "./styles";
 import { Text } from "react-native-svg";
-import { Time } from "../../types";
-import { toMinutes } from "../../utils";
+import {
+  Status,
+  STATUS_FINE,
+  STATUS_GO_HOME_WHEN_CURFEW,
+  STATUS_GO_HOME_WHEN_TIME_TO_GO_HOME,
+  STATUS_STAY_AT_HOME_WHEN_CURFEW,
+  STATUS_STAY_AT_HOME_WHEN_TIME_TO_GO_HOME,
+} from "../../utils/status";
 
 type BaseMessageProps = {
   text: string;
@@ -15,44 +21,22 @@ const BaseMessage = ({ text, color }: BaseMessageProps): JSX.Element => (
   </Text>
 );
 
-const Fine = (): JSX.Element => (
-  <BaseMessage text="You're fine" color={COLOR_OK} />
-);
-
-const TimeToGoHome = (): JSX.Element => (
-  <BaseMessage text="Time to go home" color={COLOR_DANGER} />
-);
-
-const StayAtHome = (): JSX.Element => (
-  <BaseMessage text="Stay at home" color={COLOR_CURFEW} />
-);
-
 type Props = {
-  currentTime: Time;
-
-  curfewStart: Time;
-  curfewEnd: Time;
-
-  minutesToGoHome: number;
+  status: Status;
 };
 
-const Message = ({
-  currentTime,
-  curfewStart,
-  curfewEnd,
-  minutesToGoHome,
-}: Props): JSX.Element => {
-  const currentMinute = toMinutes(currentTime);
-  const curfewStartMinute = toMinutes(curfewStart);
-  const curfewEndMinute = toMinutes(curfewEnd);
-  const goHomeStartMinute = curfewStartMinute - minutesToGoHome;
-
-  if (currentMinute >= curfewStartMinute || currentMinute <= curfewEndMinute) {
-    return <StayAtHome />;
-  } else if (currentMinute >= goHomeStartMinute) {
-    return <TimeToGoHome />;
-  } else {
-    return <Fine />;
+const Message = ({ status }: Props): JSX.Element => {
+  switch (status) {
+    case STATUS_FINE:
+      return <BaseMessage text="You're fine" color={COLOR_OK} />;
+    case STATUS_GO_HOME_WHEN_TIME_TO_GO_HOME:
+      return <BaseMessage text="Time to go home" color={COLOR_DANGER} />;
+    case STATUS_STAY_AT_HOME_WHEN_TIME_TO_GO_HOME:
+      return <BaseMessage text="Stay at home" color={COLOR_DANGER} />;
+    case STATUS_GO_HOME_WHEN_CURFEW:
+      return <BaseMessage text="Go home!" color={COLOR_CURFEW} />;
+    case STATUS_STAY_AT_HOME_WHEN_CURFEW:
+      return <BaseMessage text="Stay at home" color={COLOR_CURFEW} />;
   }
 };
 
