@@ -8,6 +8,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { nowAsTime } from "../../utils/time";
 import useIsAtHome from "../../hooks/useIsAtHome";
 import useNotifications from "../../hooks/useNotifications";
+import { isReady } from "../../utils/future";
 
 type Props = {
   // eslint-disable-next-line
@@ -39,13 +40,13 @@ const Home = ({ navigation }: Props): JSX.Element => {
 
   return (
     <View style={styles.container}>
-      {settings !== null && (
+      {isReady(settings) && (
         <Clock
           curfewStart={settings.curfewStart}
           curfewEnd={settings.curfewEnd}
           minutesToGoHome={settings.minutesToGoHome}
           currentTime={now}
-          isAtHome={isAtHome !== null ? isAtHome : true}
+          isAtHome={isReady(isAtHome) ? isAtHome : true}
         />
       )}
       <StatusBar style="auto" />

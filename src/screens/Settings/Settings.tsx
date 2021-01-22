@@ -5,13 +5,14 @@ import useSettings from "../../hooks/useSettings";
 import styles from "./styles";
 import { Time } from "../../utils/time";
 import useNotifications from "../../hooks/useNotifications";
+import { isReady } from "../../utils/future";
 
 const Settings = (): JSX.Element => {
   const [settings, updateSettings] = useSettings();
   const [isNotificationsEnabled, requestNotifications] = useNotifications();
 
   const options: TypedItemProps[] =
-    settings !== null && isNotificationsEnabled !== null
+    isReady(settings) && isReady(isNotificationsEnabled)
       ? [
           {
             id: "curfew-start",

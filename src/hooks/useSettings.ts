@@ -1,13 +1,14 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import PersistentStorage from "../contexts/PersistentStorage";
 import { getSettings, Settings, updateSettings } from "../utils/settings";
+import { Future, FUTURE_NOT_READY, isReady } from "../utils/future";
 
 const useSettings = (
   deps: unknown[] = [],
-): [Settings | null, (change: Partial<Settings>) => void] => {
+): [Future<Settings>, (change: Partial<Settings>) => void] => {
   const storage = useContext(PersistentStorage);
 
-  const [settings, setSettings] = useState<Settings | null>(null);
+  const [settings, setSettings] = useState<Future<Settings>>(FUTURE_NOT_READY);
 
   useEffect(
     () => {
@@ -21,8 +22,8 @@ const useSettings = (
 
   const updateStorageContent = useCallback(
     (changes: Partial<Settings>): void => {
-      if (settings === null) {
-        console.warn("to early!");
+      if (!isReady(settings)) {
+        console.warn("too early!");
         return;
       }
 

@@ -3,16 +3,17 @@ import {
   REGISTER_OK,
   registerForPushNotifications,
 } from "../utils/notifications";
+import { Future, FUTURE_NOT_READY, isReady } from "../utils/future";
 import Platform from "../contexts/Platform";
 import Constants from "../contexts/Constants";
 import Notifier from "../contexts/Notifier";
 
-const useNotifications = (): [boolean | null, () => void] => {
+const useNotifications = (): [Future<boolean>, () => void] => {
   const constants = useContext(Constants);
   const platform = useContext(Platform);
   const notifications = useContext(Notifier);
 
-  const [isAllowed, setIsAllowed] = useState<boolean | null>(null);
+  const [isAllowed, setIsAllowed] = useState<Future<boolean>>(FUTURE_NOT_READY);
 
   useEffect(() => {
     registerForPushNotifications(
@@ -28,7 +29,7 @@ const useNotifications = (): [boolean | null, () => void] => {
   });
 
   const request = useCallback(() => {
-    if (isAllowed === null) {
+    if (!isReady(isAllowed)) {
       console.warn("not ready!");
       return;
     }
