@@ -48,6 +48,7 @@ const CurfewAlarm = (): JSX.Element => (
                   component={Home}
                   options={({ navigation }) => ({
                     title: "Curfew Alarm",
+                    // eslint-disable-next-line react/display-name
                     headerRight: () => (
                       <SettingsButton
                         onPress={() =>

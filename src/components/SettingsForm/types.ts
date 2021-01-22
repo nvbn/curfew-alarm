@@ -5,7 +5,7 @@ type TypedItemType = "time" | "number" | "action";
 type BaseTypedItemProps<T, Q extends TypedItemType> = {
   id: string;
   title: string;
-  type: TypedItemType;
+  type: Q;
   value: T;
   onChange: (newValue: T) => void;
 };

@@ -10,6 +10,7 @@ import useIsAtHome from "../../hooks/useIsAtHome";
 import useNotifications from "../../hooks/useNotifications";
 
 type Props = {
+  // eslint-disable-next-line
   navigation: StackNavigationProp<{}>;
 };
 
@@ -18,8 +19,8 @@ const Home = ({ navigation }: Props): JSX.Element => {
 
   const [refreshCounter, setRefreshCounter] = useState(0);
 
-  const [isSettingsReady, settings] = useSettings([refreshCounter]);
-  const [isAtHomeReady, isAtHome] = useIsAtHome([refreshCounter]);
+  const [settings] = useSettings([refreshCounter]);
+  const isAtHome = useIsAtHome([refreshCounter]);
 
   useEffect(
     () =>
@@ -38,13 +39,13 @@ const Home = ({ navigation }: Props): JSX.Element => {
 
   return (
     <View style={styles.container}>
-      {isSettingsReady && (
+      {settings !== null && (
         <Clock
-          curfewStart={settings!!.curfewStart}
-          curfewEnd={settings!!.curfewEnd}
-          minutesToGoHome={settings!!.minutesToGoHome}
+          curfewStart={settings.curfewStart}
+          curfewEnd={settings.curfewEnd}
+          minutesToGoHome={settings.minutesToGoHome}
           currentTime={now}
-          isAtHome={isAtHomeReady ? isAtHome!! : true}
+          isAtHome={isAtHome !== null ? isAtHome : true}
         />
       )}
       <StatusBar style="auto" />

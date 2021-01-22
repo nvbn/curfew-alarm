@@ -2,47 +2,41 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import PersistentStorage from "../contexts/PersistentStorage";
 import { getSettings, Settings, updateSettings } from "../utils/settings";
 
-type ReadySettings = [true, Settings, (change: Partial<Settings>) => void];
-
-type InitialisingSettings = [false, null, null];
-
 const useSettings = (
   deps: unknown[] = [],
-): ReadySettings | InitialisingSettings => {
+): [Settings | null, (change: Partial<Settings>) => void] => {
   const storage = useContext(PersistentStorage);
 
-  const [[isSettingsStorageReady, settings], setSettings] = useState<
-    [true, Settings] | [false, null]
-  >([false, null]);
+  const [settings, setSettings] = useState<Settings | null>(null);
 
-  useEffect(() => {
-    getSettings(storage)
-      .then((parsed) => setSettings([true, parsed]))
-      .catch((e) => console.warn("unable to read settings", e));
-  }, [setSettings, ...deps]);
+  useEffect(
+    () => {
+      getSettings(storage)
+        .then((parsed) => setSettings(parsed))
+        .catch((e) => console.warn("unable to read settings", e));
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [setSettings, ...deps],
+  );
 
   const updateStorageContent = useCallback(
     (changes: Partial<Settings>): void => {
-      if (!isSettingsStorageReady) {
+      if (settings === null) {
         console.warn("to early!");
         return;
       }
 
-      const nextSettings = { ...settings!!, ...changes };
+      const nextSettings = { ...settings, ...changes };
 
-      setSettings([true, nextSettings]);
+      setSettings(nextSettings);
       updateSettings(storage, nextSettings).catch((e) =>
         console.warn("unable to save settings", e),
       );
     },
-    [isSettingsStorageReady, settings, setSettings],
+    [storage, settings, setSettings],
   );
 
-  if (!isSettingsStorageReady) {
-    return [false, null, null];
-  }
-
-  return [true, settings!!, updateStorageContent];
+  return [settings, updateStorageContent];
 };
 
 export default useSettings;

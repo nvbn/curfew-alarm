@@ -14,7 +14,7 @@ export interface INotifications {
       title?: string;
       body?: string;
     };
-    trigger: {} | null;
+    trigger: Record<string, unknown> | null;
   }): Promise<string>;
 
   getPermissionsAsync(): Promise<{

@@ -19,6 +19,7 @@ export const nowAsTime = (): Time => {
 export const formatTime = ({ hour, minute }: Time): string =>
   `${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`;
 
+// eslint-disable-next-line
 export const isValidTime = (value: any): value is Time => {
   if (!value || !value.hour || !value.minute) {
     return false;
