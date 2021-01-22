@@ -2,7 +2,7 @@
 
 ![screenshot](https://raw.github.com/nvbn/curfew-alarm/master/screenshot.png)
 
-A small app that indicates where you need to go or stay at home during the curfew.
+A small app that indicates when you need to go or stay at home.
 
 ## Development
 

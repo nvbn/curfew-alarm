@@ -1,0 +1,28 @@
+name: app
+
+on: [push]
+
+defaults:
+  run:
+    working-directory: frontend
+
+jobs:
+  lint_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - name: install dependencies
+        run: |
+          npm install -g yarn
+          yarn
+      - name: lint
+        run: "yarn lint"
+      - name: check formatting
+        run: "yarn formatting-check"
+      - name: type check
+        run: "yarn type-check"
+      - name: test
+        run: "yarn test"
