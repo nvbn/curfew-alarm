@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import NetworkStatus from "../contexts/NetworkStatus";
+import Network from "../contexts/Network";
 import { isAtHome } from "../utils/location";
 import { Future, FUTURE_NOT_READY } from "../utils/future";
 
 const useIsAtHome = (deps: unknown[] = []): Future<boolean> => {
-  const network = useContext(NetworkStatus);
+  const network = useContext(Network);
 
   const [isAtHomeStatus, setIsAtHomeStatus] = useState<Future<boolean>>(
     FUTURE_NOT_READY,

@@ -6,12 +6,12 @@ import {
 import { Future, FUTURE_NOT_READY, isReady } from "../utils/future";
 import Platform from "../contexts/Platform";
 import Constants from "../contexts/Constants";
-import Notifier from "../contexts/Notifier";
+import Notifications from "../contexts/Notifications";
 
 const useNotifications = (): [Future<boolean>, () => void] => {
   const constants = useContext(Constants);
   const platform = useContext(Platform);
-  const notifications = useContext(Notifier);
+  const notifications = useContext(Notifications);
 
   const [isAllowed, setIsAllowed] = useState<Future<boolean>>(FUTURE_NOT_READY);
 
