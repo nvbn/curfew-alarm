@@ -10,7 +10,7 @@ export type Settings = {
 };
 
 export const defaultSettings: Settings = {
-  curfewStart: { hour: 20, minute: 30 },
+  curfewStart: { hour: 21, minute: 0 },
   curfewEnd: { hour: 4, minute: 30 },
   minutesToGoHome: 30,
 };
