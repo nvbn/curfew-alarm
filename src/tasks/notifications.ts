@@ -6,7 +6,7 @@ import {
   STATUS_GO_HOME_WHEN_CURFEW,
   STATUS_GO_HOME_WHEN_TIME_TO_GO_HOME,
 } from "../utils/status";
-import { nowAsTime } from "../utils/time";
+import { dateToTime } from "../utils/time";
 import { sendNotification } from "../utils/notifications";
 
 export const NOTIFICATIONS_TASK_NAME = "NOTIFICATIONS_TASK";
@@ -22,7 +22,7 @@ const notification = async (
   switch (
     getStatus(
       isAtHomeStatus,
-      nowAsTime(),
+      dateToTime(new Date()),
       settings.curfewStart,
       settings.curfewEnd,
       settings.minutesToGoHome,

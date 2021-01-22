@@ -1,5 +1,8 @@
 import { IConstants, INotifications, IPlatform } from "../dependencies";
 
+/**
+ * Schedules local push notification.
+ */
 export const sendNotification = (
   notifications: INotifications,
   title: string,
@@ -27,6 +30,9 @@ type RegisterStatus = {
   token?: string;
 };
 
+/**
+ * Registers app as push notifications sender / handler.
+ */
 export const registerForPushNotifications = async (
   { isDevice }: IConstants,
   { OS }: IPlatform,

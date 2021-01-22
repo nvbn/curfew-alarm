@@ -5,7 +5,7 @@ import Clock from "../../components/Clock";
 import styles from "./styles";
 import useSettings from "../../hooks/useSettings";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { nowAsTime } from "../../utils/time";
+import { dateToTime } from "../../utils/time";
 import useIsAtHome from "../../hooks/useIsAtHome";
 import useNotifications from "../../hooks/useNotifications";
 import { isReady } from "../../utils/future";
@@ -29,9 +29,9 @@ const Home = ({ navigation }: Props): JSX.Element => {
     [navigation],
   );
 
-  const [now, setNow] = useState(nowAsTime);
+  const [now, setNow] = useState(dateToTime(new Date()));
   useEffect(() => {
-    const interval = setInterval(() => setNow(nowAsTime()), 1000);
+    const interval = setInterval(() => setNow(dateToTime(new Date())), 1000);
 
     return () => {
       clearInterval(interval);

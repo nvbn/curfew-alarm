@@ -19,6 +19,12 @@ export type Status =
   | typeof STATUS_STAY_AT_HOME_WHEN_CURFEW
   | typeof STATUS_GO_HOME_WHEN_CURFEW;
 
+const MAX_MINUTE = 24 * 60;
+
+/**
+ * Determines users status / what a user needs to do at the moment
+ * based on time and configurations.
+ */
 export const getStatus = (
   isAtHome: boolean,
   currentTime: Time,
@@ -31,7 +37,11 @@ export const getStatus = (
   const curfewEndMinute = toMinutes(curfewEnd);
   const goHomeStartMinute = curfewStartMinute - minutesToGoHome;
 
-  if (currentMinute >= curfewStartMinute || currentMinute <= curfewEndMinute) {
+  if (
+    currentMinute >= curfewStartMinute &&
+    ((curfewEndMinute < curfewStartMinute && currentMinute <= MAX_MINUTE) ||
+      currentMinute <= curfewEndMinute)
+  ) {
     return isAtHome
       ? STATUS_STAY_AT_HOME_WHEN_CURFEW
       : STATUS_GO_HOME_WHEN_CURFEW;

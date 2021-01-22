@@ -9,7 +9,7 @@ export type Settings = {
   minutesToGoHome: number;
 };
 
-const defaultSettings: Settings = {
+export const defaultSettings: Settings = {
   curfewStart: { hour: 20, minute: 30 },
   curfewEnd: { hour: 4, minute: 30 },
   minutesToGoHome: 30,
@@ -37,7 +37,10 @@ const parseSettings = (serialised: string | null): Settings => {
     settings.curfewEnd = defaultSettings.curfewEnd;
   }
 
-  if (!isValidNumber(settings.minutesToGoHome)) {
+  if (
+    !isValidNumber(settings.minutesToGoHome) ||
+    settings.minutesToGoHome < 0
+  ) {
     console.warn(
       "incorrect value in minutesToGoHome",
       settings.minutesToGoHome,
@@ -48,14 +51,27 @@ const parseSettings = (serialised: string | null): Settings => {
   return settings;
 };
 
+/**
+ * Reads settings from persistent storage, returns default settings when
+ * it's not possible, and replaces invalid keys with default values.
+ */
 export const getSettings = async (
   storage: IPersistentStorage,
 ): Promise<Settings> => {
-  const serialised = await storage.getItem(STORAGE_KEY);
+  try {
+    const serialised = await storage.getItem(STORAGE_KEY);
 
-  return parseSettings(serialised);
+    return parseSettings(serialised);
+  } catch (e) {
+    console.warn("unable to read settings", e);
+
+    return defaultSettings;
+  }
 };
 
+/**
+ * Saves settings in persisten storage.
+ */
 export const updateSettings = (
   storage: IPersistentStorage,
   settings: Settings,
