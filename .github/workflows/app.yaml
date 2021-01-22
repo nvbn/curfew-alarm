@@ -2,10 +2,6 @@ name: app
 
 on: [push]
 
-defaults:
-  run:
-    working-directory: frontend
-
 jobs:
   lint_and_test:
     runs-on: ubuntu-latest
