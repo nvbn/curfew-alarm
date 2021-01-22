@@ -1,4 +1,6 @@
-import { INetwork, INotifications, IPersistentStorage } from "../dependencies";
+import INotifications from "../dependencies/INotifications";
+import IPersistentStorage from "../dependencies/IPersistentStorage";
+import INetwork from "../dependencies/INetwork";
 import { getSettings } from "../utils/settings";
 import { isAtHome } from "../utils/location";
 import {

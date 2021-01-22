@@ -1,4 +1,4 @@
-import { INetwork } from "../dependencies";
+import INetwork, { NETWORK_TYPE_WIFI } from "../dependencies/INetwork";
 
 /**
  * When a user connected to wifi treated as they are at home.
@@ -6,5 +6,5 @@ import { INetwork } from "../dependencies";
 export const isAtHome = async (network: INetwork): Promise<boolean> => {
   const status = await network.getNetworkStateAsync();
 
-  return status.type === "WIFI";
+  return status.type === NETWORK_TYPE_WIFI;
 };

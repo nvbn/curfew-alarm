@@ -1,11 +1,12 @@
-import { INetwork } from "../../dependencies";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { NETWORK_TYPE_WIFI } from "../../dependencies/INetwork";
 import { isAtHome } from "../location";
 
 describe("isAtHome", () => {
   test("thinks that at home if on wifi", async () => {
-    const network: INetwork = {
-      async getNetworkStateAsync(): Promise<{ type?: "WIFI" | unknown }> {
-        return { type: "WIFI" };
+    const network = {
+      async getNetworkStateAsync(): Promise<any> {
+        return { type: NETWORK_TYPE_WIFI };
       },
     };
 
@@ -15,8 +16,8 @@ describe("isAtHome", () => {
   });
 
   test("thinks that away if no wifi", async () => {
-    const network: INetwork = {
-      async getNetworkStateAsync(): Promise<{ type?: unknown }> {
+    const network = {
+      async getNetworkStateAsync(): Promise<any> {
         return {};
       },
     };
