@@ -19,4 +19,22 @@ Start dev version with:
 yarn start
 ```
 
+To lint the code run:
+
+```bash
+yarn lint
+```
+
+To run type checking run:
+
+```bash
+yarn type-check
+```
+
+To check the formatting run:
+
+```bash
+yarn formatting-check
+```
+
 ## License MIT

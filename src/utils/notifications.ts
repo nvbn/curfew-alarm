@@ -39,7 +39,10 @@ export const registerForPushNotifications = async (
 
   let status = (await notifications.getPermissionsAsync()).status;
 
-  if ((reRequestPermissions && status === "denied") || status === "granted") {
+  if (
+    (reRequestPermissions && status === "denied") ||
+    status === "undetermined"
+  ) {
     status = (await notifications.requestPermissionsAsync()).status;
   }
 
