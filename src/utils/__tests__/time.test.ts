@@ -56,6 +56,8 @@ describe("isValidTime", () => {
     [{ hour: 24, minute: 0 }, false],
     [{ hour: -1, minute: 10 }, false],
     [{ hour: 10, minute: 15 }, true],
+    [{ hour: 23, minute: 0 }, true],
+    [{ hour: 0, minute: 30 }, true],
   ]) {
     test(`${JSON.stringify(value)} => ${expectedIsValid}`, () => {
       const isValid = isValidTime(value);

@@ -32,7 +32,7 @@ export const formatTime = ({ hour, minute }: Time): string =>
  */
 // eslint-disable-next-line
 export const isValidTime = (value: any): value is Time => {
-  if (!value || !value.hour || !value.minute) {
+  if (!value) {
     return false;
   }
 

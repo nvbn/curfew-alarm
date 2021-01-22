@@ -1,21 +1,17 @@
 import { isValidNumber } from "../numbers";
 
 describe("isValidNumber", () => {
-  test("valid is valid", () => {
-    const result = isValidNumber(23);
+  for (const [number, expectedIsValid] of [
+    [23, true],
+    [0, true],
+    ["23", false],
+    [NaN, false],
+    [null, false],
+  ]) {
+    test(`${number} => ${expectedIsValid}`, () => {
+      const isValid = isValidNumber(number);
 
-    expect(result).toBe(true);
-  });
-
-  test("non-number type is invalid", () => {
-    const result = isValidNumber("23");
-
-    expect(result).toBe(false);
-  });
-
-  test("NaN is invalid", () => {
-    const result = isValidNumber(NaN);
-
-    expect(result).toBe(false);
-  });
+      expect(isValid).toBe(expectedIsValid);
+    });
+  }
 });
