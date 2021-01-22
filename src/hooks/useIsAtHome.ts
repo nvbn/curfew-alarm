@@ -3,6 +3,9 @@ import Network from "../contexts/Network";
 import { isAtHome } from "../utils/location";
 import { Future, FUTURE_NOT_READY } from "../utils/future";
 
+/**
+ * A hook that exposes at home or not status.
+ */
 const useIsAtHome = (deps: unknown[] = []): Future<boolean> => {
   const network = useContext(Network);
 
