@@ -1,4 +1,4 @@
-# Curfew Alarm ![ci status](https://github.com/nvbn/curfew-alarm/workflows/app/badge.svg)
+# Curfew Alarm ![ci status](https://github.com/nvbn/curfew-alarm/workflows/ci/badge.svg)
 
 ![screenshot](https://raw.github.com/nvbn/curfew-alarm/master/screenshot.png)
 
