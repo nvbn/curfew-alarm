@@ -1,6 +1,6 @@
 # Curfew Alarm ![ci status](https://github.com/nvbn/curfew-alarm/workflows/ci/badge.svg)
 
-![screenshot ios](https://raw.github.com/nvbn/curfew-alarm/master/screenshots/ios.png) ![screenshot android](https://raw.github.com/nvbn/curfew-alarm/master/screenshots/android.jpg)
+![screenshot ios](https://raw.github.com/nvbn/curfew-alarm/master/screenshots/ios.png) ![screenshot android](https://raw.github.com/nvbn/curfew-alarm/master/screenshots/android_resized.jpg)
 
 A small app that indicates when you need to go or stay at home.
 
