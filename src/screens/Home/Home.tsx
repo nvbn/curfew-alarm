@@ -7,12 +7,15 @@ import useSettings from "../../hooks/useSettings";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { nowAsTime } from "../../utils/time";
 import useIsAtHome from "../../hooks/useIsAtHome";
+import useNotifications from "../../hooks/useNotifications";
 
 type Props = {
   navigation: StackNavigationProp<{}>;
 };
 
 const Home = ({ navigation }: Props): JSX.Element => {
+  useNotifications();
+
   const [refreshCounter, setRefreshCounter] = useState(0);
 
   const [isSettingsReady, settings] = useSettings([refreshCounter]);

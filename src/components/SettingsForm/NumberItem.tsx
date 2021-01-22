@@ -3,7 +3,11 @@ import { Text, TextInput, View } from "react-native";
 import styles from "./styles";
 import { NumberItemProps } from "./types";
 
-const NumberItem = ({ title, value, onChange }: NumberItemProps) => {
+const NumberItem = ({
+  title,
+  value,
+  onChange,
+}: NumberItemProps): JSX.Element => {
   const onChangeAsNumber = useCallback(
     (textValue) => {
       const nextValue = parseInt(textValue, 10);

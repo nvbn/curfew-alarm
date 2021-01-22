@@ -6,7 +6,7 @@ import { Text, View } from "react-native";
 import styles from "./styles";
 import { TimeItemProps } from "./types";
 
-const TimeItem = ({ title, value, onChange }: TimeItemProps) => {
+const TimeItem = ({ title, value, onChange }: TimeItemProps): JSX.Element => {
   const valueAsDate = new Date();
   valueAsDate.setHours(value.hour);
   valueAsDate.setMinutes(value.minute);
