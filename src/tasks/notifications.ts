@@ -1,15 +1,15 @@
+import INetwork from "../dependencies/INetwork";
 import INotifications from "../dependencies/INotifications";
 import IPersistentStorage from "../dependencies/IPersistentStorage";
-import INetwork from "../dependencies/INetwork";
-import { getSettings } from "../utils/settings";
 import { isAtHome } from "../utils/location";
+import { sendNotification } from "../utils/notifications";
+import { getSettings } from "../utils/settings";
 import {
   getStatus,
   STATUS_GO_HOME_WHEN_CURFEW,
   STATUS_GO_HOME_WHEN_TIME_TO_GO_HOME,
 } from "../utils/status";
 import { dateToTime } from "../utils/time";
-import { sendNotification } from "../utils/notifications";
 
 export const NOTIFICATIONS_TASK_NAME = "NOTIFICATIONS_TASK";
 

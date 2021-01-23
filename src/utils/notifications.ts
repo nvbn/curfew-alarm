@@ -1,10 +1,10 @@
-import IPlatform, { PLATFORM_OS_ANDROID } from "../dependencies/IPlatform";
+import IConstants from "../dependencies/IConstants";
 import INotifications, {
   NOTIFICATION_PERMISSIONS_DENIED,
   NOTIFICATIONS_PERMISSIONS_GRANTED,
   NOTIFICATIONS_PERMISSIONS_UNDETERMINED,
 } from "../dependencies/INotifications";
-import IConstants from "../dependencies/IConstants";
+import IPlatform, { PLATFORM_OS_ANDROID } from "../dependencies/IPlatform";
 
 /**
  * Schedules local push notification.

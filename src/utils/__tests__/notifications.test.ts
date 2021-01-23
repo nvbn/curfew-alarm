@@ -5,13 +5,13 @@ import {
   NOTIFICATIONS_PERMISSIONS_UNDETERMINED,
 } from "../../dependencies/INotifications";
 import {
-  makeNotificationsWithBehavior,
-  NOTIFICATIONS_DEFAULT_FAKE_TOKEN,
-} from "../../fakes/Notifications";
-import {
   makeConstantsAsInEmulator,
   makeConstantsAsOnDevice,
 } from "../../fakes/Constants";
+import {
+  makeNotificationsWithBehavior,
+  NOTIFICATIONS_DEFAULT_FAKE_TOKEN,
+} from "../../fakes/Notifications";
 import {
   REGISTER_DENIED,
   REGISTER_NOT_DEVICE,

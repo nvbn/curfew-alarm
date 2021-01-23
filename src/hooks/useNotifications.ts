@@ -1,12 +1,13 @@
 import { useCallback, useContext, useEffect, useState } from "react";
+
+import Constants from "../contexts/Constants";
+import Notifications from "../contexts/Notifications";
+import Platform from "../contexts/Platform";
+import { Future, FUTURE_NOT_READY, isReady } from "../utils/future";
 import {
   REGISTER_OK,
   registerForPushNotifications,
 } from "../utils/notifications";
-import { Future, FUTURE_NOT_READY, isReady } from "../utils/future";
-import Platform from "../contexts/Platform";
-import Constants from "../contexts/Constants";
-import Notifications from "../contexts/Notifications";
 
 const useNotifications = (): [Future<boolean>, () => void] => {
   const constants = useContext(Constants);

@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
+
 import Network from "../contexts/Network";
-import { isAtHome } from "../utils/location";
 import { Future, FUTURE_NOT_READY } from "../utils/future";
+import { isAtHome } from "../utils/location";
 
 /**
  * A hook that exposes at home or not status.

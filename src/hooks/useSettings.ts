@@ -1,7 +1,8 @@
 import { useCallback, useContext, useEffect, useState } from "react";
+
 import PersistentStorage from "../contexts/PersistentStorage";
-import { getSettings, Settings, updateSettings } from "../utils/settings";
 import { Future, FUTURE_NOT_READY, isReady } from "../utils/future";
+import { getSettings, Settings, updateSettings } from "../utils/settings";
 
 const useSettings = (
   deps: unknown[] = [],

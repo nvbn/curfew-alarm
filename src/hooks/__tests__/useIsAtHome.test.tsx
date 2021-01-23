@@ -1,15 +1,16 @@
 /**
  * @jest-environment jsdom
  */
-import React, { PropsWithChildren } from "react";
 import { renderHook } from "@testing-library/react-hooks";
+import React, { PropsWithChildren } from "react";
+
 import Network from "../../contexts/Network";
-import { isReady } from "../../utils/future";
 import {
   makeNetworkAsAFailure,
   makeNetworkAsNotConnected,
   makeNetworkAsOnWifi,
 } from "../../fakes/Network";
+import { isReady } from "../../utils/future";
 import useIsAtHome from "../useIsAtHome";
 
 describe("useIsAtHome", () => {

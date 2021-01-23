@@ -1,14 +1,15 @@
+import { StackNavigationProp } from "@react-navigation/stack";
+import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
-import { StatusBar } from "expo-status-bar";
+
 import Clock from "../../components/Clock";
-import styles from "./styles";
-import useSettings from "../../hooks/useSettings";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { dateToTime } from "../../utils/time";
 import useIsAtHome from "../../hooks/useIsAtHome";
 import useNotifications from "../../hooks/useNotifications";
+import useSettings from "../../hooks/useSettings";
 import { isReady } from "../../utils/future";
+import { dateToTime } from "../../utils/time";
+import styles from "./styles";
 
 type Props = {
   // eslint-disable-next-line

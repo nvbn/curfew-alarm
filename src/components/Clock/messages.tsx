@@ -1,6 +1,6 @@
 import React from "react";
-import { COLOR_CURFEW, COLOR_DANGER, COLOR_OK } from "./styles";
 import { Text } from "react-native-svg";
+
 import {
   Status,
   STATUS_FINE,
@@ -9,6 +9,7 @@ import {
   STATUS_STAY_AT_HOME_WHEN_CURFEW,
   STATUS_STAY_AT_HOME_WHEN_TIME_TO_GO_HOME,
 } from "../../utils/status";
+import { COLOR_CURFEW, COLOR_DANGER, COLOR_OK } from "./styles";
 
 type BaseMessageProps = {
   text: string;

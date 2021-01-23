@@ -1,14 +1,15 @@
 import React from "react";
 import { FlatList } from "react-native";
+
+import ActionItem from "./ActionItem";
+import NumberItem from "./NumberItem";
+import TimeItem from "./TimeItem";
 import {
   ActionItemProps,
   NumberItemProps,
   TimeItemProps,
   TypedItemProps,
 } from "./types";
-import TimeItem from "./TimeItem";
-import NumberItem from "./NumberItem";
-import ActionItem from "./ActionItem";
 
 type Props = {
   options: TypedItemProps[];

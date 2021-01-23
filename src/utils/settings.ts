@@ -1,6 +1,6 @@
 import IPersistentStorage from "../dependencies/IPersistentStorage";
-import { isValidTime, Time } from "./time";
 import { isValidNumber } from "./numbers";
+import { isValidTime, Time } from "./time";
 
 export type Settings = {
   curfewStart: Time;
