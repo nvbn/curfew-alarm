@@ -1,22 +1,24 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { defaultSettings, getSettings } from "../settings";
+import {
+  makePersistentStorageWithDataAndBehavior,
+  PERSISTENT_STORAGE_BEHAVIOR_ERROR,
+} from "../../fakes/PersistentStorage";
+import { defaultSettings, getSettings, STORAGE_KEY } from "../settings";
 
 describe("getSettings", () => {
   test("returns default settings if the storage is empty", async () => {
-    const storage = {
-      getItem: () => new Promise((resolve) => resolve(null)),
-    };
+    const storage = makePersistentStorageWithDataAndBehavior();
 
-    const settings = await getSettings(storage as any);
+    const settings = await getSettings(storage);
     expect(settings).toEqual(defaultSettings);
   });
 
   test("returns default settings if the storage errors", async () => {
-    const storage = {
-      getItem: () => new Promise((_, reject) => reject()),
-    };
+    const storage = makePersistentStorageWithDataAndBehavior({
+      getItem: PERSISTENT_STORAGE_BEHAVIOR_ERROR,
+    });
 
-    const settings = await getSettings(storage as any);
+    const settings = await getSettings(storage);
     expect(settings).toEqual(defaultSettings);
   });
 
@@ -26,12 +28,11 @@ describe("getSettings", () => {
       curfewEnd: { hour: 14, minute: 20 },
       minutesToGoHome: 45,
     };
-    const storage = {
-      getItem: () =>
-        new Promise((resolve) => resolve(JSON.stringify(storedSettings))),
-    };
+    const storage = makePersistentStorageWithDataAndBehavior({
+      data: { [STORAGE_KEY]: JSON.stringify(storedSettings) },
+    });
 
-    const settings = await getSettings(storage as any);
+    const settings = await getSettings(storage);
     expect(settings).toEqual(storedSettings);
   });
 
@@ -64,13 +65,13 @@ describe("getSettings", () => {
         [key]: (defaultSettings as any)[key],
       };
 
-      const storage = {
-        getItem: () =>
-          new Promise((resolve) => resolve(JSON.stringify(storedSettings))),
-      };
+      const storage = makePersistentStorageWithDataAndBehavior({
+        data: {
+          [STORAGE_KEY]: JSON.stringify(storedSettings),
+        },
+      });
 
-      const settings = await getSettings(storage as any);
-
+      const settings = await getSettings(storage);
       expect(settings).toEqual(expectedSettings);
     });
   }

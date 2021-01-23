@@ -9,13 +9,15 @@ export type Settings = {
   minutesToGoHome: number;
 };
 
+// exported only for tests
 export const defaultSettings: Settings = {
   curfewStart: { hour: 21, minute: 0 },
   curfewEnd: { hour: 4, minute: 30 },
   minutesToGoHome: 30,
 };
 
-const STORAGE_KEY = "SETTINGS";
+// exported only for tests
+export const STORAGE_KEY = "SETTINGS";
 
 const parseSettings = (serialised: string | null): Settings => {
   let settings = defaultSettings;
