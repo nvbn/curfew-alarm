@@ -11,6 +11,7 @@ import * as rn from "react-native";
 
 import SettingsButton from "./components/SettingsButton";
 import Constants from "./contexts/Constants";
+import DateTime from "./contexts/DateTime";
 import Network from "./contexts/Network";
 import Notifications from "./contexts/Notifications";
 import PersistentStorage from "./contexts/PersistentStorage";
@@ -37,42 +38,44 @@ TaskManager.defineTask(NOTIFICATIONS_TASK_NAME, () => {
 const Stack = createStackNavigator();
 
 const CurfewAlarm = (): JSX.Element => (
-  <PersistentStorage.Provider value={AsyncStorage}>
-    <Network.Provider value={ExpoNetwork}>
-      <Notifications.Provider value={ExpoNotifications}>
-        <Platform.Provider value={rn.Platform}>
-          <Constants.Provider value={ExpoConstants}>
-            <NavigationContainer>
-              <Stack.Navigator>
-                <Stack.Screen
-                  name={HOME_SCREEN_NAME}
-                  component={Home}
-                  options={({ navigation }) => ({
-                    title: "Curfew Alarm",
-                    // eslint-disable-next-line react/display-name
-                    headerRight: () => (
-                      <SettingsButton
-                        onPress={() =>
-                          navigation.navigate(SETTINGS_SCREEN_NAME)
-                        }
-                      />
-                    ),
-                  })}
-                />
-                <Stack.Screen
-                  name={SETTINGS_SCREEN_NAME}
-                  component={Settings}
-                  options={{
-                    title: "Settings",
-                  }}
-                />
-              </Stack.Navigator>
-            </NavigationContainer>
-          </Constants.Provider>
-        </Platform.Provider>
-      </Notifications.Provider>
-    </Network.Provider>
-  </PersistentStorage.Provider>
+  <DateTime.Provider value={() => new Date()}>
+    <PersistentStorage.Provider value={AsyncStorage}>
+      <Network.Provider value={ExpoNetwork}>
+        <Notifications.Provider value={ExpoNotifications}>
+          <Platform.Provider value={rn.Platform}>
+            <Constants.Provider value={ExpoConstants}>
+              <NavigationContainer>
+                <Stack.Navigator>
+                  <Stack.Screen
+                    name={HOME_SCREEN_NAME}
+                    component={Home}
+                    options={({ navigation }) => ({
+                      title: "Curfew Alarm",
+                      // eslint-disable-next-line react/display-name
+                      headerRight: () => (
+                        <SettingsButton
+                          onPress={() =>
+                            navigation.navigate(SETTINGS_SCREEN_NAME)
+                          }
+                        />
+                      ),
+                    })}
+                  />
+                  <Stack.Screen
+                    name={SETTINGS_SCREEN_NAME}
+                    component={Settings}
+                    options={{
+                      title: "Settings",
+                    }}
+                  />
+                </Stack.Navigator>
+              </NavigationContainer>
+            </Constants.Provider>
+          </Platform.Provider>
+        </Notifications.Provider>
+      </Network.Provider>
+    </PersistentStorage.Provider>
+  </DateTime.Provider>
 );
 
 export default CurfewAlarm;
