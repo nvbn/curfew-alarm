@@ -9,6 +9,9 @@ import { isReady } from "../../utils/future";
 import { Time } from "../../utils/time";
 import styles from "./styles";
 
+/**
+ * A screen that allows to modify app settings.
+ */
 const Settings = (): JSX.Element => {
   const os = usePlatformOS();
   const [settings, updateSettings] = useSettings();
