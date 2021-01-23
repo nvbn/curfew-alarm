@@ -9,6 +9,8 @@ npm-debug.*
 *.orig.*
 web-build/
 
+coverage
+
 *.log
 *.iml
 .idea
