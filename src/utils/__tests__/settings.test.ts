@@ -3,7 +3,12 @@ import {
   makePersistentStorageWithDataAndBehavior,
   PERSISTENT_STORAGE_BEHAVIOR_ERROR,
 } from "../../fakes/PersistentStorage";
-import { defaultSettings, getSettings, STORAGE_KEY } from "../settings";
+import {
+  defaultSettings,
+  getSettings,
+  STORAGE_KEY,
+  updateSettings,
+} from "../settings";
 
 describe("getSettings", () => {
   test("returns default settings if the storage is empty", async () => {
@@ -75,4 +80,39 @@ describe("getSettings", () => {
       expect(settings).toEqual(expectedSettings);
     });
   }
+});
+
+describe("updateSettings", async () => {
+  test("stores new settings if everything is ok", async () => {
+    const settingsToStore = {
+      curfewStart: { hour: 22, minute: 30 },
+      curfewEnd: { hour: 3, minute: 15 },
+      minutesToGoHome: 15,
+    };
+
+    const storage = makePersistentStorageWithDataAndBehavior();
+    await updateSettings(storage, settingsToStore);
+
+    const storedSettings = await storage.getItem(STORAGE_KEY);
+    expect(JSON.parse(storedSettings ?? "")).toEqual(settingsToStore);
+  });
+
+  test("propagates error on error", async () => {
+    const settingsToStore = {
+      curfewStart: { hour: 22, minute: 30 },
+      curfewEnd: { hour: 3, minute: 15 },
+      minutesToGoHome: 15,
+    };
+
+    const storage = makePersistentStorageWithDataAndBehavior({
+      setItem: PERSISTENT_STORAGE_BEHAVIOR_ERROR,
+    });
+
+    try {
+      await updateSettings(storage, settingsToStore);
+      expect(false).toBe(true); // shouldn't reach this line
+    } catch (e) {
+      expect(e).toBeTruthy();
+    }
+  });
 });
