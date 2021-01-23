@@ -16,9 +16,14 @@ import Network from "./contexts/Network";
 import Notifications from "./contexts/Notifications";
 import PersistentStorage from "./contexts/PersistentStorage";
 import Platform from "./contexts/Platform";
+import IDateTime from "./dependencies/IDateTime";
 import Home, { HOME_SCREEN_NAME } from "./screens/Home";
 import Settings, { SETTINGS_SCREEN_NAME } from "./screens/Settings";
-import notification, { NOTIFICATIONS_TASK_NAME } from "./tasks/notifications";
+import notificationsSender, {
+  NOTIFICATIONS_TASK_NAME,
+} from "./tasks/notificationsSender";
+
+const getCurrentDate: IDateTime = () => new Date();
 
 ExpoNotifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -29,16 +34,19 @@ ExpoNotifications.setNotificationHandler({
 });
 
 TaskManager.defineTask(NOTIFICATIONS_TASK_NAME, () => {
-  notification(AsyncStorage, ExpoNetwork, ExpoNotifications).catch((e) =>
-    console.warn("background task failed", e),
-  );
+  notificationsSender(
+    getCurrentDate,
+    AsyncStorage,
+    ExpoNetwork,
+    ExpoNotifications,
+  ).catch((e) => console.warn("background task failed", e));
   return BackgroundFetch.Result.NoData;
 });
 
 const Stack = createStackNavigator();
 
 const CurfewAlarm = (): JSX.Element => (
-  <DateTime.Provider value={() => new Date()}>
+  <DateTime.Provider value={getCurrentDate}>
     <PersistentStorage.Provider value={AsyncStorage}>
       <Network.Provider value={ExpoNetwork}>
         <Notifications.Provider value={ExpoNotifications}>

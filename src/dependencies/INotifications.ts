@@ -15,17 +15,21 @@ export type NotificationPermissions = {
 
 export type NotificationPushToken = { data: string };
 
+export type NotificationContent = {
+  title?: string;
+  body?: string;
+};
+
+export type NotificationRequest = {
+  content: NotificationContent;
+  trigger: Record<string, unknown> | null;
+};
+
 /**
  * Interface that provides access to device notifications.
  */
 export default interface INotifications {
-  scheduleNotificationAsync(request: {
-    content: {
-      title?: string;
-      body?: string;
-    };
-    trigger: Record<string, unknown> | null;
-  }): Promise<string>;
+  scheduleNotificationAsync(request: NotificationRequest): Promise<string>;
 
   getPermissionsAsync(): Promise<NotificationPermissions>;
 
