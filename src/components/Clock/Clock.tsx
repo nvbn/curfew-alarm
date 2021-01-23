@@ -4,7 +4,7 @@ import Svg, { Circle, Text } from "react-native-svg";
 import { getStatus } from "../../utils/status";
 import { formatTime, Time, toMinutes } from "../../utils/time";
 import Arc from "./Arc";
-import Message from "./messages";
+import Message from "./Message";
 import styles, {
   COLOR_CURFEW,
   COLOR_CURRENT,
