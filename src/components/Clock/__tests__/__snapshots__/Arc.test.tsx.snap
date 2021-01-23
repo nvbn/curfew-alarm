@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Arc /> 10pt red arc from 12:00 to 14:45 1`] = `
+<RNSVGPath
+  d="
+    M -6.593458151000688 7.518398074789774
+    A 10 10 0 0 0 6.123233995736766e-16 10
+  "
+  fill={null}
+  propList={
+    Array [
+      "fill",
+      "stroke",
+      "strokeWidth",
+    ]
+  }
+  stroke={4294901760}
+  strokeWidth={10}
+/>
+`;
+
+exports[`<Arc /> 15pt cyan arc from 21:00 to 04:30 1`] = `
+<RNSVGPath
+  d="
+    M 23.8581929876693 4.259748514523653
+    A 15 15 0 0 0 -0.606601717798215 -0.6066017177982115
+  "
+  fill={null}
+  propList={
+    Array [
+      "fill",
+      "stroke",
+      "strokeWidth",
+    ]
+  }
+  stroke={4278255615}
+  strokeWidth={15}
+/>
+`;

@@ -41,6 +41,9 @@ type Props = {
   r: number;
 };
 
+/**
+ * SVG arc from `startMinute` to `endMinute`.
+ */
 const Arc = ({
   startMinute,
   endMinute,
