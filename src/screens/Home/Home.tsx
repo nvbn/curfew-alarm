@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 
 import Clock from "../../components/Clock";
+import useGetDate from "../../hooks/useGetDate";
 import useIsAtHome from "../../hooks/useIsAtHome";
 import useNotifications from "../../hooks/useNotifications";
 import useSettings from "../../hooks/useSettings";
@@ -16,11 +17,16 @@ type Props = {
   navigation: StackNavigationProp<{}>;
 };
 
+const UPDATE_TIME_INTERVAL = 1000;
+
+/**
+ * The home screen of the app.
+ */
 const Home = ({ navigation }: Props): JSX.Element => {
   useNotifications();
 
   const [refreshCounter, setRefreshCounter] = useState(0);
-
+  const getDate = useGetDate();
   const [settings] = useSettings([refreshCounter]);
   const isAtHome = useIsAtHome([refreshCounter]);
 
@@ -32,12 +38,15 @@ const Home = ({ navigation }: Props): JSX.Element => {
 
   const [now, setNow] = useState(dateToTime(new Date()));
   useEffect(() => {
-    const interval = setInterval(() => setNow(dateToTime(new Date())), 1000);
+    const interval = setInterval(
+      () => setNow(dateToTime(getDate())),
+      UPDATE_TIME_INTERVAL,
+    );
 
     return () => {
       clearInterval(interval);
     };
-  });
+  }, [setNow, getDate]);
 
   return (
     <View style={styles.container}>
