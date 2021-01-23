@@ -34,7 +34,7 @@ const defaultBehavior: Behavior = {
 export const makeNotificationsWithBehavior = (
   behaviorOverride: Partial<Behavior> = {},
 ): INotifications => {
-  const behavior = { ...defaultBehavior, behaviorOverride };
+  const behavior = { ...defaultBehavior, ...behaviorOverride };
 
   return {
     scheduleNotificationAsync: () => behavior.scheduleNotificationAsync,

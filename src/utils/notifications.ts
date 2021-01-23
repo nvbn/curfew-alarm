@@ -24,7 +24,7 @@ export const sendNotification = (
 
 export const REGISTER_NOT_DEVICE = "REGISTER_NOT_DEVICE";
 
-export const REGISTER_DENIED = "REGISTER_DECLINED";
+export const REGISTER_DENIED = "REGISTER_DENIED";
 
 export const REGISTER_OK = "REGISTER_OK";
 
@@ -49,7 +49,7 @@ export const registerForPushNotifications = async (
     return { status: REGISTER_NOT_DEVICE };
   }
 
-  let status = (await notifications.getPermissionsAsync()).status;
+  let { status } = await notifications.getPermissionsAsync();
 
   if (
     (reRequestPermissions && status === NOTIFICATION_PERMISSIONS_DENIED) ||
