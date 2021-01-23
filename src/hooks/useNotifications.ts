@@ -9,6 +9,10 @@ import {
   registerForPushNotifications,
 } from "../utils/notifications";
 
+/**
+ * A hook that configures notifications (and relevant permissions),
+ * and allows to re-request permissions.
+ */
 const useNotifications = (): [Future<boolean>, () => void] => {
   const constants = useContext(Constants);
   const platform = useContext(Platform);
@@ -17,17 +21,13 @@ const useNotifications = (): [Future<boolean>, () => void] => {
   const [isAllowed, setIsAllowed] = useState<Future<boolean>>(FUTURE_NOT_READY);
 
   useEffect(() => {
-    registerForPushNotifications(
-      constants,
-      platform,
-      notifications,
-      false,
-    ).then(({ status }) => {
-      if (status === REGISTER_OK) {
-        setIsAllowed(true);
-      }
-    });
-  });
+    registerForPushNotifications(constants, platform, notifications, false)
+      .then(({ status }) => setIsAllowed(status === REGISTER_OK))
+      .catch((e) => {
+        console.warn("unable to register for push notifications", e);
+        setIsAllowed(false);
+      });
+  }, [constants, platform, notifications, setIsAllowed]);
 
   const request = useCallback(() => {
     if (!isReady(isAllowed)) {
@@ -35,16 +35,12 @@ const useNotifications = (): [Future<boolean>, () => void] => {
       return;
     }
 
-    registerForPushNotifications(
-      constants,
-      platform,
-      notifications,
-      false,
-    ).then(({ status }) => {
-      if (status === REGISTER_OK) {
-        setIsAllowed(true);
-      }
-    });
+    registerForPushNotifications(constants, platform, notifications, true)
+      .then(({ status }) => setIsAllowed(status === REGISTER_OK))
+      .catch((e) => {
+        console.warn("unable to re-register for push notifications", e);
+        setIsAllowed(false);
+      });
   }, [constants, platform, notifications, isAllowed, setIsAllowed]);
 
   return [isAllowed, request];
