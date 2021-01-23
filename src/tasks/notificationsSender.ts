@@ -1,3 +1,4 @@
+import IDateTime from "../dependencies/IDateTime";
 import INetwork from "../dependencies/INetwork";
 import INotifications from "../dependencies/INotifications";
 import IPersistentStorage from "../dependencies/IPersistentStorage";
@@ -13,7 +14,11 @@ import { dateToTime } from "../utils/time";
 
 export const NOTIFICATIONS_TASK_NAME = "NOTIFICATIONS_TASK";
 
-const notification = async (
+/**
+ * Periodically sends notifications depending on conditions
+ */
+const notificationsSender = async (
+  getCurrentDate: IDateTime,
   storage: IPersistentStorage,
   network: INetwork,
   notifications: INotifications,
@@ -21,15 +26,15 @@ const notification = async (
   const settings = await getSettings(storage);
   const isAtHomeStatus = await isAtHome(network);
 
-  switch (
-    getStatus(
-      isAtHomeStatus,
-      dateToTime(new Date()),
-      settings.curfewStart,
-      settings.curfewEnd,
-      settings.minutesToGoHome,
-    )
-  ) {
+  const status = getStatus(
+    isAtHomeStatus,
+    dateToTime(getCurrentDate()),
+    settings.curfewStart,
+    settings.curfewEnd,
+    settings.minutesToGoHome,
+  );
+
+  switch (status) {
     case STATUS_GO_HOME_WHEN_TIME_TO_GO_HOME:
       await sendNotification(
         notifications,
@@ -43,4 +48,4 @@ const notification = async (
   }
 };
 
-export default notification;
+export default notificationsSender;

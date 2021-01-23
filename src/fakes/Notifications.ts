@@ -1,4 +1,5 @@
 import INotifications, {
+  NotificationContent,
   NotificationPermissions,
   NotificationPushToken,
   NOTIFICATIONS_PERMISSIONS_GRANTED,
@@ -28,16 +29,28 @@ const defaultBehavior: Behavior = {
   setNotificationChannelAsync: Promise.resolve(),
 };
 
+type WithCapturedNotifications = {
+  captured: NotificationContent[];
+};
+
 /**
- * Create a fake for INotifications that implements provided behavior
+ * Create a fake for INotifications that implements provided behavior,
+ * and captures sent notifications.
  */
 export const makeNotificationsWithBehavior = (
   behaviorOverride: Partial<Behavior> = {},
-): INotifications => {
+): INotifications & WithCapturedNotifications => {
   const behavior = { ...defaultBehavior, ...behaviorOverride };
+  const captured: NotificationContent[] = [];
 
   return {
-    scheduleNotificationAsync: () => behavior.scheduleNotificationAsync,
+    captured,
+
+    scheduleNotificationAsync: ({ content }) => {
+      captured.push(content);
+
+      return behavior.scheduleNotificationAsync;
+    },
     getPermissionsAsync: () => behavior.getPermissionsAsync,
     requestPermissionsAsync: () => behavior.requestPermissionsAsync,
     getExpoPushTokenAsync: () => behavior.getExpoPushTokenAsync,
