@@ -1,6 +1,6 @@
 import INotifications, {
   NotificationPermissions,
-  NotificationPushToke,
+  NotificationPushToken,
   NOTIFICATIONS_PERMISSIONS_GRANTED,
 } from "../dependencies/INotifications";
 
@@ -8,7 +8,7 @@ type Behavior = {
   scheduleNotificationAsync: Promise<string>;
   getPermissionsAsync: Promise<NotificationPermissions>;
   requestPermissionsAsync: Promise<NotificationPermissions>;
-  getExpoPushTokenAsync: Promise<NotificationPushToke>;
+  getExpoPushTokenAsync: Promise<NotificationPushToken>;
   setNotificationChannelAsync: Promise<void>;
 };
 
