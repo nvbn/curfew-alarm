@@ -4,7 +4,7 @@ import {
   PERSISTENT_STORAGE_BEHAVIOR_ERROR,
 } from "../../fakes/PersistentStorage";
 import {
-  defaultSettings,
+  DEFAULT_SETTINGS,
   getSettings,
   STORAGE_KEY,
   updateSettings,
@@ -15,7 +15,7 @@ describe("getSettings", () => {
     const storage = makePersistentStorageWithDataAndBehavior();
 
     const settings = await getSettings(storage);
-    expect(settings).toEqual(defaultSettings);
+    expect(settings).toEqual(DEFAULT_SETTINGS);
   });
 
   test("returns default settings if the storage errors", async () => {
@@ -24,7 +24,7 @@ describe("getSettings", () => {
     });
 
     const settings = await getSettings(storage);
-    expect(settings).toEqual(defaultSettings);
+    expect(settings).toEqual(DEFAULT_SETTINGS);
   });
 
   test("returns stored settings if it exists and valid", async () => {
@@ -67,7 +67,7 @@ describe("getSettings", () => {
 
       const expectedSettings = {
         ...okSettings,
-        [key]: (defaultSettings as any)[key],
+        [key]: (DEFAULT_SETTINGS as any)[key],
       };
 
       const storage = makePersistentStorageWithDataAndBehavior({

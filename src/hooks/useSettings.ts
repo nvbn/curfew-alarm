@@ -4,6 +4,9 @@ import PersistentStorage from "../contexts/PersistentStorage";
 import { Future, FUTURE_NOT_READY, isReady } from "../utils/future";
 import { getSettings, Settings, updateSettings } from "../utils/settings";
 
+/**
+ * Provides access and allows to modify settings.
+ */
 const useSettings = (
   deps: unknown[] = [],
 ): [Future<Settings>, (change: Partial<Settings>) => void] => {
@@ -29,11 +32,9 @@ const useSettings = (
       }
 
       const nextSettings = { ...settings, ...changes };
-
-      setSettings(nextSettings);
-      updateSettings(storage, nextSettings).catch((e) =>
-        console.warn("unable to save settings", e),
-      );
+      updateSettings(storage, nextSettings)
+        .then(() => setSettings(nextSettings))
+        .catch((e) => console.warn("unable to save settings", e));
     },
     [storage, settings, setSettings],
   );

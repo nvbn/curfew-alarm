@@ -10,7 +10,7 @@ export type Settings = {
 };
 
 // exported only for tests
-export const defaultSettings: Settings = {
+export const DEFAULT_SETTINGS: Settings = {
   curfewStart: { hour: 21, minute: 0 },
   curfewEnd: { hour: 4, minute: 30 },
   minutesToGoHome: 30,
@@ -20,7 +20,7 @@ export const defaultSettings: Settings = {
 export const STORAGE_KEY = "SETTINGS";
 
 const parseSettings = (serialised: string | null): Settings => {
-  let settings = defaultSettings;
+  let settings = DEFAULT_SETTINGS;
   if (serialised !== null) {
     try {
       settings = { ...settings, ...JSON.parse(serialised) };
@@ -31,12 +31,12 @@ const parseSettings = (serialised: string | null): Settings => {
 
   if (!isValidTime(settings.curfewStart)) {
     console.warn("incorrect value in curfewStart", settings.curfewStart);
-    settings.curfewStart = defaultSettings.curfewStart;
+    settings.curfewStart = DEFAULT_SETTINGS.curfewStart;
   }
 
   if (!isValidTime(settings.curfewEnd)) {
     console.warn("incorrect value in curfewEnd", settings.curfewEnd);
-    settings.curfewEnd = defaultSettings.curfewEnd;
+    settings.curfewEnd = DEFAULT_SETTINGS.curfewEnd;
   }
 
   if (
@@ -47,7 +47,7 @@ const parseSettings = (serialised: string | null): Settings => {
       "incorrect value in minutesToGoHome",
       settings.minutesToGoHome,
     );
-    settings.minutesToGoHome = defaultSettings.minutesToGoHome;
+    settings.minutesToGoHome = DEFAULT_SETTINGS.minutesToGoHome;
   }
 
   return settings;
@@ -67,7 +67,7 @@ export const getSettings = async (
   } catch (e) {
     console.warn("unable to read settings", e);
 
-    return defaultSettings;
+    return DEFAULT_SETTINGS;
   }
 };
 
