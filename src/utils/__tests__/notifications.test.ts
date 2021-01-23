@@ -1,24 +1,28 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
-  REGISTER_DENIED,
-  REGISTER_NOT_DEVICE,
-  REGISTER_OK,
-  registerForPushNotifications,
-} from "../notifications";
+  NOTIFICATION_PERMISSIONS_DENIED,
+  NOTIFICATIONS_PERMISSIONS_GRANTED,
+  NOTIFICATIONS_PERMISSIONS_UNDETERMINED,
+} from "../../dependencies/INotifications";
 import {
   makeNotificationsWithBehavior,
   NOTIFICATIONS_DEFAULT_FAKE_TOKEN,
 } from "../../fakes/Notifications";
 import {
-  NOTIFICATION_PERMISSIONS_DENIED,
-  NOTIFICATIONS_PERMISSIONS_GRANTED,
-  NOTIFICATIONS_PERMISSIONS_UNDETERMINED,
-} from "../../dependencies/INotifications";
+  makeConstantsAsInEmulator,
+  makeConstantsAsOnDevice,
+} from "../../fakes/Constants";
+import {
+  REGISTER_DENIED,
+  REGISTER_NOT_DEVICE,
+  REGISTER_OK,
+  registerForPushNotifications,
+} from "../notifications";
 
 describe("registerForPushNotifications", () => {
   test("can't register if it's not a real device", async () => {
     const { status } = await registerForPushNotifications(
-      { isDevice: false },
+      makeConstantsAsInEmulator(),
       {} as any,
       makeNotificationsWithBehavior(),
       false,
@@ -29,7 +33,7 @@ describe("registerForPushNotifications", () => {
 
   test("requests permissions the first time", async () => {
     const { status, token } = await registerForPushNotifications(
-      { isDevice: true },
+      makeConstantsAsOnDevice(),
       {} as any,
       makeNotificationsWithBehavior({
         getPermissionsAsync: Promise.resolve({
@@ -48,7 +52,7 @@ describe("registerForPushNotifications", () => {
 
   test("don't re-request permissions if not asked", async () => {
     const { status } = await registerForPushNotifications(
-      { isDevice: true },
+      makeConstantsAsOnDevice(),
       {} as any,
       makeNotificationsWithBehavior({
         getPermissionsAsync: Promise.resolve({
@@ -63,7 +67,7 @@ describe("registerForPushNotifications", () => {
 
   test("re-request permissions if asked", async () => {
     const { status, token } = await registerForPushNotifications(
-      { isDevice: true },
+      makeConstantsAsOnDevice(),
       {} as any,
       makeNotificationsWithBehavior({
         getPermissionsAsync: Promise.resolve({
