@@ -5,10 +5,12 @@ import React from "react";
 import Constants from "../../../contexts/Constants";
 import DateTime from "../../../contexts/DateTime";
 import Network from "../../../contexts/Network";
+import Notifications from "../../../contexts/Notifications";
 import PersistentStorage from "../../../contexts/PersistentStorage";
 import Platform from "../../../contexts/Platform";
 import { makeConstantsAsOnDevice } from "../../../fakes/Constants";
 import { makeNetworkAsOnWifi } from "../../../fakes/Network";
+import { makeNotificationsWithBehavior } from "../../../fakes/Notifications";
 import { makePersistentStorageWithDataAndBehavior } from "../../../fakes/PersistentStorage";
 import { makePlatformAndroid, makePlatformIOS } from "../../../fakes/Plaftorm";
 import Home from "../Home";
@@ -22,11 +24,13 @@ describe("<Home />", () => {
             value={makePersistentStorageWithDataAndBehavior()}
           >
             <Network.Provider value={makeNetworkAsOnWifi()}>
-              <Platform.Provider value={platform}>
-                <Constants.Provider value={makeConstantsAsOnDevice()}>
-                  <Home navigation={{ addListener: () => () => {} } as any} />
-                </Constants.Provider>
-              </Platform.Provider>
+              <Notifications.Provider value={makeNotificationsWithBehavior()}>
+                <Platform.Provider value={platform}>
+                  <Constants.Provider value={makeConstantsAsOnDevice()}>
+                    <Home navigation={{ addListener: () => () => {} } as any} />
+                  </Constants.Provider>
+                </Platform.Provider>
+              </Notifications.Provider>
             </Network.Provider>
           </PersistentStorage.Provider>
         </DateTime.Provider>,
