@@ -48,7 +48,7 @@ const TimeItemAndroid = ({
   valueAsDate,
   onChange,
 }: TimeItemAndroidProps): JSX.Element => {
-  const [showPicker, setShowPicker] = useState(true);
+  const [showPicker, setShowPicker] = useState(false);
 
   const onChangeWithDismiss = useCallback(
     (event: Event, newValue?: Date) => {
@@ -89,7 +89,7 @@ type Props = TimeItemProps & {
  */
 const TimeItem = ({ id, title, value, onChange, os }: Props): JSX.Element => {
   // The time picker requires a proper Date object
-  const valueAsDate = new Date("01-01-01 00:00:00");
+  const valueAsDate = new Date("2021-01-10T00:00:00");
   valueAsDate.setHours(value.hour);
   valueAsDate.setMinutes(value.minute);
 
