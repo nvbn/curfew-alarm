@@ -4,7 +4,11 @@ import { Text, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import { ActionItemProps } from "./types";
 
+/**
+ * Settings action that only visible when an action hasn't been performed yet.
+ */
 const ActionItem = ({
+  id,
   title,
   value,
   onChange,
@@ -14,7 +18,11 @@ const ActionItem = ({
   }
 
   return (
-    <TouchableOpacity style={styles.item} onPress={() => onChange(true)}>
+    <TouchableOpacity
+      testID={`action-item-touchable-${id}`}
+      style={styles.item}
+      onPress={() => onChange(true)}
+    >
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );
