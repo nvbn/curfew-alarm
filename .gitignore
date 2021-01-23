@@ -9,5 +9,9 @@ npm-debug.*
 *.orig.*
 web-build/
 
+*.log
+*.iml
+.idea
+
 # macOS
 .DS_Store
