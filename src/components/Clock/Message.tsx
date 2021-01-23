@@ -27,7 +27,7 @@ type Props = {
 };
 
 /**
- * A message with the action expected from a user.
+ * A message in SVG with the action expected from a user.
  */
 const Message = ({ status }: Props): JSX.Element => {
   switch (status) {
