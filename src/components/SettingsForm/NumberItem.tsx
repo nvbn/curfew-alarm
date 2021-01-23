@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import { Text, TextInput, View } from "react-native";
+
 import styles from "./styles";
 import { NumberItemProps } from "./types";
 

@@ -1,11 +1,12 @@
 import React from "react";
 import { View } from "react-native";
+
 import SettingsForm, { TypedItemProps } from "../../components/SettingsForm";
-import useSettings from "../../hooks/useSettings";
-import styles from "./styles";
-import { Time } from "../../utils/time";
 import useNotifications from "../../hooks/useNotifications";
+import useSettings from "../../hooks/useSettings";
 import { isReady } from "../../utils/future";
+import { Time } from "../../utils/time";
+import styles from "./styles";
 
 const Settings = (): JSX.Element => {
   const [settings, updateSettings] = useSettings();

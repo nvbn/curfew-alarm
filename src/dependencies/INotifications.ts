@@ -9,9 +9,11 @@ type NotificationPermissionsStatus =
   | typeof NOTIFICATIONS_PERMISSIONS_UNDETERMINED
   | typeof NOTIFICATION_PERMISSIONS_DENIED;
 
-type NotificationPermissions = {
+export type NotificationPermissions = {
   status: NotificationPermissionsStatus;
 };
+
+export type NotificationPushToke = { data: string };
 
 /**
  * Interface that provides access to device notifications.
@@ -29,7 +31,7 @@ export default interface INotifications {
 
   requestPermissionsAsync(): Promise<NotificationPermissions>;
 
-  getExpoPushTokenAsync(): Promise<{ data: string }>;
+  getExpoPushTokenAsync(): Promise<NotificationPushToke>;
 
   setNotificationChannelAsync(
     channelId: string,

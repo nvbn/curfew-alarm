@@ -33,6 +33,7 @@
         "plugin:react/recommended",
         "plugin:react-hooks/recommended"
       ],
+      "plugins": ["simple-import-sort"],
       "rules": {
         "react/prop-types": "off",
         "react/react-in-jsx-scope": "off",
@@ -44,7 +45,9 @@
             "allowExpressions": true,
             "allowConciseArrowFunctionExpressionsStartingWithVoid": true
           }
-        ]
+        ],
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error"
       }
     }
   ]

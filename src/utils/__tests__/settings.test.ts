@@ -1,23 +1,30 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { defaultSettings, getSettings } from "../settings";
+import {
+  makePersistentStorageWithDataAndBehavior,
+  PERSISTENT_STORAGE_BEHAVIOR_ERROR,
+} from "../../fakes/PersistentStorage";
+import {
+  DEFAULT_SETTINGS,
+  getSettings,
+  STORAGE_KEY,
+  updateSettings,
+} from "../settings";
 
 describe("getSettings", () => {
   test("returns default settings if the storage is empty", async () => {
-    const storage = {
-      getItem: () => new Promise((resolve) => resolve(null)),
-    };
+    const storage = makePersistentStorageWithDataAndBehavior();
 
-    const settings = await getSettings(storage as any);
-    expect(settings).toEqual(defaultSettings);
+    const settings = await getSettings(storage);
+    expect(settings).toEqual(DEFAULT_SETTINGS);
   });
 
   test("returns default settings if the storage errors", async () => {
-    const storage = {
-      getItem: () => new Promise((_, reject) => reject()),
-    };
+    const storage = makePersistentStorageWithDataAndBehavior({
+      getItem: PERSISTENT_STORAGE_BEHAVIOR_ERROR,
+    });
 
-    const settings = await getSettings(storage as any);
-    expect(settings).toEqual(defaultSettings);
+    const settings = await getSettings(storage);
+    expect(settings).toEqual(DEFAULT_SETTINGS);
   });
 
   test("returns stored settings if it exists and valid", async () => {
@@ -26,12 +33,11 @@ describe("getSettings", () => {
       curfewEnd: { hour: 14, minute: 20 },
       minutesToGoHome: 45,
     };
-    const storage = {
-      getItem: () =>
-        new Promise((resolve) => resolve(JSON.stringify(storedSettings))),
-    };
+    const storage = makePersistentStorageWithDataAndBehavior({
+      data: { [STORAGE_KEY]: JSON.stringify(storedSettings) },
+    });
 
-    const settings = await getSettings(storage as any);
+    const settings = await getSettings(storage);
     expect(settings).toEqual(storedSettings);
   });
 
@@ -61,17 +67,52 @@ describe("getSettings", () => {
 
       const expectedSettings = {
         ...okSettings,
-        [key]: (defaultSettings as any)[key],
+        [key]: (DEFAULT_SETTINGS as any)[key],
       };
 
-      const storage = {
-        getItem: () =>
-          new Promise((resolve) => resolve(JSON.stringify(storedSettings))),
-      };
+      const storage = makePersistentStorageWithDataAndBehavior({
+        data: {
+          [STORAGE_KEY]: JSON.stringify(storedSettings),
+        },
+      });
 
-      const settings = await getSettings(storage as any);
-
+      const settings = await getSettings(storage);
       expect(settings).toEqual(expectedSettings);
     });
   }
+});
+
+describe("updateSettings", async () => {
+  test("stores new settings if everything is ok", async () => {
+    const settingsToStore = {
+      curfewStart: { hour: 22, minute: 30 },
+      curfewEnd: { hour: 3, minute: 15 },
+      minutesToGoHome: 15,
+    };
+
+    const storage = makePersistentStorageWithDataAndBehavior();
+    await updateSettings(storage, settingsToStore);
+
+    const storedSettings = await storage.getItem(STORAGE_KEY);
+    expect(JSON.parse(storedSettings ?? "")).toEqual(settingsToStore);
+  });
+
+  test("propagates error on error", async () => {
+    const settingsToStore = {
+      curfewStart: { hour: 22, minute: 30 },
+      curfewEnd: { hour: 3, minute: 15 },
+      minutesToGoHome: 15,
+    };
+
+    const storage = makePersistentStorageWithDataAndBehavior({
+      setItem: PERSISTENT_STORAGE_BEHAVIOR_ERROR,
+    });
+
+    try {
+      await updateSettings(storage, settingsToStore);
+      expect(false).toBe(true); // shouldn't reach this line
+    } catch (e) {
+      expect(e).toBeTruthy();
+    }
+  });
 });

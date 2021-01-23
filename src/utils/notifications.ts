@@ -1,10 +1,10 @@
-import IPlatform, { PLATFORM_OS_ANDROID } from "../dependencies/IPlatform";
+import IConstants from "../dependencies/IConstants";
 import INotifications, {
   NOTIFICATION_PERMISSIONS_DENIED,
   NOTIFICATIONS_PERMISSIONS_GRANTED,
   NOTIFICATIONS_PERMISSIONS_UNDETERMINED,
 } from "../dependencies/INotifications";
-import IConstants from "../dependencies/IConstants";
+import IPlatform, { PLATFORM_OS_ANDROID } from "../dependencies/IPlatform";
 
 /**
  * Schedules local push notification.
@@ -24,7 +24,7 @@ export const sendNotification = (
 
 export const REGISTER_NOT_DEVICE = "REGISTER_NOT_DEVICE";
 
-export const REGISTER_DENIED = "REGISTER_DECLINED";
+export const REGISTER_DENIED = "REGISTER_DENIED";
 
 export const REGISTER_OK = "REGISTER_OK";
 
@@ -49,7 +49,7 @@ export const registerForPushNotifications = async (
     return { status: REGISTER_NOT_DEVICE };
   }
 
-  let status = (await notifications.getPermissionsAsync()).status;
+  let { status } = await notifications.getPermissionsAsync();
 
   if (
     (reRequestPermissions && status === NOTIFICATION_PERMISSIONS_DENIED) ||

@@ -1,13 +1,14 @@
-import React, { useCallback, useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
 import RNDateTimePicker, {
   Event,
 } from "@react-native-community/datetimepicker";
+import React, { useCallback, useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+
+import { PLATFORM_OS_ANDROID } from "../../dependencies/IPlatform";
 import usePlatformOS from "../../hooks/usePlatformOS";
+import { formatTime, Time } from "../../utils/time";
 import styles from "./styles";
 import { TimeItemProps } from "./types";
-import { PLATFORM_OS_ANDROID } from "../../dependencies/IPlatform";
-import { formatTime, Time } from "../../utils/time";
 
 type TimeItemIOSProps = {
   title: string;

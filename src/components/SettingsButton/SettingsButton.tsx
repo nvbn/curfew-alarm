@@ -1,6 +1,7 @@
+import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+
 import styles from "./styles";
 
 type Props = {
