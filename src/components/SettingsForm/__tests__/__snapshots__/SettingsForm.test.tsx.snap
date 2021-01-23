@@ -1,0 +1,353 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SettingsForm /> can be rendered on android 1`] = `
+<RCTScrollView
+  data={
+    Array [
+      Object {
+        "id": "curfew-start",
+        "onChange": [Function],
+        "title": "Curfew begins at:",
+        "type": "time",
+        "value": Object {
+          "hour": 25,
+          "minute": 17,
+        },
+      },
+      Object {
+        "id": "go-home",
+        "onChange": [Function],
+        "title": "Go home minutes before:",
+        "type": "number",
+        "value": 24,
+      },
+      Object {
+        "id": "enable-notifications",
+        "onChange": [Function],
+        "title": "Enable notifications",
+        "type": "action",
+        "value": false,
+      },
+    ]
+  }
+  disableVirtualization={false}
+  getItem={[Function]}
+  getItemCount={[Function]}
+  horizontal={false}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={10}
+  onContentSizeChange={[Function]}
+  onEndReachedThreshold={2}
+  onLayout={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  removeClippedSubviews={false}
+  renderItem={[Function]}
+  scrollEventThrottle={50}
+  stickyHeaderIndices={Array []}
+  updateCellsBatchingPeriod={50}
+  viewabilityConfigCallbackPairs={Array []}
+  windowSize={21}
+>
+  <View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "borderBottomColor": "#fafafa",
+            "borderBottomWidth": 1,
+            "marginHorizontal": 16,
+            "marginVertical": 8,
+            "opacity": 1,
+            "paddingHorizontal": 10,
+            "paddingVertical": 20,
+          }
+        }
+        testID="time-item-android-touchable-curfew-start"
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 24,
+              "paddingBottom": 10,
+            }
+          }
+        >
+          Curfew begins at:
+        </Text>
+        <Text
+          style={
+            Object {
+              "fontSize": 18,
+            }
+          }
+        >
+          25:17
+        </Text>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          Object {
+            "borderBottomColor": "#fafafa",
+            "borderBottomWidth": 1,
+            "marginHorizontal": 16,
+            "marginVertical": 8,
+            "paddingHorizontal": 10,
+            "paddingVertical": 20,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 24,
+              "paddingBottom": 10,
+            }
+          }
+        >
+          Go home minutes before:
+        </Text>
+        <TextInput
+          allowFontScaling={true}
+          defaultValue="24"
+          keyboardType="number-pad"
+          onChangeText={[Function]}
+          rejectResponderTermination={true}
+          style={
+            Object {
+              "fontSize": 18,
+            }
+          }
+          testID="number-item-input-go-home"
+          underlineColorAndroid="transparent"
+        />
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "borderBottomColor": "#fafafa",
+            "borderBottomWidth": 1,
+            "marginHorizontal": 16,
+            "marginVertical": 8,
+            "opacity": 1,
+            "paddingHorizontal": 10,
+            "paddingVertical": 20,
+          }
+        }
+        testID="action-item-touchable-enable-notifications"
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 24,
+              "paddingBottom": 10,
+            }
+          }
+        >
+          Enable notifications
+        </Text>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;
+
+exports[`<SettingsForm /> can be rendered on ios 1`] = `
+<RCTScrollView
+  data={
+    Array [
+      Object {
+        "id": "curfew-start",
+        "onChange": [Function],
+        "title": "Curfew begins at:",
+        "type": "time",
+        "value": Object {
+          "hour": 25,
+          "minute": 17,
+        },
+      },
+      Object {
+        "id": "go-home",
+        "onChange": [Function],
+        "title": "Go home minutes before:",
+        "type": "number",
+        "value": 24,
+      },
+      Object {
+        "id": "enable-notifications",
+        "onChange": [Function],
+        "title": "Enable notifications",
+        "type": "action",
+        "value": false,
+      },
+    ]
+  }
+  disableVirtualization={false}
+  getItem={[Function]}
+  getItemCount={[Function]}
+  horizontal={false}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={10}
+  onContentSizeChange={[Function]}
+  onEndReachedThreshold={2}
+  onLayout={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  removeClippedSubviews={false}
+  renderItem={[Function]}
+  scrollEventThrottle={50}
+  stickyHeaderIndices={Array []}
+  updateCellsBatchingPeriod={50}
+  viewabilityConfigCallbackPairs={Array []}
+  windowSize={21}
+>
+  <View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          Object {
+            "borderBottomColor": "#fafafa",
+            "borderBottomWidth": 1,
+            "marginHorizontal": 16,
+            "marginVertical": 8,
+            "paddingHorizontal": 10,
+            "paddingVertical": 20,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 24,
+              "paddingBottom": 10,
+            }
+          }
+        >
+          Curfew begins at:
+        </Text>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          Object {
+            "borderBottomColor": "#fafafa",
+            "borderBottomWidth": 1,
+            "marginHorizontal": 16,
+            "marginVertical": 8,
+            "paddingHorizontal": 10,
+            "paddingVertical": 20,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 24,
+              "paddingBottom": 10,
+            }
+          }
+        >
+          Go home minutes before:
+        </Text>
+        <TextInput
+          allowFontScaling={true}
+          defaultValue="24"
+          keyboardType="number-pad"
+          onChangeText={[Function]}
+          rejectResponderTermination={true}
+          style={
+            Object {
+              "fontSize": 18,
+            }
+          }
+          testID="number-item-input-go-home"
+          underlineColorAndroid="transparent"
+        />
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "borderBottomColor": "#fafafa",
+            "borderBottomWidth": 1,
+            "marginHorizontal": 16,
+            "marginVertical": 8,
+            "opacity": 1,
+            "paddingHorizontal": 10,
+            "paddingVertical": 20,
+          }
+        }
+        testID="action-item-touchable-enable-notifications"
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 24,
+              "paddingBottom": 10,
+            }
+          }
+        >
+          Enable notifications
+        </Text>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;

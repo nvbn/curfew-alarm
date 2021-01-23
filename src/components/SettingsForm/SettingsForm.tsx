@@ -12,16 +12,20 @@ import {
 } from "./types";
 
 type Props = {
-  options: TypedItemProps[];
+  options: Omit<TypedItemProps, "os">[];
+  os: string;
 };
 
-const SettingsForm = ({ options }: Props): JSX.Element => (
+/**
+ * A form with editable settings options.
+ */
+const SettingsForm = ({ options, os }: Props): JSX.Element => (
   <FlatList
     data={options}
     renderItem={({ item }) => {
       switch (item.type) {
         case "time":
-          return <TimeItem {...(item as TimeItemProps)} />;
+          return <TimeItem {...(item as TimeItemProps)} os={os} />;
         case "number":
           return <NumberItem {...(item as NumberItemProps)} />;
         case "action":

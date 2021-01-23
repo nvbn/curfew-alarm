@@ -1,0 +1,206 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Message /> when FINE 1`] = `
+<RNSVGText
+  content={null}
+  dx={Array []}
+  dy={Array []}
+  fill={4281589372}
+  font={
+    Object {
+      "fontSize": 6,
+      "textAnchor": "middle",
+    }
+  }
+  propList={
+    Array [
+      "fill",
+    ]
+  }
+  rotate={Array []}
+  x={
+    Array [
+      50,
+    ]
+  }
+  y={
+    Array [
+      60,
+    ]
+  }
+>
+  <RNSVGTSpan
+    content="You're fine"
+    dx={Array []}
+    dy={Array []}
+    font={Object {}}
+    rotate={Array []}
+    x={Array []}
+    y={Array []}
+  />
+</RNSVGText>
+`;
+
+exports[`<Message /> when GO_HOME_WHEN_CURFEW 1`] = `
+<RNSVGText
+  content={null}
+  dx={Array []}
+  dy={Array []}
+  fill={4292763476}
+  font={
+    Object {
+      "fontSize": 6,
+      "textAnchor": "middle",
+    }
+  }
+  propList={
+    Array [
+      "fill",
+    ]
+  }
+  rotate={Array []}
+  x={
+    Array [
+      50,
+    ]
+  }
+  y={
+    Array [
+      60,
+    ]
+  }
+>
+  <RNSVGTSpan
+    content="Go home!"
+    dx={Array []}
+    dy={Array []}
+    font={Object {}}
+    rotate={Array []}
+    x={Array []}
+    y={Array []}
+  />
+</RNSVGText>
+`;
+
+exports[`<Message /> when GO_HOME_WHEN_TIME_TO_GO_HOME 1`] = `
+<RNSVGText
+  content={null}
+  dx={Array []}
+  dy={Array []}
+  fill={4292788264}
+  font={
+    Object {
+      "fontSize": 6,
+      "textAnchor": "middle",
+    }
+  }
+  propList={
+    Array [
+      "fill",
+    ]
+  }
+  rotate={Array []}
+  x={
+    Array [
+      50,
+    ]
+  }
+  y={
+    Array [
+      60,
+    ]
+  }
+>
+  <RNSVGTSpan
+    content="Time to go home"
+    dx={Array []}
+    dy={Array []}
+    font={Object {}}
+    rotate={Array []}
+    x={Array []}
+    y={Array []}
+  />
+</RNSVGText>
+`;
+
+exports[`<Message /> when STAY_AT_HOME_WHEN_CURFEW 1`] = `
+<RNSVGText
+  content={null}
+  dx={Array []}
+  dy={Array []}
+  fill={4292763476}
+  font={
+    Object {
+      "fontSize": 6,
+      "textAnchor": "middle",
+    }
+  }
+  propList={
+    Array [
+      "fill",
+    ]
+  }
+  rotate={Array []}
+  x={
+    Array [
+      50,
+    ]
+  }
+  y={
+    Array [
+      60,
+    ]
+  }
+>
+  <RNSVGTSpan
+    content="Stay at home"
+    dx={Array []}
+    dy={Array []}
+    font={Object {}}
+    rotate={Array []}
+    x={Array []}
+    y={Array []}
+  />
+</RNSVGText>
+`;
+
+exports[`<Message /> when STAY_AT_HOME_WHEN_TIME_TO_GO_HOME 1`] = `
+<RNSVGText
+  content={null}
+  dx={Array []}
+  dy={Array []}
+  fill={4292788264}
+  font={
+    Object {
+      "fontSize": 6,
+      "textAnchor": "middle",
+    }
+  }
+  propList={
+    Array [
+      "fill",
+    ]
+  }
+  rotate={Array []}
+  x={
+    Array [
+      50,
+    ]
+  }
+  y={
+    Array [
+      60,
+    ]
+  }
+>
+  <RNSVGTSpan
+    content="Stay at home"
+    dx={Array []}
+    dy={Array []}
+    font={Object {}}
+    rotate={Array []}
+    x={Array []}
+    y={Array []}
+  />
+</RNSVGText>
+`;

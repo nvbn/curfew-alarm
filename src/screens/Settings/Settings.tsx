@@ -3,12 +3,14 @@ import { View } from "react-native";
 
 import SettingsForm, { TypedItemProps } from "../../components/SettingsForm";
 import useNotifications from "../../hooks/useNotifications";
+import usePlatformOS from "../../hooks/usePlatformOS";
 import useSettings from "../../hooks/useSettings";
 import { isReady } from "../../utils/future";
 import { Time } from "../../utils/time";
 import styles from "./styles";
 
 const Settings = (): JSX.Element => {
+  const os = usePlatformOS();
   const [settings, updateSettings] = useSettings();
   const [isNotificationsEnabled, requestNotifications] = useNotifications();
 
@@ -49,7 +51,7 @@ const Settings = (): JSX.Element => {
 
   return (
     <View style={styles.container}>
-      <SettingsForm options={options} />
+      <SettingsForm options={options} os={os} />
     </View>
   );
 };

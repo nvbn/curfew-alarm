@@ -1,0 +1,544 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Clock /> during the regular time 1`] = `
+<RNSVGSvgView
+  align="xMidYMid"
+  bbHeight="100%"
+  bbWidth="100%"
+  focusable={false}
+  height="100%"
+  meetOrSlice={0}
+  minX={0}
+  minY={0}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+        "borderWidth": 0,
+      },
+      Object {
+        "flex": 1,
+      },
+      Object {
+        "flex": 0,
+        "height": "100%",
+        "width": "100%",
+      },
+    ]
+  }
+  vbHeight={100}
+  vbWidth={100}
+  width="100%"
+>
+  <RNSVGGroup>
+    <RNSVGCircle
+      cx={50}
+      cy={50}
+      fill={4281589372}
+      propList={
+        Array [
+          "fill",
+        ]
+      }
+      r={45}
+    />
+    <RNSVGPath
+      d="
+    M 86.95518130045147 34.69266270539641
+    A 40 40 0 0 0 21.71572875253809 21.7157287525381
+  "
+      fill={null}
+      propList={
+        Array [
+          "fill",
+          "stroke",
+          "strokeWidth",
+        ]
+      }
+      stroke={4292763476}
+      strokeWidth={10}
+    />
+    <RNSVGPath
+      d="
+    M 21.71572875253809 21.7157287525381
+    A 40 40 0 0 0 19.926407700840905 23.626167395997246
+  "
+      fill={null}
+      propList={
+        Array [
+          "fill",
+          "stroke",
+          "strokeWidth",
+        ]
+      }
+      stroke={4292788264}
+      strokeWidth={10}
+    />
+    <RNSVGCircle
+      cx={50}
+      cy={50}
+      fill={4294967295}
+      propList={
+        Array [
+          "fill",
+        ]
+      }
+      r={40}
+    />
+    <RNSVGPath
+      d="
+    M 44.26883546336677 92.1118006389425
+    A 42.5 42.5 0 0 0 44.636543811727236 92.1602103613879
+  "
+      fill={null}
+      propList={
+        Array [
+          "fill",
+          "stroke",
+          "strokeWidth",
+        ]
+      }
+      stroke={4281411806}
+      strokeWidth={10}
+    />
+    <RNSVGText
+      content={null}
+      dx={Array []}
+      dy={Array []}
+      fill={4278190080}
+      font={
+        Object {
+          "fontSize": 16,
+          "textAnchor": "middle",
+        }
+      }
+      propList={
+        Array [
+          "fill",
+        ]
+      }
+      rotate={Array []}
+      x={
+        Array [
+          50,
+        ]
+      }
+      y={
+        Array [
+          50,
+        ]
+      }
+    >
+      <RNSVGTSpan
+        content="12:30"
+        dx={Array []}
+        dy={Array []}
+        font={Object {}}
+        rotate={Array []}
+        x={Array []}
+        y={Array []}
+      />
+    </RNSVGText>
+    <RNSVGText
+      content={null}
+      dx={Array []}
+      dy={Array []}
+      fill={4281589372}
+      font={
+        Object {
+          "fontSize": 6,
+          "textAnchor": "middle",
+        }
+      }
+      propList={
+        Array [
+          "fill",
+        ]
+      }
+      rotate={Array []}
+      x={
+        Array [
+          50,
+        ]
+      }
+      y={
+        Array [
+          60,
+        ]
+      }
+    >
+      <RNSVGTSpan
+        content="You're fine"
+        dx={Array []}
+        dy={Array []}
+        font={Object {}}
+        rotate={Array []}
+        x={Array []}
+        y={Array []}
+      />
+    </RNSVGText>
+  </RNSVGGroup>
+</RNSVGSvgView>
+`;
+
+exports[`<Clock /> when curfew is active 1`] = `
+<RNSVGSvgView
+  align="xMidYMid"
+  bbHeight="100%"
+  bbWidth="100%"
+  focusable={false}
+  height="100%"
+  meetOrSlice={0}
+  minX={0}
+  minY={0}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+        "borderWidth": 0,
+      },
+      Object {
+        "flex": 1,
+      },
+      Object {
+        "flex": 0,
+        "height": "100%",
+        "width": "100%",
+      },
+    ]
+  }
+  vbHeight={100}
+  vbWidth={100}
+  width="100%"
+>
+  <RNSVGGroup>
+    <RNSVGCircle
+      cx={50}
+      cy={50}
+      fill={4281589372}
+      propList={
+        Array [
+          "fill",
+        ]
+      }
+      r={45}
+    />
+    <RNSVGPath
+      d="
+    M 86.95518130045147 34.69266270539641
+    A 40 40 0 0 0 21.71572875253809 21.7157287525381
+  "
+      fill={null}
+      propList={
+        Array [
+          "fill",
+          "stroke",
+          "strokeWidth",
+        ]
+      }
+      stroke={4292763476}
+      strokeWidth={10}
+    />
+    <RNSVGPath
+      d="
+    M 21.71572875253809 21.7157287525381
+    A 40 40 0 0 0 19.926407700840905 23.626167395997246
+  "
+      fill={null}
+      propList={
+        Array [
+          "fill",
+          "stroke",
+          "strokeWidth",
+        ]
+      }
+      stroke={4292788264}
+      strokeWidth={10}
+    />
+    <RNSVGCircle
+      cx={50}
+      cy={50}
+      fill={4294967295}
+      propList={
+        Array [
+          "fill",
+        ]
+      }
+      r={40}
+    />
+    <RNSVGPath
+      d="
+    M 61.17882661446394 8.99653873727545
+    A 42.5 42.5 0 0 0 60.820582798734925 8.900547596157416
+  "
+      fill={null}
+      propList={
+        Array [
+          "fill",
+          "stroke",
+          "strokeWidth",
+        ]
+      }
+      stroke={4281411806}
+      strokeWidth={10}
+    />
+    <RNSVGText
+      content={null}
+      dx={Array []}
+      dy={Array []}
+      fill={4278190080}
+      font={
+        Object {
+          "fontSize": 16,
+          "textAnchor": "middle",
+        }
+      }
+      propList={
+        Array [
+          "fill",
+        ]
+      }
+      rotate={Array []}
+      x={
+        Array [
+          50,
+        ]
+      }
+      y={
+        Array [
+          50,
+        ]
+      }
+    >
+      <RNSVGTSpan
+        content="01:00"
+        dx={Array []}
+        dy={Array []}
+        font={Object {}}
+        rotate={Array []}
+        x={Array []}
+        y={Array []}
+      />
+    </RNSVGText>
+    <RNSVGText
+      content={null}
+      dx={Array []}
+      dy={Array []}
+      fill={4281589372}
+      font={
+        Object {
+          "fontSize": 6,
+          "textAnchor": "middle",
+        }
+      }
+      propList={
+        Array [
+          "fill",
+        ]
+      }
+      rotate={Array []}
+      x={
+        Array [
+          50,
+        ]
+      }
+      y={
+        Array [
+          60,
+        ]
+      }
+    >
+      <RNSVGTSpan
+        content="You're fine"
+        dx={Array []}
+        dy={Array []}
+        font={Object {}}
+        rotate={Array []}
+        x={Array []}
+        y={Array []}
+      />
+    </RNSVGText>
+  </RNSVGGroup>
+</RNSVGSvgView>
+`;
+
+exports[`<Clock /> when it's time to go home 1`] = `
+<RNSVGSvgView
+  align="xMidYMid"
+  bbHeight="100%"
+  bbWidth="100%"
+  focusable={false}
+  height="100%"
+  meetOrSlice={0}
+  minX={0}
+  minY={0}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+        "borderWidth": 0,
+      },
+      Object {
+        "flex": 1,
+      },
+      Object {
+        "flex": 0,
+        "height": "100%",
+        "width": "100%",
+      },
+    ]
+  }
+  vbHeight={100}
+  vbWidth={100}
+  width="100%"
+>
+  <RNSVGGroup>
+    <RNSVGCircle
+      cx={50}
+      cy={50}
+      fill={4281589372}
+      propList={
+        Array [
+          "fill",
+        ]
+      }
+      r={45}
+    />
+    <RNSVGPath
+      d="
+    M 86.95518130045147 34.69266270539641
+    A 40 40 0 0 0 21.71572875253809 21.7157287525381
+  "
+      fill={null}
+      propList={
+        Array [
+          "fill",
+          "stroke",
+          "strokeWidth",
+        ]
+      }
+      stroke={4292763476}
+      strokeWidth={10}
+    />
+    <RNSVGPath
+      d="
+    M 21.71572875253809 21.7157287525381
+    A 40 40 0 0 0 19.926407700840905 23.626167395997246
+  "
+      fill={null}
+      propList={
+        Array [
+          "fill",
+          "stroke",
+          "strokeWidth",
+        ]
+      }
+      stroke={4292788264}
+      strokeWidth={10}
+    />
+    <RNSVGCircle
+      cx={50}
+      cy={50}
+      fill={4294967295}
+      propList={
+        Array [
+          "fill",
+        ]
+      }
+      r={40}
+    />
+    <RNSVGPath
+      d="
+    M 18.791293348983363 21.150968314849973
+    A 42.5 42.5 0 0 0 18.54072958180963 21.42441068402662
+  "
+      fill={null}
+      propList={
+        Array [
+          "fill",
+          "stroke",
+          "strokeWidth",
+        ]
+      }
+      stroke={4281411806}
+      strokeWidth={10}
+    />
+    <RNSVGText
+      content={null}
+      dx={Array []}
+      dy={Array []}
+      fill={4278190080}
+      font={
+        Object {
+          "fontSize": 16,
+          "textAnchor": "middle",
+        }
+      }
+      propList={
+        Array [
+          "fill",
+        ]
+      }
+      rotate={Array []}
+      x={
+        Array [
+          50,
+        ]
+      }
+      y={
+        Array [
+          50,
+        ]
+      }
+    >
+      <RNSVGTSpan
+        content="20:50"
+        dx={Array []}
+        dy={Array []}
+        font={Object {}}
+        rotate={Array []}
+        x={Array []}
+        y={Array []}
+      />
+    </RNSVGText>
+    <RNSVGText
+      content={null}
+      dx={Array []}
+      dy={Array []}
+      fill={4292788264}
+      font={
+        Object {
+          "fontSize": 6,
+          "textAnchor": "middle",
+        }
+      }
+      propList={
+        Array [
+          "fill",
+        ]
+      }
+      rotate={Array []}
+      x={
+        Array [
+          50,
+        ]
+      }
+      y={
+        Array [
+          60,
+        ]
+      }
+    >
+      <RNSVGTSpan
+        content="Time to go home"
+        dx={Array []}
+        dy={Array []}
+        font={Object {}}
+        rotate={Array []}
+        x={Array []}
+        y={Array []}
+      />
+    </RNSVGText>
+  </RNSVGGroup>
+</RNSVGSvgView>
+`;

@@ -9,8 +9,8 @@
     "type-check": "tsc",
     "formatting-check": "prettier --check 'src/**/*.{js,ts,tsx}'",
     "lint": "eslint --ext js,jsx,ts,tsx src",
-    "test": "jest --silent --runInBand --detectOpenHandles",
-    "test-verbose": "jest"
+    "test": "TZ=UTC jest --silent --runInBand --detectOpenHandles",
+    "test-verbose": "TZ=UTC jest"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.13.3",
