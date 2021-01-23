@@ -23,6 +23,10 @@ type Props = {
   minutesToGoHome: number;
 };
 
+/**
+ * Clock that displays time, indicates when the curfew starts,
+ * indicates when to go home, and shows a message with expected action.
+ */
 const Clock = ({
   isAtHome,
   currentTime,
