@@ -4,7 +4,7 @@ import RNDateTimePicker, {
 import React, { useCallback, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
-import { PLATFORM_OS_ANDROID } from "../../dependencies/IPlatform";
+import { PLATFORM_OS_ANDROID, PlatformOS } from "../../dependencies/IPlatform";
 import { formatTime, Time } from "../../utils/time";
 import styles from "./styles";
 import { TimeItemProps } from "./types";
@@ -80,16 +80,14 @@ const TimeItemAndroid = ({
   );
 };
 
+type Props = TimeItemProps & {
+  os: PlatformOS;
+};
+
 /**
  * Allows to modify settings value that store time.
  */
-const TimeItem = ({
-  id,
-  title,
-  value,
-  onChange,
-  os,
-}: TimeItemProps): JSX.Element => {
+const TimeItem = ({ id, title, value, onChange, os }: Props): JSX.Element => {
   // The time picker requires a proper Date object
   const valueAsDate = new Date("01-01-01 00:00:00");
   valueAsDate.setHours(value.hour);

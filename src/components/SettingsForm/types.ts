@@ -1,4 +1,3 @@
-import { PlatformOS } from "../../dependencies/IPlatform";
 import { Time } from "../../utils/time";
 
 type TypedItemType = "time" | "number" | "action";
@@ -11,9 +10,7 @@ type BaseTypedItemProps<T, Q extends TypedItemType> = {
   onChange: (newValue: T) => void;
 };
 
-export type TimeItemProps = BaseTypedItemProps<Time, "time"> & {
-  os: PlatformOS;
-};
+export type TimeItemProps = BaseTypedItemProps<Time, "time">;
 
 export type NumberItemProps = BaseTypedItemProps<number, "number">;
 

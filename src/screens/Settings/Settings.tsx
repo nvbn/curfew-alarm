@@ -23,7 +23,6 @@ const Settings = (): JSX.Element => {
             type: "time",
             value: settings.curfewStart,
             onChange: (curfewStart: Time) => updateSettings({ curfewStart }),
-            os,
           },
           {
             id: "curfew-end",
@@ -31,7 +30,6 @@ const Settings = (): JSX.Element => {
             type: "time",
             value: settings.curfewEnd,
             onChange: (curfewEnd: Time) => updateSettings({ curfewEnd }),
-            os,
           },
           {
             id: "go-home",
@@ -53,7 +51,7 @@ const Settings = (): JSX.Element => {
 
   return (
     <View style={styles.container}>
-      <SettingsForm options={options} />
+      <SettingsForm options={options} os={os} />
     </View>
   );
 };
