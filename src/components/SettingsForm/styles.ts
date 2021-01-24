@@ -16,4 +16,7 @@ export default StyleSheet.create({
   input: {
     fontSize: 18,
   },
+  booleanItem: {
+    alignItems: "flex-start",
+  },
 });

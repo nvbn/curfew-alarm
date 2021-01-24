@@ -9,6 +9,7 @@ export const DEFAULT = {
   inputTitleCurfewEnd: "Curfew is over at:",
   inputTitleGoHome: "Go home minutes before:",
   inputTitleEnableNotifications: "Enable notifications",
+  inputTitleEnabled: "Is it still going?",
   notificationTimeToGoHomeTitle: "It's time to go home!",
   notificationTimeToGoHomeBody:
     "You still have a bit of time to reach your home before the curfew",

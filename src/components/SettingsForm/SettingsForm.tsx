@@ -2,10 +2,12 @@ import React from "react";
 import { FlatList } from "react-native";
 
 import ActionItem from "./ActionItem";
+import BooleanItem from "./BooleanItem";
 import NumberItem from "./NumberItem";
 import TimeItem from "./TimeItem";
 import {
   ActionItemProps,
+  BooleanItemProps,
   NumberItemProps,
   TimeItemProps,
   TypedItemProps,
@@ -30,6 +32,8 @@ const SettingsForm = ({ options, os }: Props): JSX.Element => (
           return <NumberItem {...(item as NumberItemProps)} />;
         case "action":
           return <ActionItem {...(item as ActionItemProps)} />;
+        case "boolean":
+          return <BooleanItem {...(item as BooleanItemProps)} />;
       }
     }}
     keyExtractor={(item) => item.id}
