@@ -63,4 +63,4 @@ To release a new version of app to the App Store you need to:
 4. Download the latest build artifact from [expo](https://expo.io/accounts/nvbn/builds).
 5. Submit the `*.ipa` in Transporter.app.
 
-## License MIT
+## [License MIT](https://github.com/nvbn/curfew-alarm/blob/main/LICENSE.md)
