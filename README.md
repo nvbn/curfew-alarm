@@ -6,35 +6,53 @@ A small app that indicates when you need to go or stay at home.
 
 ## Development
 
-Install dependencies with:
+### Dependencies
+
+To be able to build the project you need to install dependencies:
 
 ```bash
 yarn global add expo-cli
 yarn
 ```
 
-Start dev version with:
+To be able to run the app you need to:
+
+- [Install the Expo client on your phone](https://expo.io/tools)
+- Or/and [setup Android Studio with the Expo client](https://docs.expo.io/workflow/android-studio-emulator/)
+- Or/and [setup iOS Simulator with the Expo client](https://docs.expo.io/workflow/ios-simulator/)
+
+### Running development version
+
+To build(watch) development version run:
 
 ```bash
 yarn start
+```
+
+To run the dev version of the app on your phone/in an emulator you need to scan
+the QR code from the previous command or manually copy the link into the Expo client.
+
+### Tests and linters
+
+To run the test run:
+
+```bash
+yarn test
 ```
 
 To lint the code run:
 
 ```bash
 yarn lint
-```
-
-To run type checking run:
-
-```bash
 yarn type-check
+yarn formatting-check
 ```
 
-To check the formatting run:
+The linter and formatter will try to fix everything in a pre-commit hook, in order to do that manually run:
 
 ```bash
-yarn formatting-check
+yarn pretty-quick
+yarn lint --fix
 ```
 
 ## Release process
@@ -63,4 +81,4 @@ To release a new version of app to the App Store you need to:
 4. Download the latest build artifact from [expo](https://expo.io/accounts/nvbn/builds).
 5. Submit the `*.ipa` in Transporter.app.
 
-## License MIT
+## [License MIT](https://github.com/nvbn/curfew-alarm/blob/main/LICENSE.md)
