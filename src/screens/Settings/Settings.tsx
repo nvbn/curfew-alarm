@@ -6,6 +6,7 @@ import useNotifications from "../../hooks/useNotifications";
 import usePlatformOS from "../../hooks/usePlatformOS";
 import useSettings from "../../hooks/useSettings";
 import { isReady } from "../../utils/future";
+import i18n from "../../utils/i18n";
 import { Time } from "../../utils/time";
 import styles from "./styles";
 
@@ -22,21 +23,21 @@ const Settings = (): JSX.Element => {
       ? [
           {
             id: "curfew-start",
-            title: "Curfew begins at:",
+            title: i18n.t("inputTitleCurfewStart"),
             type: "time",
             value: settings.curfewStart,
             onChange: (curfewStart: Time) => updateSettings({ curfewStart }),
           },
           {
             id: "curfew-end",
-            title: "Curfew is over at:",
+            title: i18n.t("inputTitleCurfewEnd"),
             type: "time",
             value: settings.curfewEnd,
             onChange: (curfewEnd: Time) => updateSettings({ curfewEnd }),
           },
           {
             id: "go-home",
-            title: "Go home minutes before:",
+            title: i18n.t("inputTitleGoHome"),
             type: "number",
             value: settings.minutesToGoHome,
             onChange: (minutesToGoHome: number) =>
@@ -44,7 +45,7 @@ const Settings = (): JSX.Element => {
           },
           {
             id: "enable-notifications",
-            title: "Enable notifications",
+            title: i18n.t("inputTitleEnableNotifications"),
             type: "action",
             value: isNotificationsEnabled,
             onChange: () => requestNotifications(),

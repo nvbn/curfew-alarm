@@ -1,6 +1,7 @@
 import React from "react";
 import { Text } from "react-native-svg";
 
+import i18n from "../../utils/i18n";
 import {
   Status,
   STATUS_FINE,
@@ -32,15 +33,32 @@ type Props = {
 const Message = ({ status }: Props): JSX.Element => {
   switch (status) {
     case STATUS_FINE:
-      return <BaseMessage text="You're fine" color={COLOR_OK} />;
+      return <BaseMessage text={i18n.t("clockMessageFine")} color={COLOR_OK} />;
     case STATUS_GO_HOME_WHEN_TIME_TO_GO_HOME:
-      return <BaseMessage text="Time to go home" color={COLOR_DANGER} />;
+      return (
+        <BaseMessage
+          text={i18n.t("clockMessageTimeToGoHome")}
+          color={COLOR_DANGER}
+        />
+      );
     case STATUS_STAY_AT_HOME_WHEN_TIME_TO_GO_HOME:
-      return <BaseMessage text="Stay at home" color={COLOR_DANGER} />;
+      return (
+        <BaseMessage
+          text={i18n.t("clockMessageStayAtHome")}
+          color={COLOR_DANGER}
+        />
+      );
     case STATUS_GO_HOME_WHEN_CURFEW:
-      return <BaseMessage text="Go home!" color={COLOR_CURFEW} />;
+      return (
+        <BaseMessage text={i18n.t("clockMessageGoHome")} color={COLOR_CURFEW} />
+      );
     case STATUS_STAY_AT_HOME_WHEN_CURFEW:
-      return <BaseMessage text="Stay at home" color={COLOR_CURFEW} />;
+      return (
+        <BaseMessage
+          text={i18n.t("clockMessageStayAtHome")}
+          color={COLOR_CURFEW}
+        />
+      );
   }
 };
 

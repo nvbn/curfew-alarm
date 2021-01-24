@@ -5,6 +5,7 @@ import {
 } from "../../fakes/Network";
 import { makeNotificationsWithBehavior } from "../../fakes/Notifications";
 import { makePersistentStorageWithDataAndBehavior } from "../../fakes/PersistentStorage";
+import i18n from "../../utils/i18n";
 import { STORAGE_KEY } from "../../utils/settings";
 import { dateToTime, formatTime } from "../../utils/time";
 import notificationsSender from "../notificationsSender";
@@ -18,9 +19,8 @@ describe("notificationsSender", () => {
       new Date("2021-01-10T20:45:00"),
       [
         {
-          title: "It's time to go home!",
-          body:
-            "You still have a bit of time to reach your home before the curfew",
+          title: i18n.t("notificationTimeToGoHomeTitle"),
+          body: i18n.t("notificationTimeToGoHomeBody"),
         },
       ],
     ],
@@ -30,8 +30,8 @@ describe("notificationsSender", () => {
       new Date("2021-01-10T21:45:00"),
       [
         {
-          title: "The curfew started!",
-          body: "Run home!",
+          title: i18n.t("notificationCurfewStartedTitle"),
+          body: i18n.t("notificationCurfewStartedBody"),
         },
       ],
     ],

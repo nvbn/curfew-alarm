@@ -2,6 +2,7 @@ import IDateTime from "../dependencies/IDateTime";
 import INetwork from "../dependencies/INetwork";
 import INotifications from "../dependencies/INotifications";
 import IPersistentStorage from "../dependencies/IPersistentStorage";
+import i18n from "../utils/i18n";
 import { isAtHome } from "../utils/location";
 import { sendNotification } from "../utils/notifications";
 import { getSettings } from "../utils/settings";
@@ -38,12 +39,16 @@ const notificationsSender = async (
     case STATUS_GO_HOME_WHEN_TIME_TO_GO_HOME:
       await sendNotification(
         notifications,
-        "It's time to go home!",
-        "You still have a bit of time to reach your home before the curfew",
+        i18n.t("notificationTimeToGoHomeTitle"),
+        i18n.t("notificationTimeToGoHomeBody"),
       );
       break;
     case STATUS_GO_HOME_WHEN_CURFEW:
-      await sendNotification(notifications, "The curfew started!", "Run home!");
+      await sendNotification(
+        notifications,
+        i18n.t("notificationCurfewStartedTitle"),
+        i18n.t("notificationCurfewStartedBody"),
+      );
       break;
   }
 };
