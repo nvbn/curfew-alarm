@@ -10,6 +10,7 @@ import * as TaskManager from "expo-task-manager";
 import i18n from "i18n-js";
 import React from "react";
 import * as rn from "react-native";
+import * as Sentry from "sentry-expo";
 
 import SettingsButton from "./components/SettingsButton";
 import Constants from "./contexts/Constants";
@@ -25,6 +26,12 @@ import notificationsSender, {
   NOTIFICATIONS_TASK_NAME,
 } from "./tasks/notificationsSender";
 import translations from "./translations";
+
+Sentry.init({
+  dsn: process.env.SENTRY_DSN,
+  enableInExpoDevelopment: true,
+  debug: __DEV__,
+});
 
 i18n.translations = translations;
 i18n.locale = Localization.locale;
