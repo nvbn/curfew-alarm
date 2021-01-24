@@ -1,0 +1,27 @@
+name: ios
+
+on: [workflow_dispatch]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - name: install dependencies
+        run: |
+          npm install -g yarn
+          yarn
+      - uses: expo/expo-github-action@v5
+        with:
+          expo-version: 4.x
+          expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
+          expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
+      - run: yarn install
+      - run: "expo build:ios -t archive "
+        shell: bash
+        env:
+          EXPO_APPLE_ID: ${{secrets.EXPO_APPLE_ID}}
+          EXPO_APPLE_PASSWORD: ${{secrets.EXPO_APPLE_PASSWORD}}
