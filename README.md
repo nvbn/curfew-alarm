@@ -82,3 +82,5 @@ To release a new version of app to the App Store you need to:
 5. Submit the `*.ipa` in Transporter.app.
 
 ## [License MIT](https://github.com/nvbn/curfew-alarm/blob/main/LICENSE.md)
+
+## [Privacy Policy](https://github.com/nvbn/curfew-alarm/blob/main/PRIVACY.md)
