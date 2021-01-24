@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { dateToTime, formatTime, isValidTime, toMinutes } from "../time";
+import {
+  dateToTime,
+  formatTime,
+  isValidTime,
+  timeToDate,
+  toMinutes,
+} from "../time";
 
 describe("toMinutes", () => {
   for (const [time, expectedMinutes] of [
@@ -16,7 +22,7 @@ describe("toMinutes", () => {
 });
 
 describe("dateToTime", () => {
-  test("returns time from js Date", () => {
+  test("returns internal Time for js Date", () => {
     const date = new Date();
     date.setHours(10);
     date.setMinutes(25);
@@ -26,6 +32,16 @@ describe("dateToTime", () => {
       hour: 10,
       minute: 25,
     });
+  });
+});
+
+describe("timeToDate", () => {
+  test("returns Date for internal Time", () => {
+    const time = { hour: 12, minute: 45 };
+
+    const date = timeToDate(time);
+    expect(date.getHours()).toBe(time.hour);
+    expect(date.getMinutes()).toBe(time.minute);
   });
 });
 
