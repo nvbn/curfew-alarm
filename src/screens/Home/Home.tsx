@@ -4,12 +4,11 @@ import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 
 import Clock from "../../components/Clock";
-import useGetDate from "../../hooks/useGetDate";
+import useGetTime from "../../hooks/useGetTime";
 import useIsAtHome from "../../hooks/useIsAtHome";
 import useNotifications from "../../hooks/useNotifications";
 import useSettings from "../../hooks/useSettings";
 import { isReady } from "../../utils/future";
-import { dateToTime } from "../../utils/time";
 import styles from "./styles";
 
 type Props = {
@@ -26,7 +25,7 @@ const Home = ({ navigation }: Props): JSX.Element => {
   useNotifications();
 
   const [refreshCounter, setRefreshCounter] = useState(0);
-  const getDate = useGetDate();
+  const getTime = useGetTime();
   const [settings] = useSettings([refreshCounter]);
   const isAtHome = useIsAtHome([refreshCounter]);
 
@@ -36,17 +35,14 @@ const Home = ({ navigation }: Props): JSX.Element => {
     [navigation],
   );
 
-  const [now, setNow] = useState(dateToTime(new Date()));
+  const [now, setNow] = useState(getTime());
   useEffect(() => {
-    const interval = setInterval(
-      () => setNow(dateToTime(getDate())),
-      UPDATE_TIME_INTERVAL,
-    );
+    const interval = setInterval(() => setNow(getTime()), UPDATE_TIME_INTERVAL);
 
     return () => {
       clearInterval(interval);
     };
-  }, [setNow, getDate]);
+  }, [setNow, getTime]);
 
   return (
     <View style={styles.container}>
