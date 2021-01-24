@@ -11,6 +11,7 @@ import {
   PLATFORM_OS_ANDROID,
   PLATFORM_OS_IOS,
 } from "../../../dependencies/IPlatform";
+import { timeToDate } from "../../../utils/time";
 import TimeItem from "../TimeItem";
 
 jest.mock("@react-native-community/datetimepicker", () => jest.fn());
@@ -67,7 +68,7 @@ describe("<TimeItem />", () => {
     fireEvent.press(touchable);
 
     const timePicker = getByTestId("time-item-android-time-picker-test");
-    const timestamp = new Date("01 Jan 2021 19:45:00 GMT");
+    const timestamp = timeToDate({ hour: 19, minute: 45 });
     fireEvent.changeText(timePicker, timestamp); // ugly mock event name
 
     expect(onChange.mock.calls).toEqual([[{ hour: 19, minute: 45 }]]);
@@ -91,7 +92,7 @@ describe("<TimeItem />", () => {
     );
 
     const timePicker = getByTestId("time-item-ios-time-picker-test");
-    const timestamp = new Date("01 Jan 2021 21:15:00 GMT");
+    const timestamp = timeToDate({ hour: 21, minute: 15 });
     fireEvent.changeText(timePicker, timestamp); // ugly mock event name
 
     expect(onChange.mock.calls).toEqual([[{ hour: 21, minute: 15 }]]);

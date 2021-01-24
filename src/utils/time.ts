@@ -21,6 +21,19 @@ export const dateToTime = (date: Date): Time => ({
   minute: date.getMinutes(),
 });
 
+const WE_DONT_CARE_ABOUT_THE_ACTUAL_DATE = "2021-01-10T00:00:00";
+
+/**
+ * Converts internal Time to js Date.
+ */
+export const timeToDate = ({ hour, minute }: Time): Date => {
+  const date = new Date(WE_DONT_CARE_ABOUT_THE_ACTUAL_DATE);
+  date.setHours(hour);
+  date.setMinutes(minute);
+
+  return date;
+};
+
 /**
  * Formats internal time in 24h form.
  */
