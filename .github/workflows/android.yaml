@@ -20,7 +20,13 @@ jobs:
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
       - run: yarn install
-      - run: expo build:android -t app-bundle
+      - run: "expo build:android -t app-bundle"
+        shell: bash
+        env:
+          SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
+          SENTRY_DSN: ${{secrets.SENTRY_DSN}}
+          SENTRY_ORG: ${{secrets.SENTRY_ORG}}
+          SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
       - run: 'echo "$GOOGLE_API_KEY" > key.json'
         shell: bash
         env:
