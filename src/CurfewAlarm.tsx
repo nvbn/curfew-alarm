@@ -3,9 +3,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as BackgroundFetch from "expo-background-fetch";
 import ExpoConstants from "expo-constants";
+import * as Localization from "expo-localization";
 import * as ExpoNetwork from "expo-network";
 import * as ExpoNotifications from "expo-notifications";
 import * as TaskManager from "expo-task-manager";
+import i18n from "i18n-js";
 import React from "react";
 import * as rn from "react-native";
 
@@ -22,6 +24,11 @@ import Settings, { SETTINGS_SCREEN_NAME } from "./screens/Settings";
 import notificationsSender, {
   NOTIFICATIONS_TASK_NAME,
 } from "./tasks/notificationsSender";
+import translations from "./translations";
+
+i18n.translations = translations;
+i18n.locale = Localization.locale;
+i18n.fallbacks = true;
 
 const getCurrentDate: IDateTime = () => new Date();
 
@@ -58,7 +65,7 @@ const CurfewAlarm = (): JSX.Element => (
                     name={HOME_SCREEN_NAME}
                     component={Home}
                     options={({ navigation }) => ({
-                      title: "Curfew Alarm",
+                      title: i18n.t("appTitle"),
                       // eslint-disable-next-line react/display-name
                       headerRight: () => (
                         <SettingsButton
@@ -73,7 +80,7 @@ const CurfewAlarm = (): JSX.Element => (
                     name={SETTINGS_SCREEN_NAME}
                     component={Settings}
                     options={{
-                      title: "Settings",
+                      title: i18n.t("settingsTitle"),
                     }}
                   />
                 </Stack.Navigator>
