@@ -53,4 +53,14 @@ To release a new version of app to the Google Play Store you need to:
 2. Push the changes and wait for [the ci workflow](https://github.com/nvbn/curfew-alarm/actions?query=workflow%3Aci) to complete.
 3. Manually trigger [the android workflow](https://github.com/nvbn/curfew-alarm/actions?query=workflow%3Aandroid).
 
+### iOS
+
+To release a new version of app to the App Store you need to:
+
+1. Increase `expo -> ios -> buildNumber` in `app.json`.
+2. Push the changes and wait for [the ci workflow](https://github.com/nvbn/curfew-alarm/actions?query=workflow%3Aci) to complete.
+3. Manually trigger [the ios workflow](https://github.com/nvbn/curfew-alarm/actions?query=workflow%3Aios).
+4. Download the latest build artifact from [expo](https://expo.io/accounts/nvbn/builds).
+5. Submit the `*.ipa` in Transporter.app.
+
 ## License MIT
