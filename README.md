@@ -37,4 +37,20 @@ To check the formatting run:
 yarn formatting-check
 ```
 
+## Release process
+
+Every commit to master publishes the changes, the changes are delivered to
+users automatically via OTA.
+
+If you actually need to publish a new version to a marketplace, follow the
+platform specific sections below.
+
+### Android
+
+To release a new version of app to the Google Play Store you need to:
+
+1. Increase `expo -> android -> versionCode` in `app.json`.
+2. Push the changes and wait for [the ci workflow](https://github.com/nvbn/curfew-alarm/actions?query=workflow%3Aci) to complete.
+3. Manually trigger [the android workflow](https://github.com/nvbn/curfew-alarm/actions?query=workflow%3Aandroid).
+
 ## License MIT
