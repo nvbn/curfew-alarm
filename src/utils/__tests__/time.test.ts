@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   dateToTime,
   formatTime,
   isValidTime,
+  Time,
   timeToDate,
   toMinutes,
 } from "../time";
@@ -12,9 +12,9 @@ describe("toMinutes", () => {
     [{ hour: 10, minute: 25 }, 625],
     [{ hour: 20, minute: 0 }, 1200],
     [{ hour: 0, minute: 15 }, 15],
-  ]) {
+  ] as [Time, number][]) {
     test(`${JSON.stringify(time)} to ${expectedMinutes}`, () => {
-      const minutes = toMinutes(time as any);
+      const minutes = toMinutes(time);
 
       expect(minutes).toEqual(expectedMinutes);
     });
@@ -51,9 +51,9 @@ describe("formatTime", () => {
     [{ hour: 20, minute: 0 }, "20:00"],
     [{ hour: 0, minute: 15 }, "00:15"],
     [{ hour: 9, minute: 7 }, "09:07"],
-  ]) {
+  ] as [Time, string][]) {
     test(`${JSON.stringify(time)} => ${expectedFormatted}`, () => {
-      const formatted = formatTime(time as any);
+      const formatted = formatTime(time);
 
       expect(formatted).toEqual(expectedFormatted);
     });
