@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BooleanItem /> can be rendered 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "borderBottomColor": "#fafafa",
+        "borderBottomWidth": 1,
+        "marginHorizontal": 16,
+        "marginVertical": 8,
+        "paddingHorizontal": 10,
+        "paddingVertical": 20,
+      },
+      Object {
+        "alignItems": "flex-start",
+      },
+    ]
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 24,
+        "paddingBottom": 10,
+      }
+    }
+  >
+    Some toggle
+  </Text>
+  <RCTSwitch
+    accessibilityRole="switch"
+    onChange={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "height": 31,
+        "width": 51,
+      }
+    }
+    testID="boolean-item-switch-test"
+    value={false}
+  />
+</View>
+`;

@@ -48,6 +48,7 @@ const Home = ({ navigation }: Props): JSX.Element => {
     <View style={styles.container}>
       {isReady(settings) && (
         <Clock
+          enabled={settings.enabled}
           curfewStart={settings.curfewStart}
           curfewEnd={settings.curfewEnd}
           minutesToGoHome={settings.minutesToGoHome}

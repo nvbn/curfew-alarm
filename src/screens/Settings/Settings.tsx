@@ -22,6 +22,13 @@ const Settings = (): JSX.Element => {
     isReady(settings) && isReady(isNotificationsEnabled)
       ? [
           {
+            id: "enable",
+            title: i18n.t("inputTitleEnabled"),
+            type: "boolean",
+            value: settings.enabled,
+            onChange: (enabled) => updateSettings({ enabled }),
+          },
+          {
             id: "curfew-start",
             title: i18n.t("inputTitleCurfewStart"),
             type: "time",

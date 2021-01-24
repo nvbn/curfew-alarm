@@ -5,8 +5,8 @@ import { isValidTime, Time } from "./time";
 export type Settings = {
   curfewStart: Time;
   curfewEnd: Time;
-
   minutesToGoHome: number;
+  enabled: boolean;
 };
 
 // exported only for tests
@@ -14,6 +14,7 @@ export const DEFAULT_SETTINGS: Settings = {
   curfewStart: { hour: 21, minute: 0 },
   curfewEnd: { hour: 4, minute: 30 },
   minutesToGoHome: 30,
+  enabled: true,
 };
 
 // exported only for tests
@@ -48,6 +49,10 @@ const parseSettings = (serialised: string | null): Settings => {
       settings.minutesToGoHome,
     );
     settings.minutesToGoHome = DEFAULT_SETTINGS.minutesToGoHome;
+  }
+
+  if (!(typeof settings.enabled === "boolean")) {
+    settings.enabled = DEFAULT_SETTINGS.enabled;
   }
 
   return settings;

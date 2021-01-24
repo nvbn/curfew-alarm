@@ -11,10 +11,11 @@ import { dateToTime, formatTime, timeToDate } from "../../utils/time";
 import notificationsSender from "../notificationsSender";
 
 describe("notificationsSender", () => {
-  for (const [isAtHome, currentTime, expectedNotifications] of [
-    [false, timeToDate({ hour: 10, minute: 0 }), []],
-    [true, timeToDate({ hour: 10, minute: 0 }), []],
+  for (const [enabled, isAtHome, currentTime, expectedNotifications] of [
+    [true, false, timeToDate({ hour: 10, minute: 0 }), []],
+    [true, true, timeToDate({ hour: 10, minute: 0 }), []],
     [
+      true,
       false,
       timeToDate({ hour: 20, minute: 45 }),
       [
@@ -24,8 +25,9 @@ describe("notificationsSender", () => {
         },
       ],
     ],
-    [true, timeToDate({ hour: 20, minute: 45 }), []],
+    [true, true, timeToDate({ hour: 20, minute: 45 }), []],
     [
+      true,
       false,
       timeToDate({ hour: 21, minute: 45 }),
       [
@@ -35,7 +37,10 @@ describe("notificationsSender", () => {
         },
       ],
     ],
-  ] as [boolean, Date, NotificationRequest[]][]) {
+    [false, false, timeToDate({ hour: 21, minute: 45 }), []],
+    [false, false, timeToDate({ hour: 20, minute: 45 }), []],
+    [false, false, timeToDate({ hour: 10, minute: 15 }), []],
+  ] as [boolean, boolean, Date, NotificationRequest[]][]) {
     test(
       "when " +
         (isAtHome ? "" : "not ") +
@@ -47,6 +52,7 @@ describe("notificationsSender", () => {
               curfewStart: { hour: 21, minute: 0 },
               curfewEnd: { hour: 4, minute: 0 },
               minutesToGoHome: 30,
+              enabled,
             }),
           },
         });

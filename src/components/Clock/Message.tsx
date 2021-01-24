@@ -10,7 +10,14 @@ import {
   STATUS_STAY_AT_HOME_WHEN_CURFEW,
   STATUS_STAY_AT_HOME_WHEN_TIME_TO_GO_HOME,
 } from "../../utils/status";
-import { COLOR_CURFEW, COLOR_DANGER, COLOR_OK } from "./styles";
+import {
+  CLOCK_CENTER_X,
+  CLOCK_MESSAGE_FONT_SIZE,
+  CLOCK_MESSAGE_Y,
+  COLOR_CURFEW,
+  COLOR_DANGER,
+  COLOR_OK,
+} from "./styles";
 
 type BaseMessageProps = {
   text: string;
@@ -18,7 +25,13 @@ type BaseMessageProps = {
 };
 
 const BaseMessage = ({ text, color }: BaseMessageProps): JSX.Element => (
-  <Text x={50} y={60} fill={color} textAnchor="middle" fontSize={6}>
+  <Text
+    x={CLOCK_CENTER_X}
+    y={CLOCK_MESSAGE_Y}
+    fill={color}
+    textAnchor="middle"
+    fontSize={CLOCK_MESSAGE_FONT_SIZE}
+  >
     {text}
   </Text>
 );

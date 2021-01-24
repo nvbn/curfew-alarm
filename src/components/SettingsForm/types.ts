@@ -1,6 +1,6 @@
 import { Time } from "../../utils/time";
 
-type TypedItemType = "time" | "number" | "action";
+type TypedItemType = "time" | "number" | "action" | "boolean";
 
 type BaseTypedItemProps<T, Q extends TypedItemType> = {
   id: string;
@@ -16,4 +16,10 @@ export type NumberItemProps = BaseTypedItemProps<number, "number">;
 
 export type ActionItemProps = BaseTypedItemProps<boolean, "action">;
 
-export type TypedItemProps = TimeItemProps | NumberItemProps | ActionItemProps;
+export type BooleanItemProps = BaseTypedItemProps<boolean, "boolean">;
+
+export type TypedItemProps =
+  | TimeItemProps
+  | NumberItemProps
+  | ActionItemProps
+  | BooleanItemProps;

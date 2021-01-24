@@ -28,6 +28,7 @@ const notificationsSender = async (
   const isAtHomeStatus = await isAtHome(network);
 
   const status = getStatus(
+    settings.enabled,
     isAtHomeStatus,
     dateToTime(getCurrentDate()),
     settings.curfewStart,
