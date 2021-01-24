@@ -404,38 +404,6 @@ exports[`<Clock /> when disabled 1`] = `
       }
       r={45}
     />
-    <RNSVGPath
-      d="
-    M 86.95518130045147 34.69266270539641
-    A 40 40 0 0 0 21.71572875253809 21.7157287525381
-  "
-      fill={null}
-      propList={
-        Array [
-          "fill",
-          "stroke",
-          "strokeWidth",
-        ]
-      }
-      stroke={4292763476}
-      strokeWidth={10}
-    />
-    <RNSVGPath
-      d="
-    M 21.71572875253809 21.7157287525381
-    A 40 40 0 0 0 19.926407700840905 23.626167395997246
-  "
-      fill={null}
-      propList={
-        Array [
-          "fill",
-          "stroke",
-          "strokeWidth",
-        ]
-      }
-      stroke={4292788264}
-      strokeWidth={10}
-    />
     <RNSVGCircle
       cx={50}
       cy={50}
