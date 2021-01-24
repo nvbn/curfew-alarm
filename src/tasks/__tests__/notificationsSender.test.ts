@@ -7,16 +7,16 @@ import { makeNotificationsWithBehavior } from "../../fakes/Notifications";
 import { makePersistentStorageWithDataAndBehavior } from "../../fakes/PersistentStorage";
 import i18n from "../../utils/i18n";
 import { STORAGE_KEY } from "../../utils/settings";
-import { dateToTime, formatTime } from "../../utils/time";
+import { dateToTime, formatTime, timeToDate } from "../../utils/time";
 import notificationsSender from "../notificationsSender";
 
 describe("notificationsSender", () => {
   for (const [isAtHome, currentTime, expectedNotifications] of [
-    [false, new Date("2021-01-10T10:00:00"), []],
-    [true, new Date("2021-01-10T10:00:00"), []],
+    [false, timeToDate({ hour: 10, minute: 0 }), []],
+    [true, timeToDate({ hour: 10, minute: 0 }), []],
     [
       false,
-      new Date("2021-01-10T20:45:00"),
+      timeToDate({ hour: 20, minute: 45 }),
       [
         {
           title: i18n.t("notificationTimeToGoHomeTitle"),
@@ -24,10 +24,10 @@ describe("notificationsSender", () => {
         },
       ],
     ],
-    [true, new Date("2021-01-10T20:45:00"), []],
+    [true, timeToDate({ hour: 20, minute: 45 }), []],
     [
       false,
-      new Date("2021-01-10T21:45:00"),
+      timeToDate({ hour: 21, minute: 45 }),
       [
         {
           title: i18n.t("notificationCurfewStartedTitle"),
