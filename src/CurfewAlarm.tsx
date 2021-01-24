@@ -6,7 +6,6 @@ import ExpoConstants from "expo-constants";
 import * as ExpoNetwork from "expo-network";
 import * as ExpoNotifications from "expo-notifications";
 import * as TaskManager from "expo-task-manager";
-import i18n from "i18n-js";
 import React from "react";
 import * as rn from "react-native";
 
@@ -26,6 +25,7 @@ import Settings, { SETTINGS_SCREEN_NAME } from "./screens/Settings";
 import notificationsSender, {
   NOTIFICATIONS_TASK_NAME,
 } from "./tasks/notificationsSender";
+import i18n from "./utils/i18n";
 
 initSentry();
 initI18n();
