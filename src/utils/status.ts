@@ -26,12 +26,17 @@ const MAX_MINUTE = 24 * 60;
  * based on time and configurations.
  */
 export const getStatus = (
+  enabled: boolean,
   isAtHome: boolean,
   currentTime: Time,
   curfewStart: Time,
   curfewEnd: Time,
   minutesToGoHome: number,
 ): Status => {
+  if (!enabled) {
+    return STATUS_FINE;
+  }
+
   const currentMinute = toMinutes(currentTime);
   const curfewStartMinute = toMinutes(curfewStart);
   const curfewEndMinute = toMinutes(curfewEnd);

@@ -14,6 +14,7 @@ import styles, {
 } from "./styles";
 
 type Props = {
+  enabled: boolean;
   isAtHome: boolean;
   currentTime: Time;
 
@@ -28,6 +29,7 @@ type Props = {
  * indicates when to go home, and shows a message with expected action.
  */
 const Clock = ({
+  enabled,
   isAtHome,
   currentTime,
   curfewStart,
@@ -74,6 +76,7 @@ const Clock = ({
     </Text>
     <Message
       status={getStatus(
+        enabled,
         isAtHome,
         currentTime,
         curfewStart,
