@@ -55,6 +55,19 @@ yarn pretty-quick
 yarn lint --fix
 ```
 
+### Storybook
+
+To run storybook you need to start the build server in a special mode with:
+
+```bash
+yarn start-storybook
+```
+
+Then open the dev version of the app on a phone or in an emulator.
+
+When creating a new story you need to import it in
+`./src/Storybook.ts` to make it available in the app.
+
 ## Release process
 
 Every commit to master publishes the changes, the changes are delivered to
