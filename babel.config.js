@@ -11,7 +11,7 @@ module.exports = function (api) {
             ? [
                 {
                   search: "./src/CurfewAlarm",
-                  replace: "./storybook",
+                  replace: "./src/Storybook",
                 },
               ]
             : [],

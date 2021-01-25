@@ -65,7 +65,8 @@ yarn start-storybook
 
 Then open the dev version of the app on a phone or in an emulator.
 
-When creating a new story you need to import it in `./storybook/stories.ts` to make it available in the app.
+When creating a new story you need to import it in
+`./src/Storybook.ts` to make it available in the app.
 
 ## Release process
 
