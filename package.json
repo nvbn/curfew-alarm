@@ -12,8 +12,6 @@
     "lint": "eslint --ext js,jsx,ts,tsx src",
     "test": "TZ=UTC jest --silent --runInBand --detectOpenHandles",
     "test-verbose": "TZ=UTC jest",
-    "storybook": "start-storybook -p 7007",
-    "build-storybook": "build-storybook",
     "start-storybook": "STORYBOOK=true expo start -c"
   },
   "dependencies": {
@@ -44,13 +42,7 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
-    "@storybook/addon-actions": "^5.3",
-    "@storybook/addon-knobs": "^5.3",
-    "@storybook/addon-links": "^5.3",
-    "@storybook/addon-ondevice-actions": "^5.3.23",
-    "@storybook/addon-ondevice-knobs": "^5.3.23",
     "@storybook/react-native": "^5.3.23",
-    "@storybook/react-native-server": "^5.3.23",
     "@testing-library/jest-native": "^3.4.3",
     "@testing-library/react-hooks": "^5.0.2",
     "@testing-library/react-native": "^7.1.0",

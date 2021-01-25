@@ -57,16 +57,10 @@ yarn lint --fix
 
 ### Storybook
 
-To run storybook you need to run the build server in a special mode with:
+To run storybook you need to start the build server in a special mode with:
 
 ```bash
 yarn start-storybook
-```
-
-Then run the actual storybook with:
-
-```bash
-yarn storybook
 ```
 
 Then open the dev version of the app on a phone or in an emulator.
