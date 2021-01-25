@@ -8,6 +8,7 @@ configure(() => {
   // Import all stories here:
   require("./components/Clock/Clock.story");
   require("./components/SettingsButton/SettingsButton.story");
+  require("./components/SettingsForm/SettingsForm.story");
 }, module);
 
 const StorybookUIRoot = getStorybookUI({
