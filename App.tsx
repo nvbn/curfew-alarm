@@ -1,3 +1,3 @@
-import CurfewAlarm from "./src/CurfewAlarm";
+import App from "./src/CurfewAlarm";
 
-export default CurfewAlarm;
+export default App;

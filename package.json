@@ -2,7 +2,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "license": "MIT",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start -c",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
@@ -11,7 +11,10 @@
     "formatting-check": "prettier --check 'src/**/*.{js,ts,tsx}'",
     "lint": "eslint --ext js,jsx,ts,tsx src",
     "test": "TZ=UTC jest --silent --runInBand --detectOpenHandles",
-    "test-verbose": "TZ=UTC jest"
+    "test-verbose": "TZ=UTC jest",
+    "storybook": "start-storybook -p 7007",
+    "build-storybook": "build-storybook",
+    "start-storybook": "STORYBOOK=true expo start -c"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.13.3",
@@ -41,6 +44,13 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
+    "@storybook/addon-actions": "^5.3",
+    "@storybook/addon-knobs": "^5.3",
+    "@storybook/addon-links": "^5.3",
+    "@storybook/addon-ondevice-actions": "^5.3.23",
+    "@storybook/addon-ondevice-knobs": "^5.3.23",
+    "@storybook/react-native": "^5.3.23",
+    "@storybook/react-native-server": "^5.3.23",
     "@testing-library/jest-native": "^3.4.3",
     "@testing-library/react-hooks": "^5.0.2",
     "@testing-library/react-native": "^7.1.0",
@@ -51,6 +61,8 @@
     "@types/react-native": "~0.63.2",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-search-and-replace": "^1.1.0",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
