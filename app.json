@@ -18,12 +18,12 @@
       "icon": "./assets/icon/res/mipmap-xhdpi/icon.png"
     },
     "ios": {
-      "buildNumber": "3.0.0",
+      "buildNumber": "4.0.0",
       "supportsTablet": true,
       "bundleIdentifier": "com.nvbn.curfewalarm"
     },
     "android": {
-      "versionCode": 3,
+      "versionCode": 4,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon/web_hi_res_1024.png",
         "backgroundColor": "#FFFFFF"
