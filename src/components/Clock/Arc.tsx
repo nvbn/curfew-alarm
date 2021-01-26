@@ -20,10 +20,12 @@ const makeArc = (
   start: number,
   end: number,
 ): string => {
-  const [startX, startY] = polarToCartesian(cx, cy, r, end); // swap?
+  const adjustedEnd = end < start ? end + 360 : end;
+
+  const [startX, startY] = polarToCartesian(cx, cy, r, adjustedEnd); // swap?
   const [endX, endY] = polarToCartesian(cx, cy, r, start);
 
-  const largeArcFlag = end - start <= 180 ? 0 : 1;
+  const largeArcFlag = adjustedEnd - start <= 180 ? 0 : 1;
 
   return `
     M ${startX} ${startY}
