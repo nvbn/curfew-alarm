@@ -70,9 +70,9 @@ storiesOf("<Clock />", module)
       <Clock
         enabled={true}
         isAtHome={false}
-        currentTime={{ hour: 1, minute: 5 }}
-        curfewStart={{ hour: 1, minute: 30 }}
-        curfewEnd={{ hour: 3, minute: 30 }}
+        currentTime={{ hour: 12, minute: 5 }}
+        curfewStart={{ hour: 12, minute: 30 }}
+        curfewEnd={{ hour: 1, minute: 30 }}
         minutesToGoHome={45}
       />
     ),
@@ -83,9 +83,9 @@ storiesOf("<Clock />", module)
       <Clock
         enabled={true}
         isAtHome={false}
-        currentTime={{ hour: 2, minute: 5 }}
-        curfewStart={{ hour: 1, minute: 30 }}
-        curfewEnd={{ hour: 3, minute: 30 }}
+        currentTime={{ hour: 12, minute: 5 }}
+        curfewStart={{ hour: 12, minute: 30 }}
+        curfewEnd={{ hour: 1, minute: 30 }}
         minutesToGoHome={45}
       />
     ),
