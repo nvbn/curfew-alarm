@@ -6,7 +6,7 @@ import {
 import {
   DEFAULT_SETTINGS,
   getSettings,
-  STORAGE_KEY,
+  SETTINGS_STORAGE_KEY,
   updateSettings,
 } from "../settings";
 
@@ -35,7 +35,7 @@ describe("getSettings", () => {
       enabled: false,
     };
     const storage = makePersistentStorageWithDataAndBehavior({
-      data: { [STORAGE_KEY]: JSON.stringify(storedSettings) },
+      data: { [SETTINGS_STORAGE_KEY]: JSON.stringify(storedSettings) },
     });
 
     const settings = await getSettings(storage);
@@ -76,7 +76,7 @@ describe("getSettings", () => {
 
       const storage = makePersistentStorageWithDataAndBehavior({
         data: {
-          [STORAGE_KEY]: JSON.stringify(storedSettings),
+          [SETTINGS_STORAGE_KEY]: JSON.stringify(storedSettings),
         },
       });
 
@@ -98,7 +98,7 @@ describe("updateSettings", async () => {
     const storage = makePersistentStorageWithDataAndBehavior();
     await updateSettings(storage, settingsToStore);
 
-    const storedSettings = await storage.getItem(STORAGE_KEY);
+    const storedSettings = await storage.getItem(SETTINGS_STORAGE_KEY);
     expect(JSON.parse(storedSettings ?? "")).toEqual(settingsToStore);
   });
 

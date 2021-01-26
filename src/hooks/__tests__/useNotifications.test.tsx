@@ -3,6 +3,7 @@ import React, { PropsWithChildren } from "react";
 
 import Constants from "../../contexts/Constants";
 import Notifications from "../../contexts/Notifications";
+import PersistentStorage from "../../contexts/PersistentStorage";
 import Platform from "../../contexts/Platform";
 import {
   NOTIFICATION_PERMISSIONS_DENIED,
@@ -14,6 +15,7 @@ import {
   makeConstantsAsOnDevice,
 } from "../../fakes/Constants";
 import { makeNotificationsWithBehavior } from "../../fakes/Notifications";
+import { makePersistentStorageWithDataAndBehavior } from "../../fakes/PersistentStorage";
 import { makePlatformAndroid, makePlatformIOS } from "../../fakes/Plaftorm";
 import { isReady } from "../../utils/future";
 import useNotifications from "../useNotifications";
@@ -26,9 +28,13 @@ describe("useNotifications", () => {
       }: PropsWithChildren<unknown>): JSX.Element => (
         <Constants.Provider value={makeConstantsAsInEmulator()}>
           <Platform.Provider value={platform}>
-            <Notifications.Provider value={makeNotificationsWithBehavior()}>
-              {children}
-            </Notifications.Provider>
+            <PersistentStorage.Provider
+              value={makePersistentStorageWithDataAndBehavior()}
+            >
+              <Notifications.Provider value={makeNotificationsWithBehavior()}>
+                {children}
+              </Notifications.Provider>
+            </PersistentStorage.Provider>
           </Platform.Provider>
         </Constants.Provider>
       );
@@ -51,15 +57,19 @@ describe("useNotifications", () => {
       }: PropsWithChildren<unknown>): JSX.Element => (
         <Constants.Provider value={makeConstantsAsOnDevice()}>
           <Platform.Provider value={platform}>
-            <Notifications.Provider
-              value={makeNotificationsWithBehavior({
-                getPermissionsAsync: Promise.reject(
-                  new Error("expected error"),
-                ),
-              })}
+            <PersistentStorage.Provider
+              value={makePersistentStorageWithDataAndBehavior()}
             >
-              {children}
-            </Notifications.Provider>
+              <Notifications.Provider
+                value={makeNotificationsWithBehavior({
+                  getPermissionsAsync: Promise.reject(
+                    new Error("expected error"),
+                  ),
+                })}
+              >
+                {children}
+              </Notifications.Provider>
+            </PersistentStorage.Provider>
           </Platform.Provider>
         </Constants.Provider>
       );
@@ -82,9 +92,13 @@ describe("useNotifications", () => {
       }: PropsWithChildren<unknown>): JSX.Element => (
         <Constants.Provider value={makeConstantsAsOnDevice()}>
           <Platform.Provider value={platform}>
-            <Notifications.Provider value={makeNotificationsWithBehavior()}>
-              {children}
-            </Notifications.Provider>
+            <PersistentStorage.Provider
+              value={makePersistentStorageWithDataAndBehavior()}
+            >
+              <Notifications.Provider value={makeNotificationsWithBehavior()}>
+                {children}
+              </Notifications.Provider>
+            </PersistentStorage.Provider>
           </Platform.Provider>
         </Constants.Provider>
       );
@@ -105,15 +119,19 @@ describe("useNotifications", () => {
       }: PropsWithChildren<unknown>): JSX.Element => (
         <Constants.Provider value={makeConstantsAsOnDevice()}>
           <Platform.Provider value={platform}>
-            <Notifications.Provider
-              value={makeNotificationsWithBehavior({
-                getPermissionsAsync: Promise.resolve({
-                  status: NOTIFICATIONS_PERMISSIONS_UNDETERMINED,
-                }),
-              })}
+            <PersistentStorage.Provider
+              value={makePersistentStorageWithDataAndBehavior()}
             >
-              {children}
-            </Notifications.Provider>
+              <Notifications.Provider
+                value={makeNotificationsWithBehavior({
+                  getPermissionsAsync: Promise.resolve({
+                    status: NOTIFICATIONS_PERMISSIONS_UNDETERMINED,
+                  }),
+                })}
+              >
+                {children}
+              </Notifications.Provider>
+            </PersistentStorage.Provider>
           </Platform.Provider>
         </Constants.Provider>
       );
@@ -134,18 +152,22 @@ describe("useNotifications", () => {
       }: PropsWithChildren<unknown>): JSX.Element => (
         <Constants.Provider value={makeConstantsAsOnDevice()}>
           <Platform.Provider value={platform}>
-            <Notifications.Provider
-              value={makeNotificationsWithBehavior({
-                getPermissionsAsync: Promise.resolve({
-                  status: NOTIFICATION_PERMISSIONS_DENIED,
-                }),
-                requestPermissionsAsync: Promise.resolve({
-                  status: NOTIFICATIONS_PERMISSIONS_GRANTED,
-                }),
-              })}
+            <PersistentStorage.Provider
+              value={makePersistentStorageWithDataAndBehavior()}
             >
-              {children}
-            </Notifications.Provider>
+              <Notifications.Provider
+                value={makeNotificationsWithBehavior({
+                  getPermissionsAsync: Promise.resolve({
+                    status: NOTIFICATION_PERMISSIONS_DENIED,
+                  }),
+                  requestPermissionsAsync: Promise.resolve({
+                    status: NOTIFICATIONS_PERMISSIONS_GRANTED,
+                  }),
+                })}
+              >
+                {children}
+              </Notifications.Provider>
+            </PersistentStorage.Provider>
           </Platform.Provider>
         </Constants.Provider>
       );
@@ -163,7 +185,6 @@ describe("useNotifications", () => {
       await waitForNextUpdate();
 
       const [nextIsAllowed] = result.current;
-      console.warn(result.current);
       expect(nextIsAllowed).toBe(true);
     });
 
@@ -173,18 +194,22 @@ describe("useNotifications", () => {
       }: PropsWithChildren<unknown>): JSX.Element => (
         <Constants.Provider value={makeConstantsAsOnDevice()}>
           <Platform.Provider value={platform}>
-            <Notifications.Provider
-              value={makeNotificationsWithBehavior({
-                getPermissionsAsync: Promise.resolve({
-                  status: NOTIFICATION_PERMISSIONS_DENIED,
-                }),
-                requestPermissionsAsync: Promise.reject(
-                  new Error("expected error"),
-                ),
-              })}
+            <PersistentStorage.Provider
+              value={makePersistentStorageWithDataAndBehavior()}
             >
-              {children}
-            </Notifications.Provider>
+              <Notifications.Provider
+                value={makeNotificationsWithBehavior({
+                  getPermissionsAsync: Promise.resolve({
+                    status: NOTIFICATION_PERMISSIONS_DENIED,
+                  }),
+                  requestPermissionsAsync: Promise.reject(
+                    new Error("expected error"),
+                  ),
+                })}
+              >
+                {children}
+              </Notifications.Provider>
+            </PersistentStorage.Provider>
           </Platform.Provider>
         </Constants.Provider>
       );

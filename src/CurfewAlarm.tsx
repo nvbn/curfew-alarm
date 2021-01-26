@@ -26,6 +26,7 @@ import notificationsSender, {
   NOTIFICATIONS_TASK_NAME,
 } from "./tasks/notificationsSender";
 import i18n from "./utils/i18n";
+import { sendNotificationWithExpoAPI } from "./utils/notifications";
 
 initSentry();
 initI18n();
@@ -35,10 +36,11 @@ const getCurrentDate: IDateTime = () => new Date();
 
 TaskManager.defineTask(NOTIFICATIONS_TASK_NAME, () => {
   notificationsSender(
+    ExpoConstants,
     getCurrentDate,
     AsyncStorage,
     ExpoNetwork,
-    ExpoNotifications,
+    sendNotificationWithExpoAPI,
   ).catch((e) => console.warn("background task failed", e));
   return BackgroundFetch.Result.NoData;
 });

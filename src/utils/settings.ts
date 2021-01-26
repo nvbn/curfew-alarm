@@ -18,7 +18,7 @@ export const DEFAULT_SETTINGS: Settings = {
 };
 
 // exported only for tests
-export const STORAGE_KEY = "SETTINGS";
+export const SETTINGS_STORAGE_KEY = "SETTINGS";
 
 const parseSettings = (serialised: string | null): Settings => {
   let settings = DEFAULT_SETTINGS;
@@ -66,7 +66,7 @@ export const getSettings = async (
   storage: IPersistentStorage,
 ): Promise<Settings> => {
   try {
-    const serialised = await storage.getItem(STORAGE_KEY);
+    const serialised = await storage.getItem(SETTINGS_STORAGE_KEY);
 
     return parseSettings(serialised);
   } catch (e) {
@@ -82,4 +82,5 @@ export const getSettings = async (
 export const updateSettings = (
   storage: IPersistentStorage,
   settings: Settings,
-): Promise<void> => storage.setItem(STORAGE_KEY, JSON.stringify(settings));
+): Promise<void> =>
+  storage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(settings));
