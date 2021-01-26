@@ -27,7 +27,7 @@
       },
       "useNextNotificationsApi": true,
       "package": "com.nvbn.curfewalarm",
-      "permissions": []
+      "permissions": ["NOTIFICATIONS", "USER_FACING_NOTIFICATIONS"]
     },
     "web": {
       "favicon": "./assets/icon/web_hi_res_1024.png"

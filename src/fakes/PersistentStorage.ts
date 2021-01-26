@@ -15,8 +15,7 @@ type Options = {
   setItem: Behavior;
 };
 
-const defaultOptions: Options = {
-  data: {},
+const defaultOptions: Omit<Options, "data"> = {
   getItem: PERSISTENT_STORAGE_BEHAVIOR_OK,
   setItem: PERSISTENT_STORAGE_BEHAVIOR_OK,
 };
@@ -27,7 +26,7 @@ const defaultOptions: Options = {
 export const makePersistentStorageWithDataAndBehavior = (
   overrideOptions: Partial<Options> = {},
 ): IPersistentStorage => {
-  const options = { ...defaultOptions, ...overrideOptions };
+  const options = { data: {}, ...defaultOptions, ...overrideOptions };
 
   return {
     getItem: async (key) => {

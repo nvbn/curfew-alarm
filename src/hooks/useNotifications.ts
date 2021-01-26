@@ -2,6 +2,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 
 import Constants from "../contexts/Constants";
 import Notifications from "../contexts/Notifications";
+import PersistentStorage from "../contexts/PersistentStorage";
 import Platform from "../contexts/Platform";
 import { Future, FUTURE_NOT_READY, isReady } from "../utils/future";
 import {
@@ -17,17 +18,24 @@ const useNotifications = (): [Future<boolean>, () => void] => {
   const constants = useContext(Constants);
   const platform = useContext(Platform);
   const notifications = useContext(Notifications);
+  const storage = useContext(PersistentStorage);
 
   const [isAllowed, setIsAllowed] = useState<Future<boolean>>(FUTURE_NOT_READY);
 
   useEffect(() => {
-    registerForPushNotifications(constants, platform, notifications, false)
-      .then(({ status }) => setIsAllowed(status === REGISTER_OK))
+    registerForPushNotifications(
+      constants,
+      platform,
+      notifications,
+      storage,
+      false,
+    )
+      .then((status) => setIsAllowed(status === REGISTER_OK))
       .catch((e) => {
         console.warn("unable to register for push notifications", e);
         setIsAllowed(false);
       });
-  }, [constants, platform, notifications, setIsAllowed]);
+  }, [constants, platform, notifications, storage, setIsAllowed]);
 
   const request = useCallback(() => {
     if (!isReady(isAllowed)) {
@@ -35,13 +43,19 @@ const useNotifications = (): [Future<boolean>, () => void] => {
       return;
     }
 
-    registerForPushNotifications(constants, platform, notifications, true)
-      .then(({ status }) => setIsAllowed(status === REGISTER_OK))
+    registerForPushNotifications(
+      constants,
+      platform,
+      notifications,
+      storage,
+      true,
+    )
+      .then((status) => setIsAllowed(status === REGISTER_OK))
       .catch((e) => {
         console.warn("unable to re-register for push notifications", e);
         setIsAllowed(false);
       });
-  }, [constants, platform, notifications, isAllowed, setIsAllowed]);
+  }, [constants, platform, notifications, storage, isAllowed, setIsAllowed]);
 
   return [isAllowed, request];
 };

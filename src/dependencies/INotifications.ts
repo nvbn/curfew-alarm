@@ -13,29 +13,28 @@ export type NotificationPermissions = {
   status: NotificationPermissionsStatus;
 };
 
-export type NotificationPushToken = { data: string };
+export type NotificationPushTokenResponse = { data: string };
 
 export type NotificationContent = {
-  title?: string;
-  body?: string;
+  to: string;
+  title: string;
+  body: string;
 };
 
-export type NotificationRequest = {
-  content: NotificationContent;
-  trigger: Record<string, unknown> | null;
-};
+// Not sure if that's a correct place for it
+export type INotificationSender = (
+  content: NotificationContent,
+) => Promise<void>;
 
 /**
  * Interface that provides access to device notifications.
  */
 export default interface INotifications {
-  scheduleNotificationAsync(request: NotificationRequest): Promise<string>;
-
   getPermissionsAsync(): Promise<NotificationPermissions>;
 
   requestPermissionsAsync(): Promise<NotificationPermissions>;
 
-  getExpoPushTokenAsync(): Promise<NotificationPushToken>;
+  getExpoPushTokenAsync(): Promise<NotificationPushTokenResponse>;
 
   setNotificationChannelAsync(
     channelId: string,
