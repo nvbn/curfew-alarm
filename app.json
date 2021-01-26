@@ -14,6 +14,9 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": ["**/*"],
+    "notification": {
+      "icon": "./assets/icon/res/mipmap-xhdpi/icon.png"
+    },
     "ios": {
       "buildNumber": "3.0.0",
       "supportsTablet": true,
