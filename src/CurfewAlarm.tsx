@@ -34,7 +34,7 @@ setupExpoNotificationsHandler();
 
 const getCurrentDate: IDateTime = () => new Date();
 
-TaskManager.defineTask(NOTIFICATIONS_TASK_NAME, () => {
+TaskManager.defineTask(NOTIFICATIONS_TASK_NAME, async () => {
   notificationsSender(
     ExpoConstants,
     getCurrentDate,
@@ -42,8 +42,16 @@ TaskManager.defineTask(NOTIFICATIONS_TASK_NAME, () => {
     ExpoNetwork,
     sendNotificationWithExpoAPI,
   ).catch((e) => console.warn("background task failed", e));
+
   return BackgroundFetch.Result.NoData;
 });
+
+BackgroundFetch.registerTaskAsync(NOTIFICATIONS_TASK_NAME, {
+  startOnBoot: true,
+  minimumInterval: 300,
+}).catch((e) =>
+  console.warn("unable to register notifications background task", e),
+);
 
 const Stack = createStackNavigator();
 
