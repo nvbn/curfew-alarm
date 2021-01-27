@@ -91,6 +91,13 @@ jobs:
         env:
           GOOGLE_API_KEY: ${{secrets.GOOGLE_API_KEY}}
       - run: expo upload:android --latest --key key.json --use-submission-service
+      - run: "wget $(expo url:apk)"
+        shell: bash
+      - name: save build as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist-without-markdown
+          path: "*.aab"
 
   release_ios:
     runs-on: ubuntu-latest
@@ -121,3 +128,10 @@ jobs:
           SENTRY_DSN: ${{secrets.SENTRY_DSN}}
           SENTRY_ORG: ${{secrets.SENTRY_ORG}}
           SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
+      - run: "wget $(expo url:ipa)"
+        shell: bash
+      - name: save build as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist-without-markdown
+          path: "*.ipa"
