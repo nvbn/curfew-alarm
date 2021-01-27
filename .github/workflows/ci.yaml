@@ -14,6 +14,8 @@ jobs:
         run: |
           npm install -g yarn
           yarn
+      - name: generate app.json
+        run: yarn make-app-json
       - name: lint
         run: "yarn lint"
       - name: check formatting
@@ -30,7 +32,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     needs: lint_and_test
-    if: github.ref == 'refs/heads/main'
+    if: |
+      github.ref == 'refs/heads/main' ||
+      startsWith(github.ref, 'refs/tags')
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -40,12 +44,13 @@ jobs:
         run: |
           npm install -g yarn
           yarn
+      - name: generate app.json
+        run: yarn make-app-json
       - uses: expo/expo-github-action@v5
         with:
           expo-version: 4.x
-          expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
-          expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
-      - run: yarn install
+          expo-username: ${{secrets.EXPO_CLI_USERNAME}}
+          expo-password: ${{secrets.EXPO_CLI_PASSWORD}}
       - run: "expo publish"
         shell: bash
         env:
@@ -53,3 +58,80 @@ jobs:
           SENTRY_DSN: ${{secrets.SENTRY_DSN}}
           SENTRY_ORG: ${{secrets.SENTRY_ORG}}
           SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
+
+  release_android:
+    runs-on: ubuntu-latest
+    needs: publish
+    if: startsWith(github.ref, 'refs/tags')
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - name: install dependencies
+        run: |
+          npm install -g yarn
+          yarn
+      - name: generate app.json
+        run: yarn make-app-json
+      - uses: expo/expo-github-action@v5
+        with:
+          expo-version: 4.x
+          expo-username: ${{secrets.EXPO_CLI_USERNAME}}
+          expo-password: ${{secrets.EXPO_CLI_PASSWORD}}
+      - run: "expo build:android -t app-bundle"
+        shell: bash
+        env:
+          SENTRY_AUTH_TOKEN: ${{secrets.SENTRY}}
+          SENTRY_DSN: ${{secrets.SENTRY_DSN}}
+          SENTRY_ORG: ${{secrets.SENTRY_ORG}}
+          SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
+      - run: 'echo "$GOOGLE_API_KEY" > key.json'
+        shell: bash
+        env:
+          GOOGLE_API_KEY: ${{secrets.GOOGLE_API_KEY}}
+      - run: expo upload:android --latest --key key.json --use-submission-service
+      - run: "wget $(expo url:apk)"
+        shell: bash
+      - name: save build as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist-without-markdown
+          path: "*.aab"
+
+  release_ios:
+    runs-on: ubuntu-latest
+    needs: publish
+    if: startsWith(github.ref, 'refs/tags')
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - name: install dependencies
+        run: |
+          npm install -g yarn
+          yarn
+      - name: generate app.json
+        run: yarn make-app-json
+      - uses: expo/expo-github-action@v5
+        with:
+          expo-version: 4.x
+          expo-username: ${{secrets.EXPO_CLI_USERNAME}}
+          expo-password: ${{secrets.EXPO_CLI_PASSWORD}}
+      - run: "expo build:ios -t archive"
+        shell: bash
+        env:
+          EXPO_APPLE_ID: ${{secrets.EXPO_APPLE_ID}}
+          EXPO_APPLE_PASSWORD: ${{secrets.EXPO_APPLE_PASSWORD}}
+          SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
+          SENTRY_DSN: ${{secrets.SENTRY_DSN}}
+          SENTRY_ORG: ${{secrets.SENTRY_ORG}}
+          SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
+      - run: "wget $(expo url:ipa)"
+        shell: bash
+      - name: save build as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist-without-markdown
+          path: "*.ipa"
