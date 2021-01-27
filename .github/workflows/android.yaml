@@ -14,16 +14,17 @@ jobs:
         run: |
           npm install -g yarn
           yarn
+      - name: generate app.json
+        run: yarn make-app-json
       - uses: expo/expo-github-action@v5
         with:
           expo-version: 4.x
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
-      - run: yarn install
       - run: "expo build:android -t app-bundle"
         shell: bash
         env:
-          SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
+          SENTRY_AUTH_TOKEN: ${{secrets.SENTRY
           SENTRY_DSN: ${{secrets.SENTRY_DSN}}
           SENTRY_ORG: ${{secrets.SENTRY_ORG}}
           SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}

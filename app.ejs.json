@@ -2,7 +2,7 @@
   "expo": {
     "name": "curfew-alarm",
     "slug": "curfew-alarm",
-    "version": "5.0.0",
+    "version": "<%= version %>.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon/web_hi_res_1024.png",
     "splash": {
@@ -18,12 +18,12 @@
       "icon": "./assets/icon/res/mipmap-xhdpi/icon.png"
     },
     "ios": {
-      "buildNumber": "5.0.0",
+      "buildNumber": "<%= version %>.0.0",
       "supportsTablet": true,
       "bundleIdentifier": "com.nvbn.curfewalarm"
     },
     "android": {
-      "versionCode": 5,
+      "versionCode": <%= version %>,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon/web_hi_res_1024.png",
         "backgroundColor": "#FFFFFF"

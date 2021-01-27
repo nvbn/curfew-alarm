@@ -2,17 +2,17 @@
   "main": "node_modules/expo/AppEntry.js",
   "license": "MIT",
   "scripts": {
-    "start": "expo start -c",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
+    "make-app-json": "ts-node scripts/make_app_json.ts",
+    "start": "yarn make-app-json && expo start -c",
+    "android": "yarn make-app-json && expo start --android",
+    "ios": "yarn make-app-json && expo start --ios",
     "eject": "expo eject",
     "type-check": "tsc",
     "formatting-check": "prettier --check 'src/**/*.{js,ts,tsx}'",
     "lint": "eslint --ext js,jsx,ts,tsx src",
     "test": "TZ=UTC jest --silent --runInBand --detectOpenHandles",
     "test-verbose": "TZ=UTC jest",
-    "start-storybook": "STORYBOOK=true expo start -c"
+    "start-storybook": "yarn make-app-json && STORYBOOK=true expo start -c"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.13.3",
@@ -46,8 +46,10 @@
     "@testing-library/jest-native": "^3.4.3",
     "@testing-library/react-hooks": "^5.0.2",
     "@testing-library/react-native": "^7.1.0",
+    "@types/ejs": "^3.0.5",
     "@types/i18n-js": "^3.8.0",
     "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.22",
     "@types/react": "~16.9.35",
     "@types/react-dom": "~16.9.8",
     "@types/react-native": "~0.63.2",
@@ -56,6 +58,7 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-search-and-replace": "^1.1.0",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
+    "ejs": "^3.1.5",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.1",
@@ -68,6 +71,7 @@
     "jsdom": "^16.4.0",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",
+    "ts-node": "^9.1.1",
     "typescript": "~4.0.0"
   },
   "husky": {
