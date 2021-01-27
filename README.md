@@ -73,26 +73,30 @@ When creating a new story you need to import it in
 Every commit to master publishes the changes, the changes are delivered to
 users automatically via OTA.
 
-If you actually need to publish a new version to a marketplace, follow the
-platform specific sections below.
+If you actually need to publish a new version to a marketplace, run:
+
+```bash
+yarn release
+```
+
+After that wait for the CI job to complete, and the release artifacts to appear,
+then follow platform specific sections below.
 
 ### Android
 
-To release a new version of app to the Google Play Store you need to:
+To release a new version of the app to the Google Play Store you need to:
 
-1. Increase `expo -> android -> versionCode` in `app.json`.
-2. Push the changes and wait for [the ci workflow](https://github.com/nvbn/curfew-alarm/actions?query=workflow%3Aci) to complete.
-3. Manually trigger [the android workflow](https://github.com/nvbn/curfew-alarm/actions?query=workflow%3Aandroid).
+1. Go to Internal Testing in Google Play Console.
+2. Promote the latest release to production.
 
 ### iOS
 
-To release a new version of app to the App Store you need to:
+To release a new version of the app to the App Store you need to:
 
-1. Increase `expo -> ios -> buildNumber` in `app.json`.
-2. Push the changes and wait for [the ci workflow](https://github.com/nvbn/curfew-alarm/actions?query=workflow%3Aci) to complete.
-3. Manually trigger [the ios workflow](https://github.com/nvbn/curfew-alarm/actions?query=workflow%3Aios).
-4. Download the latest build artifact from [expo](https://expo.io/accounts/nvbn/builds).
-5. Submit the `*.ipa` in Transporter.app.
+1. Download the `*.ipa` file from the release artifacts.
+2. Upload it with Transporter.app.
+3. Enable the build in TestFlight in the App Store Connect.
+4. Enable the build in the App Store section of the App Store Connect.
 
 ## [License MIT](https://github.com/nvbn/curfew-alarm/blob/main/LICENSE.md)
 
