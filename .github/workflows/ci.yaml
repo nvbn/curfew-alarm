@@ -49,8 +49,8 @@ jobs:
       - uses: expo/expo-github-action@v5
         with:
           expo-version: 4.x
-          expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
-          expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
+          expo-username: ${{secrets.EXPO_CLI_USERNAME}}
+          expo-password: ${{secrets.EXPO_CLI_PASSWORD}}
       - run: "expo publish"
         shell: bash
         env:
@@ -77,12 +77,12 @@ jobs:
       - uses: expo/expo-github-action@v5
         with:
           expo-version: 4.x
-          expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
-          expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
+          expo-username: ${{secrets.EXPO_CLI_USERNAME}}
+          expo-password: ${{secrets.EXPO_CLI_PASSWORD}}
       - run: "expo build:android -t app-bundle"
         shell: bash
         env:
-          SENTRY_AUTH_TOKEN: ${{secrets.SENTRY
+          SENTRY_AUTH_TOKEN: ${{secrets.SENTRY}}
           SENTRY_DSN: ${{secrets.SENTRY_DSN}}
           SENTRY_ORG: ${{secrets.SENTRY_ORG}}
           SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
@@ -117,9 +117,9 @@ jobs:
       - uses: expo/expo-github-action@v5
         with:
           expo-version: 4.x
-          expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
-          expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
-      - run: "expo build:ios -t archive "
+          expo-username: ${{secrets.EXPO_CLI_USERNAME}}
+          expo-password: ${{secrets.EXPO_CLI_PASSWORD}}
+      - run: "expo build:ios -t archive"
         shell: bash
         env:
           EXPO_APPLE_ID: ${{secrets.EXPO_APPLE_ID}}
