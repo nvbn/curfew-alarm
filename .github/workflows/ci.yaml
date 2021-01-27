@@ -59,7 +59,7 @@ jobs:
           SENTRY_ORG: ${{secrets.SENTRY_ORG}}
           SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
 
-  release_android:
+  build_and_publish_android:
     runs-on: ubuntu-latest
     needs: publish
     if: startsWith(github.ref, 'refs/tags')
@@ -91,7 +91,7 @@ jobs:
         env:
           GOOGLE_API_KEY: ${{secrets.GOOGLE_API_KEY}}
       - run: expo upload:android --latest --key key.json --use-submission-service
-      - run: "wget $(expo url:apk)"
+      - run: "wget $(expo url:apk) -O curfew-alarm.aab"
         shell: bash
       - name: save build as an artifact
         uses: actions/upload-artifact@v2
@@ -99,7 +99,7 @@ jobs:
           name: android build
           path: "*.aab"
 
-  release_ios:
+  build_ios:
     runs-on: ubuntu-latest
     needs: publish
     if: startsWith(github.ref, 'refs/tags')
@@ -128,10 +128,42 @@ jobs:
           SENTRY_DSN: ${{secrets.SENTRY_DSN}}
           SENTRY_ORG: ${{secrets.SENTRY_ORG}}
           SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
-      - run: "wget $(expo url:ipa)"
+      - run: "wget $(expo url:ipa) -O curfew-alarm.ipa"
         shell: bash
       - name: save build as an artifact
         uses: actions/upload-artifact@v2
         with:
           name: ios build
           path: "*.ipa"
+
+  github_release:
+    runs-on: ubuntu-latest
+    needs: [build_and_publish_android, build_ios]
+    if: startsWith(github.ref, 'refs/tags')
+    steps:
+      - uses: actions/download-artifact@v2
+      - uses: actions/create-release@v1
+        id: create_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./curfew-alarm.ipa
+          asset_name: curfew-alarm.ipa
+          asset_content_type: application/zip
+      - uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./curfew-alarm.aab
+          asset_name: curfew-alarm.aab
+          asset_content_type: application/zip
