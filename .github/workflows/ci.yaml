@@ -96,7 +96,7 @@ jobs:
       - name: save build as an artifact
         uses: actions/upload-artifact@v2
         with:
-          name: dist-without-markdown
+          name: android build
           path: "*.aab"
 
   release_ios:
@@ -133,5 +133,5 @@ jobs:
       - name: save build as an artifact
         uses: actions/upload-artifact@v2
         with:
-          name: dist-without-markdown
+          name: ios build
           path: "*.ipa"
