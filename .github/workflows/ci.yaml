@@ -96,8 +96,8 @@ jobs:
       - name: save build as an artifact
         uses: actions/upload-artifact@v2
         with:
-          name: android build
-          path: "*.aab"
+          name: curfew-alarm.aab
+          path: curfew-alarm.aab
 
   build_ios:
     runs-on: ubuntu-latest
@@ -133,8 +133,8 @@ jobs:
       - name: save build as an artifact
         uses: actions/upload-artifact@v2
         with:
-          name: ios build
-          path: "*.ipa"
+          name: curfew-alarm.ipa
+          path: curfew-alarm.ipa
 
   github_release:
     runs-on: ubuntu-latest
