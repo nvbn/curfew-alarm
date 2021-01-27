@@ -19,3 +19,7 @@ coverage
 .DS_Store
 
 app.json
+
+*.ipa
+*.aab
+*.apk

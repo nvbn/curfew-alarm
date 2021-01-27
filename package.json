@@ -12,7 +12,8 @@
     "lint": "eslint --ext js,jsx,ts,tsx src",
     "test": "TZ=UTC jest --silent --runInBand --detectOpenHandles",
     "test-verbose": "TZ=UTC jest",
-    "start-storybook": "yarn make-app-json && STORYBOOK=true expo start -c"
+    "start-storybook": "yarn make-app-json && STORYBOOK=true expo start -c",
+    "release": "ts-node scripts/release.ts"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.13.3",
