@@ -2,6 +2,7 @@
 import { fireEvent, render } from "@testing-library/react-native";
 import React from "react";
 
+import { FUTURE_NOT_READY } from "../../../utils/future";
 import NumberItem from "../NumberItem";
 
 describe("<NumberItem />", () => {
@@ -12,6 +13,20 @@ describe("<NumberItem />", () => {
         title="Some number"
         type="number"
         value={42}
+        onChange={() => {}}
+      />,
+    );
+
+    expect(rendered).toMatchSnapshot();
+  });
+
+  test("can be rendered when value is not ready", () => {
+    const rendered = render(
+      <NumberItem
+        id="test"
+        title="Some number"
+        type="number"
+        value={FUTURE_NOT_READY}
         onChange={() => {}}
       />,
     );

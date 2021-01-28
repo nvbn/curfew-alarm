@@ -37,4 +37,6 @@ exports[`<ActionItem /> displays item when action hasn't been performed 1`] = `
 </View>
 `;
 
+exports[`<ActionItem /> displays item when action isn't ready 1`] = `null`;
+
 exports[`<ActionItem /> displays nothing when action has been performed 1`] = `null`;

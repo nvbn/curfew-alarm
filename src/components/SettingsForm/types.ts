@@ -1,3 +1,4 @@
+import { Future } from "../../utils/future";
 import { Time } from "../../utils/time";
 
 type TypedItemType = "time" | "number" | "action" | "boolean";
@@ -6,7 +7,7 @@ type BaseTypedItemProps<T, Q extends TypedItemType> = {
   id: string;
   title: string;
   type: Q;
-  value: T;
+  value: Future<T>;
   onChange: (newValue: T) => void;
 };
 
