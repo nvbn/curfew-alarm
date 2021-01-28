@@ -6,6 +6,7 @@ jobs:
   lint_and_test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - uses: ./.github/actions/prepare@63-publish-for-testing
       - name: lint
         run: "yarn lint"
@@ -27,6 +28,7 @@ jobs:
       github.ref == 'refs/heads/main' ||
       startsWith(github.ref, 'refs/tags')
     steps:
+      - uses: actions/checkout@v2
       - uses: ./.github/actions/prepare@63-publish-for-testing
       - uses: expo/expo-github-action@v5
         with:
@@ -46,6 +48,7 @@ jobs:
     needs: lint_and_test
     if: github.ref != 'refs/heads/main'
     steps:
+      - uses: actions/checkout@v2
       - uses: ./.github/actions/prepare@63-publish-for-testing
       - uses: expo/expo-github-action@v5
         with:
@@ -65,6 +68,7 @@ jobs:
     needs: publish
     if: startsWith(github.ref, 'refs/tags')
     steps:
+      - uses: actions/checkout@v2
       - uses: ./.github/actions/prepare@63-publish-for-testing
       - uses: expo/expo-github-action@v5
         with:
@@ -96,6 +100,7 @@ jobs:
     needs: publish
     if: startsWith(github.ref, 'refs/tags')
     steps:
+      - uses: actions/checkout@v2
       - uses: ./.github/actions/prepare@63-publish-for-testing
       - uses: expo/expo-github-action@v5
         with:
