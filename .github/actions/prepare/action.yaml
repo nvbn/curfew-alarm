@@ -1,0 +1,11 @@
+name: prepare
+
+runs:
+  using: "composite"
+  steps:
+    - run: npm install -g yarn
+      shell: bash
+    - run: yarn
+      shell: bash
+    - run: yarn make-app-json
+      shell: bash
