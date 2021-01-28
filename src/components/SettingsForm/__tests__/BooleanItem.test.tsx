@@ -2,6 +2,7 @@
 import { fireEvent, render } from "@testing-library/react-native";
 import React from "react";
 
+import { FUTURE_NOT_READY } from "../../../utils/future";
 import BooleanItem from "../BooleanItem";
 
 describe("<BooleanItem />", () => {
@@ -12,6 +13,20 @@ describe("<BooleanItem />", () => {
         title="Some toggle"
         type="boolean"
         value={false}
+        onChange={() => {}}
+      />,
+    );
+
+    expect(rendered.toJSON()).toMatchSnapshot();
+  });
+
+  test("can be rendered when value isn't ready", () => {
+    const rendered = render(
+      <BooleanItem
+        id="test"
+        title="Some toggle"
+        type="boolean"
+        value={FUTURE_NOT_READY}
         onChange={() => {}}
       />,
     );

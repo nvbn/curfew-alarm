@@ -2,6 +2,7 @@
 import { fireEvent, render } from "@testing-library/react-native";
 import React from "react";
 
+import { FUTURE_NOT_READY } from "../../../utils/future";
 import ActionItem from "../ActionItem";
 
 describe("<ActionItem />", () => {
@@ -26,6 +27,20 @@ describe("<ActionItem />", () => {
         title="Test action item"
         type="action"
         value={true}
+        onChange={() => {}}
+      />,
+    );
+
+    expect(rendered.toJSON()).toMatchSnapshot();
+  });
+
+  test("displays item when action isn't ready", () => {
+    const rendered = render(
+      <ActionItem
+        id="test"
+        title="Test action item"
+        type="action"
+        value={FUTURE_NOT_READY}
         onChange={() => {}}
       />,
     );

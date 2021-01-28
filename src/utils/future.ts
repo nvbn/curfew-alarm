@@ -9,3 +9,6 @@ export type Future<T> = T | typeof FUTURE_NOT_READY;
 
 export const isReady = <T>(val: Future<T>): val is T =>
   val !== FUTURE_NOT_READY;
+
+export const futureMap = <T, Q>(v: Future<T>, fn: (v: T) => Q): Future<Q> =>
+  isReady(v) ? fn(v) : v;

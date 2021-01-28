@@ -79,3 +79,66 @@ exports[`<TimeItem /> can be rendered on ios 1`] = `
   />
 </View>
 `;
+
+exports[`<TimeItem /> can be rendered when not ready on android 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "borderBottomColor": "#fafafa",
+      "borderBottomWidth": 1,
+      "marginHorizontal": 16,
+      "marginVertical": 8,
+      "opacity": 1,
+      "paddingHorizontal": 10,
+      "paddingVertical": 20,
+    }
+  }
+  testID="time-item-android-touchable-test"
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 24,
+        "paddingBottom": 10,
+      }
+    }
+  >
+    When it starts
+  </Text>
+</View>
+`;
+
+exports[`<TimeItem /> can be rendered when not ready on ios 1`] = `
+<View
+  style={
+    Object {
+      "borderBottomColor": "#fafafa",
+      "borderBottomWidth": 1,
+      "marginHorizontal": 16,
+      "marginVertical": 8,
+      "paddingHorizontal": 10,
+      "paddingVertical": 20,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 24,
+        "paddingBottom": 10,
+      }
+    }
+  >
+    When it starts
+  </Text>
+</View>
+`;

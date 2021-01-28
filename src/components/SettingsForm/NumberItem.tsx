@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { Text, TextInput, View } from "react-native";
 
+import { isReady } from "../../utils/future";
 import styles from "./styles";
 import { NumberItemProps } from "./types";
 
@@ -26,13 +27,15 @@ const NumberItem = ({
   return (
     <View style={styles.item}>
       <Text style={styles.title}>{title}</Text>
-      <TextInput
-        testID={`number-item-input-${id}`}
-        keyboardType="number-pad"
-        defaultValue={value.toString()}
-        onChangeText={onChangeAsNumber}
-        style={styles.input}
-      />
+      {isReady(value) && (
+        <TextInput
+          testID={`number-item-input-${id}`}
+          keyboardType="number-pad"
+          defaultValue={value.toString()}
+          onChangeText={onChangeAsNumber}
+          style={styles.input}
+        />
+      )}
     </View>
   );
 };
