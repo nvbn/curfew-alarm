@@ -5,6 +5,7 @@ import React, { useCallback, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
 import { PLATFORM_OS_ANDROID, PlatformOS } from "../../dependencies/IPlatform";
+import { Future, futureMap, isReady } from "../../utils/future";
 import { dateToTime, formatTime, Time, timeToDate } from "../../utils/time";
 import styles from "./styles";
 import { TimeItemProps } from "./types";
@@ -12,7 +13,7 @@ import { TimeItemProps } from "./types";
 type TimeItemIOSProps = {
   id: string;
   title: string;
-  valueAsDate: Date;
+  valueAsDate: Future<Date>;
   onChange: (event: Event, newValue?: Date) => void;
 };
 
@@ -24,20 +25,22 @@ const TimeItemIOS = ({
 }: TimeItemIOSProps): JSX.Element => (
   <View style={styles.item}>
     <Text style={styles.title}>{title}</Text>
-    <RNDateTimePicker
-      testID={`time-item-ios-time-picker-${id}`}
-      mode="time"
-      value={valueAsDate}
-      onChange={onChange}
-    />
+    {isReady(valueAsDate) && (
+      <RNDateTimePicker
+        testID={`time-item-ios-time-picker-${id}`}
+        mode="time"
+        value={valueAsDate}
+        onChange={onChange}
+      />
+    )}
   </View>
 );
 
 type TimeItemAndroidProps = {
   id: string;
   title: string;
-  value: Time;
-  valueAsDate: Date;
+  value: Future<Time>;
+  valueAsDate: Future<Date>;
   onChange: (event: Event, newValue?: Date) => void;
 };
 
@@ -67,14 +70,18 @@ const TimeItemAndroid = ({
       }}
     >
       <Text style={styles.title}>{title}</Text>
-      <Text style={styles.input}>{formatTime(value)}</Text>
-      {showPicker && (
-        <RNDateTimePicker
-          testID={`time-item-android-time-picker-${id}`}
-          mode="time"
-          value={valueAsDate}
-          onChange={onChangeWithDismiss}
-        />
+      {isReady(value) && isReady(valueAsDate) && (
+        <>
+          <Text style={styles.input}>{formatTime(value)}</Text>
+          {showPicker && (
+            <RNDateTimePicker
+              testID={`time-item-android-time-picker-${id}`}
+              mode="time"
+              value={valueAsDate}
+              onChange={onChangeWithDismiss}
+            />
+          )}
+        </>
       )}
     </TouchableOpacity>
   );
@@ -88,7 +95,7 @@ type Props = TimeItemProps & {
  * Allows to modify settings value that store time.
  */
 const TimeItem = ({ id, title, value, onChange, os }: Props): JSX.Element => {
-  const valueAsDate = timeToDate(value);
+  const valueAsDate = futureMap(value, timeToDate);
 
   const onChangeAsTime = useCallback(
     (_: Event, newValue?: Date): void =>

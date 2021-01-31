@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Text, View } from "react-native";
 
+import { isReady } from "../../utils/future";
 import styles from "./styles";
 import { BooleanItemProps } from "./types";
 
@@ -15,11 +16,13 @@ const BooleanItem = ({
 }: BooleanItemProps): JSX.Element | null => (
   <View style={[styles.item, styles.booleanItem]}>
     <Text style={styles.title}>{title}</Text>
-    <Switch
-      value={value}
-      onValueChange={onChange}
-      testID={`boolean-item-switch-${id}`}
-    />
+    {isReady(value) && (
+      <Switch
+        value={value}
+        onValueChange={onChange}
+        testID={`boolean-item-switch-${id}`}
+      />
+    )}
   </View>
 );
 

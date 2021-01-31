@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 
+import { isReady } from "../../utils/future";
 import styles from "./styles";
 import { ActionItemProps } from "./types";
 
@@ -13,7 +14,7 @@ const ActionItem = ({
   value,
   onChange,
 }: ActionItemProps): JSX.Element | null => {
-  if (value) {
+  if (value || !isReady(value)) {
     return null;
   }
 

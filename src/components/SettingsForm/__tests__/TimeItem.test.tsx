@@ -11,6 +11,7 @@ import {
   PLATFORM_OS_ANDROID,
   PLATFORM_OS_IOS,
 } from "../../../dependencies/IPlatform";
+import { FUTURE_NOT_READY } from "../../../utils/future";
 import { timeToDate } from "../../../utils/time";
 import TimeItem from "../TimeItem";
 
@@ -38,6 +39,21 @@ describe("<TimeItem />", () => {
             hour: 20,
             minute: 30,
           }}
+          onChange={() => {}}
+          os={os}
+        />,
+      );
+
+      expect(rendered.toJSON()).toMatchSnapshot();
+    });
+
+    test(`can be rendered when not ready on ${os}`, () => {
+      const rendered = render(
+        <TimeItem
+          id="test"
+          title="When it starts"
+          type="time"
+          value={FUTURE_NOT_READY}
           onChange={() => {}}
           os={os}
         />,

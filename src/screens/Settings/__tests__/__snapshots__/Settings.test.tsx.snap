@@ -10,7 +10,45 @@ exports[`<Settings /> can be rendered on [object Object] 1`] = `
   }
 >
   <RCTScrollView
-    data={Array []}
+    data={
+      Array [
+        Object {
+          "id": "enable",
+          "onChange": [Function],
+          "title": "Is it still going?",
+          "type": "boolean",
+          "value": "__FUTURE_NOT_READY__",
+        },
+        Object {
+          "id": "curfew-start",
+          "onChange": [Function],
+          "title": "Curfew begins at:",
+          "type": "time",
+          "value": "__FUTURE_NOT_READY__",
+        },
+        Object {
+          "id": "curfew-end",
+          "onChange": [Function],
+          "title": "Curfew is over at:",
+          "type": "time",
+          "value": "__FUTURE_NOT_READY__",
+        },
+        Object {
+          "id": "go-home",
+          "onChange": [Function],
+          "title": "Go home minutes before:",
+          "type": "number",
+          "value": "__FUTURE_NOT_READY__",
+        },
+        Object {
+          "id": "enable-notifications",
+          "onChange": [Function],
+          "title": "Enable notifications",
+          "type": "action",
+          "value": "__FUTURE_NOT_READY__",
+        },
+      ]
+    }
     disableVirtualization={false}
     getItem={[Function]}
     getItemCount={[Function]}
@@ -33,7 +71,151 @@ exports[`<Settings /> can be rendered on [object Object] 1`] = `
     viewabilityConfigCallbackPairs={Array []}
     windowSize={21}
   >
-    <View />
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "borderBottomColor": "#fafafa",
+                "borderBottomWidth": 1,
+                "marginHorizontal": 16,
+                "marginVertical": 8,
+                "paddingHorizontal": 10,
+                "paddingVertical": 20,
+              },
+              Object {
+                "alignItems": "flex-start",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 24,
+                "paddingBottom": 10,
+              }
+            }
+          >
+            Is it still going?
+          </Text>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "borderBottomColor": "#fafafa",
+              "borderBottomWidth": 1,
+              "marginHorizontal": 16,
+              "marginVertical": 8,
+              "opacity": 1,
+              "paddingHorizontal": 10,
+              "paddingVertical": 20,
+            }
+          }
+          testID="time-item-android-touchable-curfew-start"
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 24,
+                "paddingBottom": 10,
+              }
+            }
+          >
+            Curfew begins at:
+          </Text>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "borderBottomColor": "#fafafa",
+              "borderBottomWidth": 1,
+              "marginHorizontal": 16,
+              "marginVertical": 8,
+              "opacity": 1,
+              "paddingHorizontal": 10,
+              "paddingVertical": 20,
+            }
+          }
+          testID="time-item-android-touchable-curfew-end"
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 24,
+                "paddingBottom": 10,
+              }
+            }
+          >
+            Curfew is over at:
+          </Text>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "borderBottomColor": "#fafafa",
+              "borderBottomWidth": 1,
+              "marginHorizontal": 16,
+              "marginVertical": 8,
+              "paddingHorizontal": 10,
+              "paddingVertical": 20,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 24,
+                "paddingBottom": 10,
+              }
+            }
+          >
+            Go home minutes before:
+          </Text>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      />
+    </View>
   </RCTScrollView>
 </View>
 `;
@@ -48,7 +230,45 @@ exports[`<Settings /> can be rendered on [object Object] 2`] = `
   }
 >
   <RCTScrollView
-    data={Array []}
+    data={
+      Array [
+        Object {
+          "id": "enable",
+          "onChange": [Function],
+          "title": "Is it still going?",
+          "type": "boolean",
+          "value": "__FUTURE_NOT_READY__",
+        },
+        Object {
+          "id": "curfew-start",
+          "onChange": [Function],
+          "title": "Curfew begins at:",
+          "type": "time",
+          "value": "__FUTURE_NOT_READY__",
+        },
+        Object {
+          "id": "curfew-end",
+          "onChange": [Function],
+          "title": "Curfew is over at:",
+          "type": "time",
+          "value": "__FUTURE_NOT_READY__",
+        },
+        Object {
+          "id": "go-home",
+          "onChange": [Function],
+          "title": "Go home minutes before:",
+          "type": "number",
+          "value": "__FUTURE_NOT_READY__",
+        },
+        Object {
+          "id": "enable-notifications",
+          "onChange": [Function],
+          "title": "Enable notifications",
+          "type": "action",
+          "value": "__FUTURE_NOT_READY__",
+        },
+      ]
+    }
     disableVirtualization={false}
     getItem={[Function]}
     getItemCount={[Function]}
@@ -71,7 +291,129 @@ exports[`<Settings /> can be rendered on [object Object] 2`] = `
     viewabilityConfigCallbackPairs={Array []}
     windowSize={21}
   >
-    <View />
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "borderBottomColor": "#fafafa",
+                "borderBottomWidth": 1,
+                "marginHorizontal": 16,
+                "marginVertical": 8,
+                "paddingHorizontal": 10,
+                "paddingVertical": 20,
+              },
+              Object {
+                "alignItems": "flex-start",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 24,
+                "paddingBottom": 10,
+              }
+            }
+          >
+            Is it still going?
+          </Text>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "borderBottomColor": "#fafafa",
+              "borderBottomWidth": 1,
+              "marginHorizontal": 16,
+              "marginVertical": 8,
+              "paddingHorizontal": 10,
+              "paddingVertical": 20,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 24,
+                "paddingBottom": 10,
+              }
+            }
+          >
+            Curfew begins at:
+          </Text>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "borderBottomColor": "#fafafa",
+              "borderBottomWidth": 1,
+              "marginHorizontal": 16,
+              "marginVertical": 8,
+              "paddingHorizontal": 10,
+              "paddingVertical": 20,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 24,
+                "paddingBottom": 10,
+              }
+            }
+          >
+            Curfew is over at:
+          </Text>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "borderBottomColor": "#fafafa",
+              "borderBottomWidth": 1,
+              "marginHorizontal": 16,
+              "marginVertical": 8,
+              "paddingHorizontal": 10,
+              "paddingVertical": 20,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 24,
+                "paddingBottom": 10,
+              }
+            }
+          >
+            Go home minutes before:
+          </Text>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      />
+    </View>
   </RCTScrollView>
 </View>
 `;

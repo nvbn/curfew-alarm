@@ -5,7 +5,7 @@ import SettingsForm, { TypedItemProps } from "../../components/SettingsForm";
 import useNotifications from "../../hooks/useNotifications";
 import usePlatformOS from "../../hooks/usePlatformOS";
 import useSettings from "../../hooks/useSettings";
-import { isReady } from "../../utils/future";
+import { futureMap } from "../../utils/future";
 import i18n from "../../utils/i18n";
 import { Time } from "../../utils/time";
 import styles from "./styles";
@@ -18,47 +18,44 @@ const Settings = (): JSX.Element => {
   const [settings, updateSettings] = useSettings();
   const [isNotificationsEnabled, requestNotifications] = useNotifications();
 
-  const options: TypedItemProps[] =
-    isReady(settings) && isReady(isNotificationsEnabled)
-      ? [
-          {
-            id: "enable",
-            title: i18n.t("inputTitleEnabled"),
-            type: "boolean",
-            value: settings.enabled,
-            onChange: (enabled) => updateSettings({ enabled }),
-          },
-          {
-            id: "curfew-start",
-            title: i18n.t("inputTitleCurfewStart"),
-            type: "time",
-            value: settings.curfewStart,
-            onChange: (curfewStart: Time) => updateSettings({ curfewStart }),
-          },
-          {
-            id: "curfew-end",
-            title: i18n.t("inputTitleCurfewEnd"),
-            type: "time",
-            value: settings.curfewEnd,
-            onChange: (curfewEnd: Time) => updateSettings({ curfewEnd }),
-          },
-          {
-            id: "go-home",
-            title: i18n.t("inputTitleGoHome"),
-            type: "number",
-            value: settings.minutesToGoHome,
-            onChange: (minutesToGoHome: number) =>
-              updateSettings({ minutesToGoHome }),
-          },
-          {
-            id: "enable-notifications",
-            title: i18n.t("inputTitleEnableNotifications"),
-            type: "action",
-            value: isNotificationsEnabled,
-            onChange: () => requestNotifications(),
-          },
-        ]
-      : [];
+  const options: TypedItemProps[] = [
+    {
+      id: "enable",
+      title: i18n.t("inputTitleEnabled"),
+      type: "boolean",
+      value: futureMap(settings, (v) => v.enabled),
+      onChange: (enabled) => updateSettings({ enabled }),
+    },
+    {
+      id: "curfew-start",
+      title: i18n.t("inputTitleCurfewStart"),
+      type: "time",
+      value: futureMap(settings, (v) => v.curfewStart),
+      onChange: (curfewStart: Time) => updateSettings({ curfewStart }),
+    },
+    {
+      id: "curfew-end",
+      title: i18n.t("inputTitleCurfewEnd"),
+      type: "time",
+      value: futureMap(settings, (v) => v.curfewEnd),
+      onChange: (curfewEnd: Time) => updateSettings({ curfewEnd }),
+    },
+    {
+      id: "go-home",
+      title: i18n.t("inputTitleGoHome"),
+      type: "number",
+      value: futureMap(settings, (v) => v.minutesToGoHome),
+      onChange: (minutesToGoHome: number) =>
+        updateSettings({ minutesToGoHome }),
+    },
+    {
+      id: "enable-notifications",
+      title: i18n.t("inputTitleEnableNotifications"),
+      type: "action",
+      value: isNotificationsEnabled,
+      onChange: () => requestNotifications(),
+    },
+  ];
 
   return (
     <View style={styles.container}>
