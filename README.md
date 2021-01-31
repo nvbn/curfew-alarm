@@ -4,6 +4,9 @@
 
 A small app that indicates when you need to go or stay at home.
 
+[![App Store](https://developer.apple.com/app-store/marketing/guidelines/images/badge-example-preferred.png)](https://apps.apple.com/us/app/curfew-alarm/id1550522848)
+[![Google Play](https://lh3.googleusercontent.com/cjsqrWQKJQp9RFO7-hJ9AfpKzbUb_Y84vXfjlP0iRHBvladwAfXih984olktDhPnFqyZ0nu9A5jvFwOEQPXzv7hr3ce3QVsLN8kQ2Ao=s0)](https://play.google.com/store/apps/details?id=com.nvbn.curfewalarm)
+
 ## Development
 
 ### Dependencies
