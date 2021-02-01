@@ -30,7 +30,6 @@
       },
       "useNextNotificationsApi": true,
       "package": "com.nvbn.curfewalarm",
-      "permissions": ["NOTIFICATIONS", "USER_FACING_NOTIFICATIONS"],
       "googleServicesFile": "./google-services.json"
     },
     "web": {
