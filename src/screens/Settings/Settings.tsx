@@ -63,7 +63,7 @@ const Settings = (): JSX.Element => {
     <KeyboardAvoidingView
       style={styles.container}
       keyboardVerticalOffset={headerHeight}
-      behavior="padding"
+      behavior={os === "ios" ? "padding" : "height"}
     >
       <SettingsForm options={options} os={os} />
     </KeyboardAvoidingView>

@@ -2,6 +2,7 @@
 
 exports[`<Settings /> can be rendered on [object Object] 1`] = `
 <View
+  onLayout={[Function]}
   style={
     Object {
       "backgroundColor": "#fff",
@@ -242,11 +243,17 @@ exports[`<Settings /> can be rendered on [object Object] 1`] = `
 
 exports[`<Settings /> can be rendered on [object Object] 2`] = `
 <View
+  onLayout={[Function]}
   style={
-    Object {
-      "backgroundColor": "#fff",
-      "flex": 1,
-    }
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+        "flex": 1,
+      },
+      Object {
+        "paddingBottom": 0,
+      },
+    ]
   }
 >
   <RCTScrollView
