@@ -2,6 +2,15 @@
 
 exports[`<BooleanItem /> can be rendered 1`] = `
 <View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
     Array [
       Object {
@@ -17,6 +26,7 @@ exports[`<BooleanItem /> can be rendered 1`] = `
       },
     ]
   }
+  testID="boolean-item-touchable-test"
 >
   <Text
     style={
@@ -47,6 +57,15 @@ exports[`<BooleanItem /> can be rendered 1`] = `
 
 exports[`<BooleanItem /> can be rendered when value isn't ready 1`] = `
 <View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
     Array [
       Object {
@@ -62,6 +81,7 @@ exports[`<BooleanItem /> can be rendered when value isn't ready 1`] = `
       },
     ]
   }
+  testID="boolean-item-touchable-test"
 >
   <Text
     style={

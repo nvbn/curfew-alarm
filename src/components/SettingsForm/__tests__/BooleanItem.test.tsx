@@ -34,7 +34,7 @@ describe("<BooleanItem />", () => {
     expect(rendered.toJSON()).toMatchSnapshot();
   });
 
-  test("fires onChange when touched", () => {
+  test("fires onChange when switch touched", () => {
     const onChange = jest.fn();
 
     const { getByTestId } = render(
@@ -49,6 +49,25 @@ describe("<BooleanItem />", () => {
 
     const toggle = getByTestId("boolean-item-switch-test");
     fireEvent(toggle, "valueChange", false);
+
+    expect(onChange.mock.calls).toEqual([[false]]);
+  });
+
+  test("fires onChange when the whole item touched", () => {
+    const onChange = jest.fn();
+
+    const { getByTestId } = render(
+      <BooleanItem
+        id="test"
+        title="Some toggle"
+        type="boolean"
+        value={true}
+        onChange={onChange}
+      />,
+    );
+
+    const toggle = getByTestId("boolean-item-touchable-test");
+    fireEvent.press(toggle);
 
     expect(onChange.mock.calls).toEqual([[false]]);
   });

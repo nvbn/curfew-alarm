@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Text, View } from "react-native";
+import { Switch, Text, TouchableWithoutFeedback, View } from "react-native";
 
 import { isReady } from "../../utils/future";
 import styles from "./styles";
@@ -13,17 +13,22 @@ const BooleanItem = ({
   title,
   value,
   onChange,
-}: BooleanItemProps): JSX.Element | null => (
-  <View style={[styles.item, styles.booleanItem]}>
-    <Text style={styles.title}>{title}</Text>
-    {isReady(value) && (
-      <Switch
-        value={value}
-        onValueChange={onChange}
-        testID={`boolean-item-switch-${id}`}
-      />
-    )}
-  </View>
+}: BooleanItemProps): JSX.Element => (
+  <TouchableWithoutFeedback
+    testID={`boolean-item-touchable-${id}`}
+    onPress={() => onChange(!value)}
+  >
+    <View style={[styles.item, styles.booleanItem]}>
+      <Text style={styles.title}>{title}</Text>
+      {isReady(value) && (
+        <Switch
+          value={value}
+          onValueChange={onChange}
+          testID={`boolean-item-switch-${id}`}
+        />
+      )}
+    </View>
+  </TouchableWithoutFeedback>
 );
 
 export default BooleanItem;
