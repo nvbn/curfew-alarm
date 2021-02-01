@@ -21,13 +21,6 @@ exports[`<SettingsForm /> can be rendered on android 1`] = `
         "type": "number",
         "value": 24,
       },
-      Object {
-        "id": "enable-notifications",
-        "onChange": [Function],
-        "title": "Enable notifications",
-        "type": "action",
-        "value": false,
-      },
     ]
   }
   disableVirtualization={false}
@@ -153,45 +146,6 @@ exports[`<SettingsForm /> can be rendered on android 1`] = `
         />
       </View>
     </View>
-    <View
-      onLayout={[Function]}
-      style={null}
-    >
-      <View
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "borderBottomColor": "#fafafa",
-            "borderBottomWidth": 1,
-            "marginHorizontal": 16,
-            "marginVertical": 8,
-            "opacity": 1,
-            "paddingHorizontal": 10,
-            "paddingVertical": 20,
-          }
-        }
-        testID="action-item-touchable-enable-notifications"
-      >
-        <Text
-          style={
-            Object {
-              "fontSize": 24,
-              "paddingBottom": 10,
-            }
-          }
-        >
-          Enable notifications
-        </Text>
-      </View>
-    </View>
   </View>
 </RCTScrollView>
 `;
@@ -216,13 +170,6 @@ exports[`<SettingsForm /> can be rendered on ios 1`] = `
         "title": "Go home minutes before:",
         "type": "number",
         "value": 24,
-      },
-      Object {
-        "id": "enable-notifications",
-        "onChange": [Function],
-        "title": "Enable notifications",
-        "type": "action",
-        "value": false,
       },
     ]
   }
@@ -327,45 +274,6 @@ exports[`<SettingsForm /> can be rendered on ios 1`] = `
           testID="number-item-input-go-home"
           underlineColorAndroid="transparent"
         />
-      </View>
-    </View>
-    <View
-      onLayout={[Function]}
-      style={null}
-    >
-      <View
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "borderBottomColor": "#fafafa",
-            "borderBottomWidth": 1,
-            "marginHorizontal": 16,
-            "marginVertical": 8,
-            "opacity": 1,
-            "paddingHorizontal": 10,
-            "paddingVertical": 20,
-          }
-        }
-        testID="action-item-touchable-enable-notifications"
-      >
-        <Text
-          style={
-            Object {
-              "fontSize": 24,
-              "paddingBottom": 10,
-            }
-          }
-        >
-          Enable notifications
-        </Text>
       </View>
     </View>
   </View>

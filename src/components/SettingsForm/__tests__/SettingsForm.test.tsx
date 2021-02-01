@@ -27,13 +27,6 @@ describe("<SettingsForm />", () => {
           value: 24,
           onChange: () => {},
         },
-        {
-          id: "enable-notifications",
-          title: "Enable notifications",
-          type: "action",
-          value: false,
-          onChange: () => {},
-        },
       ];
 
       const rendered = render(<SettingsForm options={options} os={os} />);
