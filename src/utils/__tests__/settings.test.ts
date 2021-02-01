@@ -33,6 +33,7 @@ describe("getSettings", () => {
       curfewEnd: { hour: 14, minute: 20 },
       minutesToGoHome: 45,
       enabled: false,
+      notificationsEnabled: false,
     };
     const storage = makePersistentStorageWithDataAndBehavior({
       data: { [SETTINGS_STORAGE_KEY]: JSON.stringify(storedSettings) },
@@ -53,6 +54,8 @@ describe("getSettings", () => {
     ["minutesToGoHome", "dog"],
     ["enabled", "sure"],
     ["enabled", NaN],
+    ["notificationsEnabled", "yes"],
+    ["notificationsEnabled", null],
   ] as any) {
     test(`replaces invalid  ${key} value ${JSON.stringify(
       value,
@@ -62,6 +65,7 @@ describe("getSettings", () => {
         curfewEnd: { hour: 14, minute: 20 },
         minutesToGoHome: 45,
         enabled: false,
+        notificationsEnabled: false,
       };
 
       const storedSettings = {
@@ -93,6 +97,7 @@ describe("updateSettings", async () => {
       curfewEnd: { hour: 3, minute: 15 },
       minutesToGoHome: 15,
       enabled: true,
+      notificationsEnabled: false,
     };
 
     const storage = makePersistentStorageWithDataAndBehavior();
@@ -108,6 +113,7 @@ describe("updateSettings", async () => {
       curfewEnd: { hour: 3, minute: 15 },
       minutesToGoHome: 15,
       enabled: false,
+      notificationsEnabled: false,
     };
 
     const storage = makePersistentStorageWithDataAndBehavior({

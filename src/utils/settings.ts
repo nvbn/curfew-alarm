@@ -7,6 +7,7 @@ export type Settings = {
   curfewEnd: Time;
   minutesToGoHome: number;
   enabled: boolean;
+  notificationsEnabled: boolean;
 };
 
 // exported only for tests
@@ -15,6 +16,7 @@ export const DEFAULT_SETTINGS: Settings = {
   curfewEnd: { hour: 4, minute: 30 },
   minutesToGoHome: 30,
   enabled: true,
+  notificationsEnabled: true,
 };
 
 // exported only for tests
@@ -53,6 +55,10 @@ const parseSettings = (serialised: string | null): Settings => {
 
   if (!(typeof settings.enabled === "boolean")) {
     settings.enabled = DEFAULT_SETTINGS.enabled;
+  }
+
+  if (!(typeof settings.notificationsEnabled === "boolean")) {
+    settings.notificationsEnabled = DEFAULT_SETTINGS.notificationsEnabled;
   }
 
   return settings;
