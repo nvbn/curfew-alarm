@@ -198,6 +198,15 @@ exports[`<Settings /> can be rendered on [object Object] 1`] = `
         style={null}
       >
         <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Object {
               "borderBottomColor": "#fafafa",
@@ -208,6 +217,7 @@ exports[`<Settings /> can be rendered on [object Object] 1`] = `
               "paddingVertical": 20,
             }
           }
+          testID="number-item-touchable-go-home"
         >
           <Text
             style={
@@ -406,6 +416,15 @@ exports[`<Settings /> can be rendered on [object Object] 2`] = `
         style={null}
       >
         <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Object {
               "borderBottomColor": "#fafafa",
@@ -416,6 +435,7 @@ exports[`<Settings /> can be rendered on [object Object] 2`] = `
               "paddingVertical": 20,
             }
           }
+          testID="number-item-touchable-go-home"
         >
           <Text
             style={

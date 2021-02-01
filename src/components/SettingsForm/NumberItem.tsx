@@ -1,5 +1,5 @@
-import React, { useCallback } from "react";
-import { Text, TextInput, View } from "react-native";
+import React, { useCallback, useRef } from "react";
+import { Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
 
 import { isReady } from "../../utils/future";
 import styles from "./styles";
@@ -24,19 +24,27 @@ const NumberItem = ({
     [onChange],
   );
 
+  const inputRef = useRef<TextInput>(null);
+
   return (
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-      {isReady(value) && (
-        <TextInput
-          testID={`number-item-input-${id}`}
-          keyboardType="number-pad"
-          defaultValue={value.toString()}
-          onChangeText={onChangeAsNumber}
-          style={styles.input}
-        />
-      )}
-    </View>
+    <TouchableWithoutFeedback
+      testID={`number-item-touchable-${id}`}
+      onPress={() => inputRef.current?.focus()}
+    >
+      <View style={styles.item}>
+        <Text style={styles.title}>{title}</Text>
+        {isReady(value) && (
+          <TextInput
+            ref={inputRef}
+            testID={`number-item-input-${id}`}
+            keyboardType="number-pad"
+            defaultValue={value.toString()}
+            onChangeText={onChangeAsNumber}
+            style={styles.input}
+          />
+        )}
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
