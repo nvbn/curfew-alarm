@@ -17,7 +17,7 @@ import styles from "./styles";
 const Settings = (): JSX.Element => {
   const os = usePlatformOS();
   const [settings, updateSettings] = useSettings();
-  const [isNotificationsEnabled, requestNotifications] = useNotifications();
+  const [hasNotificationsPermission, requestNotifications] = useNotifications();
   const headerHeight = useHeaderHeight();
 
   const options: TypedItemProps[] = [
@@ -27,6 +27,28 @@ const Settings = (): JSX.Element => {
       type: "boolean",
       value: futureMap(settings, (v) => v.enabled),
       onChange: (enabled) => updateSettings({ enabled }),
+    },
+    {
+      id: "enable-notifications",
+      title: i18n.t("inputTitleEnableNotifications"),
+      type: "boolean",
+      value: futureMap(
+        hasNotificationsPermission,
+        (hasNotificationsPermission) =>
+          futureMap(
+            settings,
+            (settings) =>
+              hasNotificationsPermission && settings.notificationsEnabled,
+          ),
+      ),
+      onChange: (notificationsEnabled) => {
+        if (notificationsEnabled) {
+          // re-request doesn't do any harm
+          requestNotifications();
+        }
+
+        updateSettings({ notificationsEnabled });
+      },
     },
     {
       id: "curfew-start",
@@ -49,13 +71,6 @@ const Settings = (): JSX.Element => {
       value: futureMap(settings, (v) => v.minutesToGoHome),
       onChange: (minutesToGoHome: number) =>
         updateSettings({ minutesToGoHome }),
-    },
-    {
-      id: "enable-notifications",
-      title: i18n.t("inputTitleEnableNotifications"),
-      type: "action",
-      value: isNotificationsEnabled,
-      onChange: () => requestNotifications(),
     },
   ];
 
