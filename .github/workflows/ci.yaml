@@ -64,6 +64,10 @@ jobs:
           expo-version: 4.x
           expo-username: ${{secrets.EXPO_CLI_USERNAME}}
           expo-password: ${{secrets.EXPO_CLI_PASSWORD}}
+      - run: 'echo "$GOOGLE_SERVICES_JSON" > google-services.json'
+        shell: bash
+        env:
+          GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
       - run: "expo publish --release-channel ${GITHUB_REF#refs/heads/}"
         shell: bash
         env:
@@ -90,7 +94,7 @@ jobs:
       - run: 'echo "$GOOGLE_SERVICES_JSON" > google-services.json'
         shell: bash
         env:
-          GOOGLE_API_KEY: ${{secrets.GOOGLE_SERVICES_JSON}}
+          GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
       - run: "expo build:android -t app-bundle"
         shell: bash
         env:
