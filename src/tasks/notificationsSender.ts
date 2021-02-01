@@ -27,6 +27,10 @@ const notificationsSender = async (
   sendNotification: INotificationSender,
 ): Promise<void> => {
   const settings = await getSettings(storage);
+  if (!settings.notificationsEnabled) {
+    return;
+  }
+
   const isAtHomeStatus = await isAtHome(network);
 
   const status = getStatus(

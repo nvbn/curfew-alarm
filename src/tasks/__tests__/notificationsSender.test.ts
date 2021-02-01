@@ -12,10 +12,17 @@ import { dateToTime, formatTime, timeToDate } from "../../utils/time";
 import notificationsSender from "../notificationsSender";
 
 describe("notificationsSender", () => {
-  for (const [enabled, isAtHome, currentTime, expectedNotifications] of [
-    [true, false, timeToDate({ hour: 10, minute: 0 }), []],
-    [true, true, timeToDate({ hour: 10, minute: 0 }), []],
+  for (const [
+    enabled,
+    notificationsEnabled,
+    isAtHome,
+    currentTime,
+    expectedNotifications,
+  ] of [
+    [true, true, false, timeToDate({ hour: 10, minute: 0 }), []],
+    [true, true, true, timeToDate({ hour: 10, minute: 0 }), []],
     [
+      true,
       true,
       false,
       timeToDate({ hour: 20, minute: 45 }),
@@ -29,8 +36,10 @@ describe("notificationsSender", () => {
         ],
       ],
     ],
-    [true, true, timeToDate({ hour: 20, minute: 45 }), []],
+    [true, false, false, timeToDate({ hour: 20, minute: 45 }), []],
+    [true, true, true, timeToDate({ hour: 20, minute: 45 }), []],
     [
+      true,
       true,
       false,
       timeToDate({ hour: 21, minute: 45 }),
@@ -44,10 +53,11 @@ describe("notificationsSender", () => {
         ],
       ],
     ],
-    [false, false, timeToDate({ hour: 21, minute: 45 }), []],
-    [false, false, timeToDate({ hour: 20, minute: 45 }), []],
-    [false, false, timeToDate({ hour: 10, minute: 15 }), []],
-  ] as [boolean, boolean, Date, NotificationContent[]][]) {
+    [true, false, false, timeToDate({ hour: 21, minute: 45 }), []],
+    [false, true, false, timeToDate({ hour: 21, minute: 45 }), []],
+    [false, true, false, timeToDate({ hour: 20, minute: 45 }), []],
+    [false, true, false, timeToDate({ hour: 10, minute: 15 }), []],
+  ] as [boolean, boolean, boolean, Date, NotificationContent[]][]) {
     test(
       "when " +
         (isAtHome ? "" : "not ") +
@@ -60,6 +70,7 @@ describe("notificationsSender", () => {
               curfewEnd: { hour: 4, minute: 0 },
               minutesToGoHome: 30,
               enabled,
+              notificationsEnabled,
             }),
             [NOTIFICATIONS_TOKEN_KEY]: "token",
           },
