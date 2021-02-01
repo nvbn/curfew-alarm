@@ -30,7 +30,8 @@
       },
       "useNextNotificationsApi": true,
       "package": "com.nvbn.curfewalarm",
-      "permissions": ["NOTIFICATIONS", "USER_FACING_NOTIFICATIONS"]
+      "permissions": ["NOTIFICATIONS", "USER_FACING_NOTIFICATIONS"],
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "favicon": "./assets/icon/web_hi_res_1024.png"
