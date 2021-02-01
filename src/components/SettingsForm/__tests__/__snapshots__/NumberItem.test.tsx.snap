@@ -2,6 +2,15 @@
 
 exports[`<NumberItem /> can be rendered 1`] = `
 <View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
     Object {
       "borderBottomColor": "#fafafa",
@@ -12,6 +21,7 @@ exports[`<NumberItem /> can be rendered 1`] = `
       "paddingVertical": 20,
     }
   }
+  testID="number-item-touchable-test"
 >
   <Text
     style={
@@ -42,6 +52,15 @@ exports[`<NumberItem /> can be rendered 1`] = `
 
 exports[`<NumberItem /> can be rendered when value is not ready 1`] = `
 <View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
     Object {
       "borderBottomColor": "#fafafa",
@@ -52,6 +71,7 @@ exports[`<NumberItem /> can be rendered when value is not ready 1`] = `
       "paddingVertical": 20,
     }
   }
+  testID="number-item-touchable-test"
 >
   <Text
     style={

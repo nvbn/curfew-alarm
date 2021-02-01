@@ -2,6 +2,7 @@
 
 exports[`<Settings /> can be rendered on [object Object] 1`] = `
 <View
+  onLayout={[Function]}
   style={
     Object {
       "backgroundColor": "#fff",
@@ -77,6 +78,15 @@ exports[`<Settings /> can be rendered on [object Object] 1`] = `
         style={null}
       >
         <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Array [
               Object {
@@ -92,6 +102,7 @@ exports[`<Settings /> can be rendered on [object Object] 1`] = `
               },
             ]
           }
+          testID="boolean-item-touchable-enable"
         >
           <Text
             style={
@@ -188,6 +199,15 @@ exports[`<Settings /> can be rendered on [object Object] 1`] = `
         style={null}
       >
         <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Object {
               "borderBottomColor": "#fafafa",
@@ -198,6 +218,7 @@ exports[`<Settings /> can be rendered on [object Object] 1`] = `
               "paddingVertical": 20,
             }
           }
+          testID="number-item-touchable-go-home"
         >
           <Text
             style={
@@ -222,11 +243,17 @@ exports[`<Settings /> can be rendered on [object Object] 1`] = `
 
 exports[`<Settings /> can be rendered on [object Object] 2`] = `
 <View
+  onLayout={[Function]}
   style={
-    Object {
-      "backgroundColor": "#fff",
-      "flex": 1,
-    }
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+        "flex": 1,
+      },
+      Object {
+        "paddingBottom": 0,
+      },
+    ]
   }
 >
   <RCTScrollView
@@ -297,6 +324,15 @@ exports[`<Settings /> can be rendered on [object Object] 2`] = `
         style={null}
       >
         <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Array [
               Object {
@@ -312,6 +348,7 @@ exports[`<Settings /> can be rendered on [object Object] 2`] = `
               },
             ]
           }
+          testID="boolean-item-touchable-enable"
         >
           <Text
             style={
@@ -386,6 +423,15 @@ exports[`<Settings /> can be rendered on [object Object] 2`] = `
         style={null}
       >
         <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Object {
               "borderBottomColor": "#fafafa",
@@ -396,6 +442,7 @@ exports[`<Settings /> can be rendered on [object Object] 2`] = `
               "paddingVertical": 20,
             }
           }
+          testID="number-item-touchable-go-home"
         >
           <Text
             style={

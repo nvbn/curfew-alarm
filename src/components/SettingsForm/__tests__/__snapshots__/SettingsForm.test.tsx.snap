@@ -106,6 +106,15 @@ exports[`<SettingsForm /> can be rendered on android 1`] = `
       style={null}
     >
       <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
           Object {
             "borderBottomColor": "#fafafa",
@@ -116,6 +125,7 @@ exports[`<SettingsForm /> can be rendered on android 1`] = `
             "paddingVertical": 20,
           }
         }
+        testID="number-item-touchable-go-home"
       >
         <Text
           style={
@@ -272,6 +282,15 @@ exports[`<SettingsForm /> can be rendered on ios 1`] = `
       style={null}
     >
       <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
           Object {
             "borderBottomColor": "#fafafa",
@@ -282,6 +301,7 @@ exports[`<SettingsForm /> can be rendered on ios 1`] = `
             "paddingVertical": 20,
           }
         }
+        testID="number-item-touchable-go-home"
       >
         <Text
           style={

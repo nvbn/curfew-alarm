@@ -1,5 +1,6 @@
+import { useHeaderHeight } from "@react-navigation/stack";
 import React from "react";
-import { View } from "react-native";
+import { KeyboardAvoidingView } from "react-native";
 
 import SettingsForm, { TypedItemProps } from "../../components/SettingsForm";
 import useNotifications from "../../hooks/useNotifications";
@@ -17,6 +18,7 @@ const Settings = (): JSX.Element => {
   const os = usePlatformOS();
   const [settings, updateSettings] = useSettings();
   const [isNotificationsEnabled, requestNotifications] = useNotifications();
+  const headerHeight = useHeaderHeight();
 
   const options: TypedItemProps[] = [
     {
@@ -58,9 +60,13 @@ const Settings = (): JSX.Element => {
   ];
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      style={styles.container}
+      keyboardVerticalOffset={headerHeight}
+      behavior={os === "ios" ? "padding" : "height"}
+    >
       <SettingsForm options={options} os={os} />
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
