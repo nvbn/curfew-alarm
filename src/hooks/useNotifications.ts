@@ -20,7 +20,9 @@ const useNotifications = (): [Future<boolean>, () => void] => {
   const notifications = useContext(Notifications);
   const storage = useContext(PersistentStorage);
 
-  const [isAllowed, setIsAllowed] = useState<Future<boolean>>(FUTURE_NOT_READY);
+  const [hasPermission, setHasPermission] = useState<Future<boolean>>(
+    FUTURE_NOT_READY,
+  );
 
   useEffect(() => {
     registerForPushNotifications(
@@ -30,15 +32,15 @@ const useNotifications = (): [Future<boolean>, () => void] => {
       storage,
       false,
     )
-      .then((status) => setIsAllowed(status === REGISTER_OK))
+      .then((status) => setHasPermission(status === REGISTER_OK))
       .catch((e) => {
         console.warn("unable to register for push notifications", e);
-        setIsAllowed(false);
+        setHasPermission(false);
       });
-  }, [constants, platform, notifications, storage, setIsAllowed]);
+  }, [constants, platform, notifications, storage, setHasPermission]);
 
   const request = useCallback(() => {
-    if (!isReady(isAllowed)) {
+    if (!isReady(hasPermission)) {
       console.warn("not ready!");
       return;
     }
@@ -50,14 +52,21 @@ const useNotifications = (): [Future<boolean>, () => void] => {
       storage,
       true,
     )
-      .then((status) => setIsAllowed(status === REGISTER_OK))
+      .then((status) => setHasPermission(status === REGISTER_OK))
       .catch((e) => {
         console.warn("unable to re-register for push notifications", e);
-        setIsAllowed(false);
+        setHasPermission(false);
       });
-  }, [constants, platform, notifications, storage, isAllowed, setIsAllowed]);
+  }, [
+    constants,
+    platform,
+    notifications,
+    storage,
+    hasPermission,
+    setHasPermission,
+  ]);
 
-  return [isAllowed, request];
+  return [hasPermission, request];
 };
 
 export default useNotifications;

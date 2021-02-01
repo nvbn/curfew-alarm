@@ -6,7 +6,7 @@ import { formatTime, Time } from "../../utils/time";
 import SettingsForm from "./SettingsForm";
 
 storiesOf("<SettingsForm />", module)
-  .add("boolean true, time and action", () => (
+  .add("boolean true and time", () => (
     <SettingsForm
       options={[
         {
@@ -22,19 +22,12 @@ storiesOf("<SettingsForm />", module)
           type: "time",
           value: { hour: 20, minute: 45 },
           onChange: (time: Time) => alert(`time is ${formatTime(time)}`),
-        },
-        {
-          id: "action",
-          title: "action",
-          type: "action",
-          value: false,
-          onChange: () => alert("action is triggered"),
         },
       ]}
       os={Platform.OS}
     />
   ))
-  .add("boolean false, time and already enabled action", () => (
+  .add("boolean false and time", () => (
     <SettingsForm
       options={[
         {
@@ -50,13 +43,6 @@ storiesOf("<SettingsForm />", module)
           type: "time",
           value: { hour: 20, minute: 45 },
           onChange: (time: Time) => alert(`time is ${formatTime(time)}`),
-        },
-        {
-          id: "action",
-          title: "action",
-          type: "action",
-          value: true,
-          onChange: () => alert("action is triggered"),
         },
       ]}
       os={Platform.OS}
