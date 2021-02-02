@@ -93,5 +93,19 @@ exports[`<BooleanItem /> can be rendered when value isn't ready 1`] = `
   >
     Some toggle
   </Text>
+  <RCTSwitch
+    accessibilityRole="switch"
+    disabled={true}
+    onChange={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "height": 31,
+        "width": 51,
+      }
+    }
+    value={false}
+  />
 </View>
 `;

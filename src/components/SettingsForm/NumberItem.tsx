@@ -33,7 +33,7 @@ const NumberItem = ({
     >
       <View style={styles.item}>
         <Text style={styles.title}>{title}</Text>
-        {isReady(value) && (
+        {isReady(value) ? (
           <TextInput
             ref={inputRef}
             testID={`number-item-input-${id}`}
@@ -42,6 +42,8 @@ const NumberItem = ({
             onChangeText={onChangeAsNumber}
             style={styles.input}
           />
+        ) : (
+          <TextInput editable={false} />
         )}
       </View>
     </TouchableWithoutFeedback>
