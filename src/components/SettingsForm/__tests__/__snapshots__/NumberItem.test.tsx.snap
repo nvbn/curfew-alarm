@@ -83,5 +83,11 @@ exports[`<NumberItem /> can be rendered when value is not ready 1`] = `
   >
     Some number
   </Text>
+  <TextInput
+    allowFontScaling={true}
+    editable={false}
+    rejectResponderTermination={true}
+    underlineColorAndroid="transparent"
+  />
 </View>
 `;

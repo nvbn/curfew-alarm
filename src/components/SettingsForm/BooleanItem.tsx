@@ -20,12 +20,14 @@ const BooleanItem = ({
   >
     <View style={[styles.item, styles.booleanItem]}>
       <Text style={styles.title}>{title}</Text>
-      {isReady(value) && (
+      {isReady(value) ? (
         <Switch
           value={value}
           onValueChange={onChange}
           testID={`boolean-item-switch-${id}`}
         />
+      ) : (
+        <Switch disabled />
       )}
     </View>
   </TouchableWithoutFeedback>
