@@ -74,7 +74,7 @@ jobs:
         shell: bash
         env:
           GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
-      - run: "expo publish --release-channel ${GITHUB_REF#refs/heads/}"
+      - run: "expo publish --release-channel $(echo ${GITHUB_REF#refs/heads/} | tr / -)"
         shell: bash
         env:
           SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
