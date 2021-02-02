@@ -45,7 +45,7 @@
     "@babel/core": "~7.9.0",
     "@storybook/react-native": "^5.3.23",
     "@testing-library/jest-native": "^3.4.3",
-    "@testing-library/react-hooks": "^5.0.2",
+    "@testing-library/react-hooks": "^5.0.3",
     "@testing-library/react-native": "^7.1.0",
     "@types/ejs": "^3.0.5",
     "@types/i18n-js": "^3.8.0",
