@@ -13,7 +13,7 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const { issue: { number: issue_number }, repo: { owner, repo }, ref  } = context;
-            const channel = ref.replace('refs/heads/', '').replaceAll('/', '-');
+            const channel = ref.replace('refs/heads/', '').replace(/[/]/g, '-');
             github.issues.createComment({
               issue_number,
               owner,
