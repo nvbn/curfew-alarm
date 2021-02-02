@@ -7,7 +7,7 @@ import {
 import { makePersistentStorageWithDataAndBehavior } from "../../fakes/PersistentStorage";
 import i18n from "../../utils/i18n";
 import { NOTIFICATIONS_TOKEN_KEY } from "../../utils/notifications";
-import { SETTINGS_STORAGE_KEY } from "../../utils/settings";
+import { DEFAULT_SETTINGS, SETTINGS_STORAGE_KEY } from "../../utils/settings";
 import { dateToTime, formatTime, timeToDate } from "../../utils/time";
 import notificationsSender from "../notificationsSender";
 
@@ -93,4 +93,31 @@ describe("notificationsSender", () => {
       },
     );
   }
+
+  test("doesn't send the same notification twice", async () => {
+    const sendNotification = jest.fn();
+    const params: Parameters<typeof notificationsSender> = [
+      makeConstantsAsOnDevice(),
+      () => timeToDate({ hour: 21, minute: 45 }),
+      makePersistentStorageWithDataAndBehavior({
+        data: {
+          [SETTINGS_STORAGE_KEY]: JSON.stringify({
+            ...DEFAULT_SETTINGS,
+            curfewStart: { hour: 21, minute: 0 },
+            curfewEnd: { hour: 4, minute: 0 },
+            minutesToGoHome: 30,
+          }),
+          [NOTIFICATIONS_TOKEN_KEY]: "token",
+        },
+      }),
+      makeNetworkAsNotConnected(),
+      sendNotification,
+    ];
+
+    await notificationsSender(...params);
+    expect(sendNotification.mock.calls.length).toEqual(1);
+
+    await notificationsSender(...params);
+    expect(sendNotification.mock.calls.length).toEqual(1);
+  });
 });
