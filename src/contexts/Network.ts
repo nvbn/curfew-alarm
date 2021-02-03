@@ -1,8 +1,7 @@
-import * as ExpoNetwork from "expo-network";
 import { createContext } from "react";
 
-import INetwork from "../dependencies/INetwork";
+import INetwork, { NetworkDefaultImpl } from "../dependencies/INetwork";
 
-const Network = createContext<INetwork>(ExpoNetwork);
+const Network = createContext<INetwork>(NetworkDefaultImpl);
 
 export default Network;

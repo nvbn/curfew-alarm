@@ -1,3 +1,5 @@
+import * as ExpoNetwork from "expo-network";
+
 export const NETWORK_TYPE_WIFI = "WIFI";
 
 /**
@@ -8,3 +10,5 @@ export default interface INetwork {
     type?: typeof NETWORK_TYPE_WIFI | unknown;
   }>;
 }
+
+export const NetworkDefaultImpl: INetwork = ExpoNetwork;

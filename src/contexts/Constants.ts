@@ -1,8 +1,7 @@
-import ExpoConstants from "expo-constants";
 import { createContext } from "react";
 
-import IConstants from "../dependencies/IConstants";
+import IConstants, { ConstantsDefaultImpl } from "../dependencies/IConstants";
 
-const Constants = createContext<IConstants>(ExpoConstants);
+const Constants = createContext<IConstants>(ConstantsDefaultImpl);
 
 export default Constants;

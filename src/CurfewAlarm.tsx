@@ -1,13 +1,8 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as BackgroundFetch from "expo-background-fetch";
-import ExpoConstants from "expo-constants";
-import * as ExpoNetwork from "expo-network";
-import * as ExpoNotifications from "expo-notifications";
 import * as TaskManager from "expo-task-manager";
 import React from "react";
-import * as rn from "react-native";
 
 import SettingsButton from "./components/SettingsButton";
 import Constants from "./contexts/Constants";
@@ -16,7 +11,15 @@ import Network from "./contexts/Network";
 import Notifications from "./contexts/Notifications";
 import PersistentStorage from "./contexts/PersistentStorage";
 import Platform from "./contexts/Platform";
-import IDateTime from "./dependencies/IDateTime";
+import { ConstantsDefaultImpl } from "./dependencies/IConstants";
+import { DateTimeDefaultImpl } from "./dependencies/IDateTime";
+import { NetworkDefaultImpl } from "./dependencies/INetwork";
+import {
+  NotificationsDefaultImpl,
+  NotificationSenderDefaultImpl,
+} from "./dependencies/INotifications";
+import { PersistentStorageDefaultImpl } from "./dependencies/IPersistentStorage";
+import { PlatformDefaultImpl } from "./dependencies/IPlatform";
 import initI18n from "./initialisers/initI18n";
 import initSentry from "./initialisers/initSentry";
 import setupExpoNotificationsHandler from "./initialisers/setupExpoNotificationHandler";
@@ -26,21 +29,18 @@ import notificationsSender, {
   NOTIFICATIONS_TASK_NAME,
 } from "./tasks/notificationsSender";
 import i18n from "./utils/i18n";
-import { sendNotificationWithExpoAPI } from "./utils/notifications";
 
 initSentry();
 initI18n();
 setupExpoNotificationsHandler();
 
-const getCurrentDate: IDateTime = () => new Date();
-
 TaskManager.defineTask(NOTIFICATIONS_TASK_NAME, async () => {
   notificationsSender(
-    ExpoConstants,
-    getCurrentDate,
-    AsyncStorage,
-    ExpoNetwork,
-    sendNotificationWithExpoAPI,
+    ConstantsDefaultImpl,
+    DateTimeDefaultImpl,
+    PersistentStorageDefaultImpl,
+    NetworkDefaultImpl,
+    NotificationSenderDefaultImpl,
   ).catch((e) => console.warn("background task failed", e));
 
   return BackgroundFetch.Result.NoData;
@@ -56,12 +56,12 @@ BackgroundFetch.registerTaskAsync(NOTIFICATIONS_TASK_NAME, {
 const Stack = createStackNavigator();
 
 const CurfewAlarm = (): JSX.Element => (
-  <DateTime.Provider value={getCurrentDate}>
-    <PersistentStorage.Provider value={AsyncStorage}>
-      <Network.Provider value={ExpoNetwork}>
-        <Notifications.Provider value={ExpoNotifications}>
-          <Platform.Provider value={rn.Platform}>
-            <Constants.Provider value={ExpoConstants}>
+  <DateTime.Provider value={DateTimeDefaultImpl}>
+    <PersistentStorage.Provider value={PersistentStorageDefaultImpl}>
+      <Network.Provider value={NetworkDefaultImpl}>
+        <Notifications.Provider value={NotificationsDefaultImpl}>
+          <Platform.Provider value={PlatformDefaultImpl}>
+            <Constants.Provider value={ConstantsDefaultImpl}>
               <NavigationContainer>
                 <Stack.Navigator>
                   <Stack.Screen

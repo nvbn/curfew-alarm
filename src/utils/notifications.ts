@@ -8,25 +8,6 @@ import INotifications, {
 import IPersistentStorage from "../dependencies/IPersistentStorage";
 import IPlatform, { PLATFORM_OS_ANDROID } from "../dependencies/IPlatform";
 
-/**
- * Actual implementation of notifications sender.
- *
- * @param content
- */
-export const sendNotificationWithExpoAPI: INotificationSender = async (
-  content,
-) => {
-  await fetch("https://exp.host/--/api/v2/push/send", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Accept-encoding": "gzip, deflate",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(content),
-  });
-};
-
 // Exported only for tests
 export const NOTIFICATIONS_TOKEN_KEY = "NOTIFICATIONS_TOKEN";
 

@@ -1,8 +1,8 @@
 import { createContext } from "react";
 
-import IDateTime from "../dependencies/IDateTime";
+import IDateTime, { DateTimeDefaultImpl } from "../dependencies/IDateTime";
 
 // Only to make testing easier
-const DateTime = createContext<IDateTime>(() => new Date());
+const DateTime = createContext<IDateTime>(DateTimeDefaultImpl);
 
 export default DateTime;

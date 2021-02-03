@@ -1,3 +1,5 @@
+import * as ExpoNotifications from "expo-notifications";
+
 export const NOTIFICATIONS_PERMISSIONS_GRANTED = "granted";
 
 export const NOTIFICATIONS_PERMISSIONS_UNDETERMINED = "undetermined";
@@ -44,3 +46,19 @@ export default interface INotifications {
     },
   ): Promise<unknown>;
 }
+
+export const NotificationsDefaultImpl: INotifications = ExpoNotifications;
+
+export const NotificationSenderDefaultImpl: INotificationSender = async (
+  content,
+) => {
+  await fetch("https://exp.host/--/api/v2/push/send", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Accept-encoding": "gzip, deflate",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(content),
+  });
+};

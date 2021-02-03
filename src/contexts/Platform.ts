@@ -1,8 +1,7 @@
 import { createContext } from "react";
-import * as rn from "react-native";
 
-import IPlatform from "../dependencies/IPlatform";
+import IPlatform, { PlatformDefaultImpl } from "../dependencies/IPlatform";
 
-const Platform = createContext<IPlatform>(rn.Platform);
+const Platform = createContext<IPlatform>(PlatformDefaultImpl);
 
 export default Platform;
