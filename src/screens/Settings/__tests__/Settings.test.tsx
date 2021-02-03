@@ -1,9 +1,9 @@
 import { render } from "@testing-library/react-native";
 import React from "react";
 
-import Notifications from "../../../contexts/Notifications";
-import PersistentStorage from "../../../contexts/PersistentStorage";
-import Platform from "../../../contexts/Platform";
+import { NotificationsCtx } from "../../../dependencies/Notifications";
+import { PersistentStorageCtx } from "../../../dependencies/PersistentStorage";
+import { PlatformCtx } from "../../../dependencies/Platform";
 import { makeNotificationsWithBehavior } from "../../../fakes/Notifications";
 import { makePersistentStorageWithDataAndBehavior } from "../../../fakes/PersistentStorage";
 import { makePlatformAndroid, makePlatformIOS } from "../../../fakes/Plaftorm";
@@ -13,15 +13,15 @@ describe("<Settings />", () => {
   for (const platform of [makePlatformAndroid(), makePlatformIOS()]) {
     test(`can be rendered on ${platform}`, () => {
       const rendered = render(
-        <PersistentStorage.Provider
+        <PersistentStorageCtx.Provider
           value={makePersistentStorageWithDataAndBehavior()}
         >
-          <Platform.Provider value={platform}>
-            <Notifications.Provider value={makeNotificationsWithBehavior()}>
+          <PlatformCtx.Provider value={platform}>
+            <NotificationsCtx.Provider value={makeNotificationsWithBehavior()}>
               <Settings />
-            </Notifications.Provider>
-          </Platform.Provider>
-        </PersistentStorage.Provider>,
+            </NotificationsCtx.Provider>
+          </PlatformCtx.Provider>
+        </PersistentStorageCtx.Provider>,
       );
 
       expect(rendered.toJSON()).toMatchSnapshot();

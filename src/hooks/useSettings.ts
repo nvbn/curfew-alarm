@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 
-import PersistentStorage from "../contexts/PersistentStorage";
+import { PersistentStorageCtx } from "../dependencies/PersistentStorage";
 import { Future, FUTURE_NOT_READY, isReady } from "../utils/future";
 import { getSettings, Settings, updateSettings } from "../utils/settings";
 
@@ -10,7 +10,7 @@ import { getSettings, Settings, updateSettings } from "../utils/settings";
 const useSettings = (
   deps: unknown[] = [],
 ): [Future<Settings>, (change: Partial<Settings>) => void] => {
-  const storage = useContext(PersistentStorage);
+  const storage = useContext(PersistentStorageCtx);
 
   const [settings, setSettings] = useState<Future<Settings>>(FUTURE_NOT_READY);
 

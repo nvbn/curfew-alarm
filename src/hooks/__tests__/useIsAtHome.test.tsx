@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
 import React, { PropsWithChildren } from "react";
 
-import Network from "../../contexts/Network";
+import { NetworkCtx } from "../../dependencies/Network";
 import {
   makeNetworkAsAFailure,
   makeNetworkAsNotConnected,
@@ -13,9 +13,9 @@ import useIsAtHome from "../useIsAtHome";
 describe("useIsAtHome", () => {
   test("is at home when on wifi", async () => {
     const wrapper = ({ children }: PropsWithChildren<unknown>): JSX.Element => (
-      <Network.Provider value={makeNetworkAsOnWifi()}>
+      <NetworkCtx.Provider value={makeNetworkAsOnWifi()}>
         {children}
-      </Network.Provider>
+      </NetworkCtx.Provider>
     );
 
     const { result, waitForNextUpdate } = renderHook(() => useIsAtHome(), {
@@ -28,9 +28,9 @@ describe("useIsAtHome", () => {
 
   test("is not at home when not on wifi", async () => {
     const wrapper = ({ children }: PropsWithChildren<unknown>): JSX.Element => (
-      <Network.Provider value={makeNetworkAsNotConnected()}>
+      <NetworkCtx.Provider value={makeNetworkAsNotConnected()}>
         {children}
-      </Network.Provider>
+      </NetworkCtx.Provider>
     );
 
     const { result, waitForNextUpdate } = renderHook(() => useIsAtHome(), {
@@ -43,9 +43,9 @@ describe("useIsAtHome", () => {
 
   test("the result future isn't ready if the call fails", async () => {
     const wrapper = ({ children }: PropsWithChildren<unknown>): JSX.Element => (
-      <Network.Provider value={makeNetworkAsAFailure()}>
+      <NetworkCtx.Provider value={makeNetworkAsAFailure()}>
         {children}
-      </Network.Provider>
+      </NetworkCtx.Provider>
     );
 
     const { result, waitForNextUpdate } = renderHook(() => useIsAtHome(), {

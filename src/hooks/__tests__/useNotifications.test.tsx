@@ -1,15 +1,15 @@
 import { act, renderHook } from "@testing-library/react-hooks";
 import React, { PropsWithChildren } from "react";
 
-import Constants from "../../contexts/Constants";
-import Notifications from "../../contexts/Notifications";
-import PersistentStorage from "../../contexts/PersistentStorage";
-import Platform from "../../contexts/Platform";
+import { ConstantsCtx } from "../../dependencies/Constants";
 import {
   NOTIFICATION_PERMISSIONS_DENIED,
   NOTIFICATIONS_PERMISSIONS_GRANTED,
   NOTIFICATIONS_PERMISSIONS_UNDETERMINED,
-} from "../../dependencies/INotifications";
+  NotificationsCtx,
+} from "../../dependencies/Notifications";
+import { PersistentStorageCtx } from "../../dependencies/PersistentStorage";
+import { PlatformCtx } from "../../dependencies/Platform";
 import {
   makeConstantsAsInEmulator,
   makeConstantsAsOnDevice,
@@ -26,17 +26,19 @@ describe("useNotifications", () => {
       const wrapper = ({
         children,
       }: PropsWithChildren<unknown>): JSX.Element => (
-        <Constants.Provider value={makeConstantsAsInEmulator()}>
-          <Platform.Provider value={platform}>
-            <PersistentStorage.Provider
+        <ConstantsCtx.Provider value={makeConstantsAsInEmulator()}>
+          <PlatformCtx.Provider value={platform}>
+            <PersistentStorageCtx.Provider
               value={makePersistentStorageWithDataAndBehavior()}
             >
-              <Notifications.Provider value={makeNotificationsWithBehavior()}>
+              <NotificationsCtx.Provider
+                value={makeNotificationsWithBehavior()}
+              >
                 {children}
-              </Notifications.Provider>
-            </PersistentStorage.Provider>
-          </Platform.Provider>
-        </Constants.Provider>
+              </NotificationsCtx.Provider>
+            </PersistentStorageCtx.Provider>
+          </PlatformCtx.Provider>
+        </ConstantsCtx.Provider>
       );
 
       const { result, waitForNextUpdate } = renderHook(
@@ -55,12 +57,12 @@ describe("useNotifications", () => {
       const wrapper = ({
         children,
       }: PropsWithChildren<unknown>): JSX.Element => (
-        <Constants.Provider value={makeConstantsAsOnDevice()}>
-          <Platform.Provider value={platform}>
-            <PersistentStorage.Provider
+        <ConstantsCtx.Provider value={makeConstantsAsOnDevice()}>
+          <PlatformCtx.Provider value={platform}>
+            <PersistentStorageCtx.Provider
               value={makePersistentStorageWithDataAndBehavior()}
             >
-              <Notifications.Provider
+              <NotificationsCtx.Provider
                 value={makeNotificationsWithBehavior({
                   getPermissionsAsync: Promise.reject(
                     new Error("expected error"),
@@ -68,10 +70,10 @@ describe("useNotifications", () => {
                 })}
               >
                 {children}
-              </Notifications.Provider>
-            </PersistentStorage.Provider>
-          </Platform.Provider>
-        </Constants.Provider>
+              </NotificationsCtx.Provider>
+            </PersistentStorageCtx.Provider>
+          </PlatformCtx.Provider>
+        </ConstantsCtx.Provider>
       );
 
       const { result, waitForNextUpdate } = renderHook(
@@ -90,17 +92,19 @@ describe("useNotifications", () => {
       const wrapper = ({
         children,
       }: PropsWithChildren<unknown>): JSX.Element => (
-        <Constants.Provider value={makeConstantsAsOnDevice()}>
-          <Platform.Provider value={platform}>
-            <PersistentStorage.Provider
+        <ConstantsCtx.Provider value={makeConstantsAsOnDevice()}>
+          <PlatformCtx.Provider value={platform}>
+            <PersistentStorageCtx.Provider
               value={makePersistentStorageWithDataAndBehavior()}
             >
-              <Notifications.Provider value={makeNotificationsWithBehavior()}>
+              <NotificationsCtx.Provider
+                value={makeNotificationsWithBehavior()}
+              >
                 {children}
-              </Notifications.Provider>
-            </PersistentStorage.Provider>
-          </Platform.Provider>
-        </Constants.Provider>
+              </NotificationsCtx.Provider>
+            </PersistentStorageCtx.Provider>
+          </PlatformCtx.Provider>
+        </ConstantsCtx.Provider>
       );
 
       const { result, waitForNextUpdate } = renderHook(
@@ -117,12 +121,12 @@ describe("useNotifications", () => {
       const wrapper = ({
         children,
       }: PropsWithChildren<unknown>): JSX.Element => (
-        <Constants.Provider value={makeConstantsAsOnDevice()}>
-          <Platform.Provider value={platform}>
-            <PersistentStorage.Provider
+        <ConstantsCtx.Provider value={makeConstantsAsOnDevice()}>
+          <PlatformCtx.Provider value={platform}>
+            <PersistentStorageCtx.Provider
               value={makePersistentStorageWithDataAndBehavior()}
             >
-              <Notifications.Provider
+              <NotificationsCtx.Provider
                 value={makeNotificationsWithBehavior({
                   getPermissionsAsync: Promise.resolve({
                     status: NOTIFICATIONS_PERMISSIONS_UNDETERMINED,
@@ -130,10 +134,10 @@ describe("useNotifications", () => {
                 })}
               >
                 {children}
-              </Notifications.Provider>
-            </PersistentStorage.Provider>
-          </Platform.Provider>
-        </Constants.Provider>
+              </NotificationsCtx.Provider>
+            </PersistentStorageCtx.Provider>
+          </PlatformCtx.Provider>
+        </ConstantsCtx.Provider>
       );
 
       const { result, waitForNextUpdate } = renderHook(
@@ -150,12 +154,12 @@ describe("useNotifications", () => {
       const wrapper = ({
         children,
       }: PropsWithChildren<unknown>): JSX.Element => (
-        <Constants.Provider value={makeConstantsAsOnDevice()}>
-          <Platform.Provider value={platform}>
-            <PersistentStorage.Provider
+        <ConstantsCtx.Provider value={makeConstantsAsOnDevice()}>
+          <PlatformCtx.Provider value={platform}>
+            <PersistentStorageCtx.Provider
               value={makePersistentStorageWithDataAndBehavior()}
             >
-              <Notifications.Provider
+              <NotificationsCtx.Provider
                 value={makeNotificationsWithBehavior({
                   getPermissionsAsync: Promise.resolve({
                     status: NOTIFICATION_PERMISSIONS_DENIED,
@@ -166,10 +170,10 @@ describe("useNotifications", () => {
                 })}
               >
                 {children}
-              </Notifications.Provider>
-            </PersistentStorage.Provider>
-          </Platform.Provider>
-        </Constants.Provider>
+              </NotificationsCtx.Provider>
+            </PersistentStorageCtx.Provider>
+          </PlatformCtx.Provider>
+        </ConstantsCtx.Provider>
       );
 
       const { result, waitForNextUpdate } = renderHook(
@@ -192,12 +196,12 @@ describe("useNotifications", () => {
       const wrapper = ({
         children,
       }: PropsWithChildren<unknown>): JSX.Element => (
-        <Constants.Provider value={makeConstantsAsOnDevice()}>
-          <Platform.Provider value={platform}>
-            <PersistentStorage.Provider
+        <ConstantsCtx.Provider value={makeConstantsAsOnDevice()}>
+          <PlatformCtx.Provider value={platform}>
+            <PersistentStorageCtx.Provider
               value={makePersistentStorageWithDataAndBehavior()}
             >
-              <Notifications.Provider
+              <NotificationsCtx.Provider
                 value={makeNotificationsWithBehavior({
                   getPermissionsAsync: Promise.resolve({
                     status: NOTIFICATION_PERMISSIONS_DENIED,
@@ -208,10 +212,10 @@ describe("useNotifications", () => {
                 })}
               >
                 {children}
-              </Notifications.Provider>
-            </PersistentStorage.Provider>
-          </Platform.Provider>
-        </Constants.Provider>
+              </NotificationsCtx.Provider>
+            </PersistentStorageCtx.Provider>
+          </PlatformCtx.Provider>
+        </ConstantsCtx.Provider>
       );
 
       const { result, waitForNextUpdate } = renderHook(

@@ -1,7 +1,7 @@
 import { act, renderHook } from "@testing-library/react-hooks";
 import React, { PropsWithChildren } from "react";
 
-import PersistentStorage from "../../contexts/PersistentStorage";
+import { PersistentStorageCtx } from "../../dependencies/PersistentStorage";
 import { makePersistentStorageWithDataAndBehavior } from "../../fakes/PersistentStorage";
 import { DEFAULT_SETTINGS } from "../../utils/settings";
 import useSettings from "../useSettings";
@@ -9,11 +9,11 @@ import useSettings from "../useSettings";
 describe("useSettings", () => {
   test("provides access to settings", async () => {
     const wrapper = ({ children }: PropsWithChildren<unknown>): JSX.Element => (
-      <PersistentStorage.Provider
+      <PersistentStorageCtx.Provider
         value={makePersistentStorageWithDataAndBehavior()}
       >
         {children}
-      </PersistentStorage.Provider>
+      </PersistentStorageCtx.Provider>
     );
 
     const { result, waitForNextUpdate } = renderHook(() => useSettings(), {
@@ -27,11 +27,11 @@ describe("useSettings", () => {
 
   test("allows to partially modify settings", async () => {
     const wrapper = ({ children }: PropsWithChildren<unknown>): JSX.Element => (
-      <PersistentStorage.Provider
+      <PersistentStorageCtx.Provider
         value={makePersistentStorageWithDataAndBehavior()}
       >
         {children}
-      </PersistentStorage.Provider>
+      </PersistentStorageCtx.Provider>
     );
 
     const { result, waitForNextUpdate } = renderHook(() => useSettings(), {

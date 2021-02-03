@@ -1,12 +1,13 @@
-import IConstants from "../dependencies/IConstants";
-import INotifications, {
+import { IConstants } from "../dependencies/Constants";
+import {
+  INotifications,
   INotificationSender,
   NOTIFICATION_PERMISSIONS_DENIED,
   NOTIFICATIONS_PERMISSIONS_GRANTED,
   NOTIFICATIONS_PERMISSIONS_UNDETERMINED,
-} from "../dependencies/INotifications";
-import IPersistentStorage from "../dependencies/IPersistentStorage";
-import IPlatform, { PLATFORM_OS_ANDROID } from "../dependencies/IPlatform";
+} from "../dependencies/Notifications";
+import { IPersistentStorage } from "../dependencies/PersistentStorage";
+import { IPlatform, PLATFORM_OS_ANDROID } from "../dependencies/Platform";
 
 // Exported only for tests
 export const NOTIFICATIONS_TOKEN_KEY = "NOTIFICATIONS_TOKEN";

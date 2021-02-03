@@ -1,8 +1,9 @@
-import INotifications, {
+import {
+  INotifications,
   NotificationPermissions,
   NotificationPushTokenResponse,
   NOTIFICATIONS_PERMISSIONS_GRANTED,
-} from "../dependencies/INotifications";
+} from "../dependencies/Notifications";
 
 type Behavior = {
   getPermissionsAsync: Promise<NotificationPermissions>;

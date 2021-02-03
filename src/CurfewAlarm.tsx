@@ -5,21 +5,12 @@ import * as TaskManager from "expo-task-manager";
 import React from "react";
 
 import SettingsButton from "./components/SettingsButton";
-import Constants from "./contexts/Constants";
-import DateTime from "./contexts/DateTime";
-import Network from "./contexts/Network";
-import Notifications from "./contexts/Notifications";
-import PersistentStorage from "./contexts/PersistentStorage";
-import Platform from "./contexts/Platform";
-import { ConstantsDefaultImpl } from "./dependencies/IConstants";
-import { DateTimeDefaultImpl } from "./dependencies/IDateTime";
-import { NetworkDefaultImpl } from "./dependencies/INetwork";
-import {
-  NotificationsDefaultImpl,
-  NotificationSenderDefaultImpl,
-} from "./dependencies/INotifications";
-import { PersistentStorageDefaultImpl } from "./dependencies/IPersistentStorage";
-import { PlatformDefaultImpl } from "./dependencies/IPlatform";
+import { ConstantsDefaultImpl } from "./dependencies/Constants";
+import { DateTimeDefaultImpl } from "./dependencies/DateTime";
+import { NetworkDefaultImpl } from "./dependencies/Network";
+import { NotificationSenderDefaultImpl } from "./dependencies/Notifications";
+import { PersistentStorageDefaultImpl } from "./dependencies/PersistentStorage";
+import Dependencies from "./initialisers/Dependencies";
 import initI18n from "./initialisers/initI18n";
 import initSentry from "./initialisers/initSentry";
 import setupExpoNotificationsHandler from "./initialisers/setupExpoNotificationHandler";
@@ -56,44 +47,32 @@ BackgroundFetch.registerTaskAsync(NOTIFICATIONS_TASK_NAME, {
 const Stack = createStackNavigator();
 
 const CurfewAlarm = (): JSX.Element => (
-  <DateTime.Provider value={DateTimeDefaultImpl}>
-    <PersistentStorage.Provider value={PersistentStorageDefaultImpl}>
-      <Network.Provider value={NetworkDefaultImpl}>
-        <Notifications.Provider value={NotificationsDefaultImpl}>
-          <Platform.Provider value={PlatformDefaultImpl}>
-            <Constants.Provider value={ConstantsDefaultImpl}>
-              <NavigationContainer>
-                <Stack.Navigator>
-                  <Stack.Screen
-                    name={HOME_SCREEN_NAME}
-                    component={Home}
-                    options={({ navigation }) => ({
-                      title: i18n.t("appTitle"),
-                      // eslint-disable-next-line react/display-name
-                      headerRight: () => (
-                        <SettingsButton
-                          onPress={() =>
-                            navigation.navigate(SETTINGS_SCREEN_NAME)
-                          }
-                        />
-                      ),
-                    })}
-                  />
-                  <Stack.Screen
-                    name={SETTINGS_SCREEN_NAME}
-                    component={Settings}
-                    options={{
-                      title: i18n.t("settingsTitle"),
-                    }}
-                  />
-                </Stack.Navigator>
-              </NavigationContainer>
-            </Constants.Provider>
-          </Platform.Provider>
-        </Notifications.Provider>
-      </Network.Provider>
-    </PersistentStorage.Provider>
-  </DateTime.Provider>
+  <Dependencies>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name={HOME_SCREEN_NAME}
+          component={Home}
+          options={({ navigation }) => ({
+            title: i18n.t("appTitle"),
+            // eslint-disable-next-line react/display-name
+            headerRight: () => (
+              <SettingsButton
+                onPress={() => navigation.navigate(SETTINGS_SCREEN_NAME)}
+              />
+            ),
+          })}
+        />
+        <Stack.Screen
+          name={SETTINGS_SCREEN_NAME}
+          component={Settings}
+          options={{
+            title: i18n.t("settingsTitle"),
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  </Dependencies>
 );
 
 export default CurfewAlarm;

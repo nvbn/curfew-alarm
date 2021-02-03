@@ -4,7 +4,7 @@ import RNDateTimePicker, {
 import React, { useCallback, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
-import { PLATFORM_OS_ANDROID, PlatformOS } from "../../dependencies/IPlatform";
+import { PLATFORM_OS_ANDROID, PlatformOS } from "../../dependencies/Platform";
 import { Future, futureMap, isReady } from "../../utils/future";
 import { dateToTime, formatTime, Time, timeToDate } from "../../utils/time";
 import styles from "./styles";

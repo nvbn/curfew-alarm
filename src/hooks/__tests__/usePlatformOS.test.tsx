@@ -1,11 +1,12 @@
 import { renderHook } from "@testing-library/react-hooks";
 import React, { PropsWithChildren } from "react";
 
-import Platform from "../../contexts/Platform";
-import IPlatform, {
+import {
+  IPlatform,
   PLATFORM_OS_ANDROID,
   PLATFORM_OS_IOS,
-} from "../../dependencies/IPlatform";
+  PlatformCtx,
+} from "../../dependencies/Platform";
 import { makePlatformAndroid, makePlatformIOS } from "../../fakes/Plaftorm";
 import usePlatformOS from "../usePlatformOS";
 
@@ -18,7 +19,7 @@ describe("usePlatformOS", () => {
       const wrapper = ({
         children,
       }: PropsWithChildren<unknown>): JSX.Element => (
-        <Platform.Provider value={platform}>{children}</Platform.Provider>
+        <PlatformCtx.Provider value={platform}>{children}</PlatformCtx.Provider>
       );
 
       const { result } = renderHook(() => usePlatformOS(), { wrapper });

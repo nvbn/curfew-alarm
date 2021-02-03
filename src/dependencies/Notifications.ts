@@ -1,4 +1,5 @@
 import * as ExpoNotifications from "expo-notifications";
+import { createContext } from "react";
 
 export const NOTIFICATIONS_PERMISSIONS_GRANTED = "granted";
 
@@ -31,7 +32,7 @@ export type INotificationSender = (
 /**
  * Interface that provides access to device notifications.
  */
-export default interface INotifications {
+export interface INotifications {
   getPermissionsAsync(): Promise<NotificationPermissions>;
 
   requestPermissionsAsync(): Promise<NotificationPermissions>;
@@ -62,3 +63,7 @@ export const NotificationSenderDefaultImpl: INotificationSender = async (
     body: JSON.stringify(content),
   });
 };
+
+export const NotificationsCtx = createContext<INotifications>(
+  NotificationsDefaultImpl,
+);

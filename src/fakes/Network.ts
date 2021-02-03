@@ -1,4 +1,4 @@
-import INetwork, { NETWORK_TYPE_WIFI } from "../dependencies/INetwork";
+import { INetwork, NETWORK_TYPE_WIFI } from "../dependencies/Network";
 
 /**
  * Fake INetwork implementation with "connected to wifi" status.

@@ -5,7 +5,7 @@ import React from "react";
 import {
   PLATFORM_OS_ANDROID,
   PLATFORM_OS_IOS,
-} from "../../../dependencies/IPlatform";
+} from "../../../dependencies/Platform";
 import SettingsForm from "../SettingsForm";
 import { TypedItemProps } from "../types";
 
