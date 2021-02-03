@@ -5,9 +5,9 @@ import {
   IPlatform,
   PLATFORM_OS_ANDROID,
   PLATFORM_OS_IOS,
-  PlatformCtx,
 } from "../../dependencies/Platform";
 import { makePlatformAndroid, makePlatformIOS } from "../../fakes/Plaftorm";
+import Dependencies from "../../initialisers/Dependencies";
 import usePlatformOS from "../usePlatformOS";
 
 describe("usePlatformOS", () => {
@@ -19,7 +19,7 @@ describe("usePlatformOS", () => {
       const wrapper = ({
         children,
       }: PropsWithChildren<unknown>): JSX.Element => (
-        <PlatformCtx.Provider value={platform}>{children}</PlatformCtx.Provider>
+        <Dependencies platform={platform}>{children}</Dependencies>
       );
 
       const { result } = renderHook(() => usePlatformOS(), { wrapper });

@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
 import React, { PropsWithChildren } from "react";
 
-import { DateTimeCtx } from "../../dependencies/DateTime";
+import Dependencies from "../../initialisers/Dependencies";
 import { timeToDate } from "../../utils/time";
 import useGetTime from "../useGetTime";
 
@@ -11,9 +11,7 @@ describe("useGetTime", () => {
     const current = timeToDate(currentTime);
 
     const wrapper = ({ children }: PropsWithChildren<unknown>): JSX.Element => (
-      <DateTimeCtx.Provider value={() => current}>
-        {children}
-      </DateTimeCtx.Provider>
+      <Dependencies dateTime={() => current}>{children}</Dependencies>
     );
 
     const { result } = renderHook(() => useGetTime(), { wrapper });

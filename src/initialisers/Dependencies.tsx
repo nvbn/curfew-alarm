@@ -1,33 +1,120 @@
 import React, { PropsWithChildren } from "react";
 
-import { ConstantsCtx, ConstantsDefaultImpl } from "../dependencies/Constants";
-import { DateTimeCtx, DateTimeDefaultImpl } from "../dependencies/DateTime";
-import { NetworkCtx, NetworkDefaultImpl } from "../dependencies/Network";
 import {
+  ConstantsCtx,
+  ConstantsDefaultImpl,
+  IConstants,
+} from "../dependencies/Constants";
+import {
+  DateTimeCtx,
+  DateTimeDefaultImpl,
+  IDateTime,
+} from "../dependencies/DateTime";
+import {
+  INetwork,
+  NetworkCtx,
+  NetworkDefaultImpl,
+} from "../dependencies/Network";
+import {
+  INotifications,
   NotificationsCtx,
   NotificationsDefaultImpl,
 } from "../dependencies/Notifications";
 import {
+  IPersistentStorage,
   PersistentStorageCtx,
   PersistentStorageDefaultImpl,
 } from "../dependencies/PersistentStorage";
-import { PlatformCtx, PlatformDefaultImpl } from "../dependencies/Platform";
+import {
+  IPlatform,
+  PlatformCtx,
+  PlatformDefaultImpl,
+} from "../dependencies/Platform";
 
+type IDependencies = {
+  constants: IConstants;
+  dateTime: IDateTime;
+  network: INetwork;
+  notifications: INotifications;
+  persistentStorage: IPersistentStorage;
+  platform: IPlatform;
+};
+
+const defaultDependencies: IDependencies = {
+  constants: ConstantsDefaultImpl,
+  dateTime: DateTimeDefaultImpl,
+  network: NetworkDefaultImpl,
+  notifications: NotificationsDefaultImpl,
+  persistentStorage: PersistentStorageDefaultImpl,
+  platform: PlatformDefaultImpl,
+};
+
+type Props = Partial<IDependencies> & {
+  noDefaults?: boolean;
+};
+
+/**
+ * The ugliest type-safe dependency injection HOC.
+ */
 const Dependencies = ({
   children,
-}: PropsWithChildren<unknown>): JSX.Element => (
-  <ConstantsCtx.Provider value={ConstantsDefaultImpl}>
-    <DateTimeCtx.Provider value={DateTimeDefaultImpl}>
-      <NetworkCtx.Provider value={NetworkDefaultImpl}>
-        <NotificationsCtx.Provider value={NotificationsDefaultImpl}>
-          <PersistentStorageCtx.Provider value={PersistentStorageDefaultImpl}>
-            <PlatformCtx.Provider value={PlatformDefaultImpl}>
-              {children}
-            </PlatformCtx.Provider>
-          </PersistentStorageCtx.Provider>
-        </NotificationsCtx.Provider>
+  noDefaults,
+  ...provided
+}: PropsWithChildren<Props>): JSX.Element => {
+  const dependencies = noDefaults
+    ? provided
+    : { ...defaultDependencies, ...provided };
+
+  let withInjected = children;
+
+  if (dependencies.constants) {
+    withInjected = (
+      <ConstantsCtx.Provider value={dependencies.constants}>
+        {withInjected}
+      </ConstantsCtx.Provider>
+    );
+  }
+
+  if (dependencies.dateTime) {
+    withInjected = (
+      <DateTimeCtx.Provider value={dependencies.dateTime}>
+        {withInjected}
+      </DateTimeCtx.Provider>
+    );
+  }
+
+  if (dependencies.network) {
+    withInjected = (
+      <NetworkCtx.Provider value={dependencies.network}>
+        {withInjected}
       </NetworkCtx.Provider>
-    </DateTimeCtx.Provider>
-  </ConstantsCtx.Provider>
-);
+    );
+  }
+
+  if (dependencies.notifications) {
+    withInjected = (
+      <NotificationsCtx.Provider value={dependencies.notifications}>
+        {withInjected}
+      </NotificationsCtx.Provider>
+    );
+  }
+
+  if (dependencies.persistentStorage) {
+    withInjected = (
+      <PersistentStorageCtx.Provider value={dependencies.persistentStorage}>
+        {withInjected}
+      </PersistentStorageCtx.Provider>
+    );
+  }
+
+  if (dependencies.platform) {
+    withInjected = (
+      <PlatformCtx.Provider value={dependencies.platform}>
+        {withInjected}
+      </PlatformCtx.Provider>
+    );
+  }
+
+  return <>{withInjected}</>;
+};
 export default Dependencies;
