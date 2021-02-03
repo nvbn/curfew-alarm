@@ -1,15 +1,11 @@
 import { act, renderHook } from "@testing-library/react-hooks";
 import React, { PropsWithChildren } from "react";
 
-import Constants from "../../contexts/Constants";
-import Notifications from "../../contexts/Notifications";
-import PersistentStorage from "../../contexts/PersistentStorage";
-import Platform from "../../contexts/Platform";
 import {
   NOTIFICATION_PERMISSIONS_DENIED,
   NOTIFICATIONS_PERMISSIONS_GRANTED,
   NOTIFICATIONS_PERMISSIONS_UNDETERMINED,
-} from "../../dependencies/INotifications";
+} from "../../dependencies/Notifications";
 import {
   makeConstantsAsInEmulator,
   makeConstantsAsOnDevice,
@@ -17,6 +13,7 @@ import {
 import { makeNotificationsWithBehavior } from "../../fakes/Notifications";
 import { makePersistentStorageWithDataAndBehavior } from "../../fakes/PersistentStorage";
 import { makePlatformAndroid, makePlatformIOS } from "../../fakes/Plaftorm";
+import Dependencies from "../../initialisers/Dependencies";
 import { isReady } from "../../utils/future";
 import useNotifications from "../useNotifications";
 
@@ -26,17 +23,14 @@ describe("useNotifications", () => {
       const wrapper = ({
         children,
       }: PropsWithChildren<unknown>): JSX.Element => (
-        <Constants.Provider value={makeConstantsAsInEmulator()}>
-          <Platform.Provider value={platform}>
-            <PersistentStorage.Provider
-              value={makePersistentStorageWithDataAndBehavior()}
-            >
-              <Notifications.Provider value={makeNotificationsWithBehavior()}>
-                {children}
-              </Notifications.Provider>
-            </PersistentStorage.Provider>
-          </Platform.Provider>
-        </Constants.Provider>
+        <Dependencies
+          constants={makeConstantsAsInEmulator()}
+          platform={platform}
+          persistentStorage={makePersistentStorageWithDataAndBehavior()}
+          notifications={makeNotificationsWithBehavior()}
+        >
+          {children}
+        </Dependencies>
       );
 
       const { result, waitForNextUpdate } = renderHook(
@@ -55,23 +49,16 @@ describe("useNotifications", () => {
       const wrapper = ({
         children,
       }: PropsWithChildren<unknown>): JSX.Element => (
-        <Constants.Provider value={makeConstantsAsOnDevice()}>
-          <Platform.Provider value={platform}>
-            <PersistentStorage.Provider
-              value={makePersistentStorageWithDataAndBehavior()}
-            >
-              <Notifications.Provider
-                value={makeNotificationsWithBehavior({
-                  getPermissionsAsync: Promise.reject(
-                    new Error("expected error"),
-                  ),
-                })}
-              >
-                {children}
-              </Notifications.Provider>
-            </PersistentStorage.Provider>
-          </Platform.Provider>
-        </Constants.Provider>
+        <Dependencies
+          constants={makeConstantsAsOnDevice()}
+          platform={platform}
+          persistentStorage={makePersistentStorageWithDataAndBehavior()}
+          notifications={makeNotificationsWithBehavior({
+            getPermissionsAsync: Promise.reject(new Error("expected error")),
+          })}
+        >
+          {children}
+        </Dependencies>
       );
 
       const { result, waitForNextUpdate } = renderHook(
@@ -90,17 +77,14 @@ describe("useNotifications", () => {
       const wrapper = ({
         children,
       }: PropsWithChildren<unknown>): JSX.Element => (
-        <Constants.Provider value={makeConstantsAsOnDevice()}>
-          <Platform.Provider value={platform}>
-            <PersistentStorage.Provider
-              value={makePersistentStorageWithDataAndBehavior()}
-            >
-              <Notifications.Provider value={makeNotificationsWithBehavior()}>
-                {children}
-              </Notifications.Provider>
-            </PersistentStorage.Provider>
-          </Platform.Provider>
-        </Constants.Provider>
+        <Dependencies
+          constants={makeConstantsAsOnDevice()}
+          platform={platform}
+          persistentStorage={makePersistentStorageWithDataAndBehavior()}
+          notifications={makeNotificationsWithBehavior()}
+        >
+          {children}
+        </Dependencies>
       );
 
       const { result, waitForNextUpdate } = renderHook(
@@ -117,23 +101,18 @@ describe("useNotifications", () => {
       const wrapper = ({
         children,
       }: PropsWithChildren<unknown>): JSX.Element => (
-        <Constants.Provider value={makeConstantsAsOnDevice()}>
-          <Platform.Provider value={platform}>
-            <PersistentStorage.Provider
-              value={makePersistentStorageWithDataAndBehavior()}
-            >
-              <Notifications.Provider
-                value={makeNotificationsWithBehavior({
-                  getPermissionsAsync: Promise.resolve({
-                    status: NOTIFICATIONS_PERMISSIONS_UNDETERMINED,
-                  }),
-                })}
-              >
-                {children}
-              </Notifications.Provider>
-            </PersistentStorage.Provider>
-          </Platform.Provider>
-        </Constants.Provider>
+        <Dependencies
+          constants={makeConstantsAsOnDevice()}
+          platform={platform}
+          persistentStorage={makePersistentStorageWithDataAndBehavior()}
+          notifications={makeNotificationsWithBehavior({
+            getPermissionsAsync: Promise.resolve({
+              status: NOTIFICATIONS_PERMISSIONS_UNDETERMINED,
+            }),
+          })}
+        >
+          {children}
+        </Dependencies>
       );
 
       const { result, waitForNextUpdate } = renderHook(
@@ -150,26 +129,21 @@ describe("useNotifications", () => {
       const wrapper = ({
         children,
       }: PropsWithChildren<unknown>): JSX.Element => (
-        <Constants.Provider value={makeConstantsAsOnDevice()}>
-          <Platform.Provider value={platform}>
-            <PersistentStorage.Provider
-              value={makePersistentStorageWithDataAndBehavior()}
-            >
-              <Notifications.Provider
-                value={makeNotificationsWithBehavior({
-                  getPermissionsAsync: Promise.resolve({
-                    status: NOTIFICATION_PERMISSIONS_DENIED,
-                  }),
-                  requestPermissionsAsync: Promise.resolve({
-                    status: NOTIFICATIONS_PERMISSIONS_GRANTED,
-                  }),
-                })}
-              >
-                {children}
-              </Notifications.Provider>
-            </PersistentStorage.Provider>
-          </Platform.Provider>
-        </Constants.Provider>
+        <Dependencies
+          constants={makeConstantsAsOnDevice()}
+          platform={platform}
+          persistentStorage={makePersistentStorageWithDataAndBehavior()}
+          notifications={makeNotificationsWithBehavior({
+            getPermissionsAsync: Promise.resolve({
+              status: NOTIFICATION_PERMISSIONS_DENIED,
+            }),
+            requestPermissionsAsync: Promise.resolve({
+              status: NOTIFICATIONS_PERMISSIONS_GRANTED,
+            }),
+          })}
+        >
+          {children}
+        </Dependencies>
       );
 
       const { result, waitForNextUpdate } = renderHook(
@@ -192,26 +166,21 @@ describe("useNotifications", () => {
       const wrapper = ({
         children,
       }: PropsWithChildren<unknown>): JSX.Element => (
-        <Constants.Provider value={makeConstantsAsOnDevice()}>
-          <Platform.Provider value={platform}>
-            <PersistentStorage.Provider
-              value={makePersistentStorageWithDataAndBehavior()}
-            >
-              <Notifications.Provider
-                value={makeNotificationsWithBehavior({
-                  getPermissionsAsync: Promise.resolve({
-                    status: NOTIFICATION_PERMISSIONS_DENIED,
-                  }),
-                  requestPermissionsAsync: Promise.reject(
-                    new Error("expected error"),
-                  ),
-                })}
-              >
-                {children}
-              </Notifications.Provider>
-            </PersistentStorage.Provider>
-          </Platform.Provider>
-        </Constants.Provider>
+        <Dependencies
+          constants={makeConstantsAsOnDevice()}
+          platform={platform}
+          persistentStorage={makePersistentStorageWithDataAndBehavior()}
+          notifications={makeNotificationsWithBehavior({
+            getPermissionsAsync: Promise.resolve({
+              status: NOTIFICATION_PERMISSIONS_DENIED,
+            }),
+            requestPermissionsAsync: Promise.reject(
+              new Error("expected error"),
+            ),
+          })}
+        >
+          {children}
+        </Dependencies>
       );
 
       const { result, waitForNextUpdate } = renderHook(

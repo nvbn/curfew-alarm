@@ -1,4 +1,4 @@
-import IPersistentStorage from "../dependencies/IPersistentStorage";
+import { IPersistentStorage } from "../dependencies/PersistentStorage";
 
 export const PERSISTENT_STORAGE_BEHAVIOR_OK = "PERSISTENT_STORAGE_BEHAVIOR_OK";
 

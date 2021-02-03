@@ -10,7 +10,7 @@ import { TextInput } from "react-native";
 import {
   PLATFORM_OS_ANDROID,
   PLATFORM_OS_IOS,
-} from "../../../dependencies/IPlatform";
+} from "../../../dependencies/Platform";
 import { FUTURE_NOT_READY } from "../../../utils/future";
 import { timeToDate } from "../../../utils/time";
 import TimeItem from "../TimeItem";

@@ -2,7 +2,7 @@ import {
   NOTIFICATION_PERMISSIONS_DENIED,
   NOTIFICATIONS_PERMISSIONS_GRANTED,
   NOTIFICATIONS_PERMISSIONS_UNDETERMINED,
-} from "../../dependencies/INotifications";
+} from "../../dependencies/Notifications";
 import {
   makeConstantsAsInEmulator,
   makeConstantsAsOnDevice,
