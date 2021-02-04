@@ -1,8 +1,8 @@
-import IConstants from "../dependencies/IConstants";
-import IDateTime from "../dependencies/IDateTime";
-import INetwork from "../dependencies/INetwork";
-import { INotificationSender } from "../dependencies/INotifications";
-import IPersistentStorage from "../dependencies/IPersistentStorage";
+import { IConstants } from "../dependencies/Constants";
+import { IDateTime } from "../dependencies/DateTime";
+import { INetwork } from "../dependencies/Network";
+import { INotificationSender } from "../dependencies/Notifications";
+import { IPersistentStorage } from "../dependencies/PersistentStorage";
 import i18n from "../utils/i18n";
 import { isAtHome } from "../utils/location";
 import { scheduleNotification } from "../utils/notifications";

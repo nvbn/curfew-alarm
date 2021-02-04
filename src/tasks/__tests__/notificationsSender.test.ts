@@ -1,4 +1,4 @@
-import { NotificationContent } from "../../dependencies/INotifications";
+import { NotificationContent } from "../../dependencies/Notifications";
 import { makeConstantsAsOnDevice } from "../../fakes/Constants";
 import {
   makeNetworkAsNotConnected,
