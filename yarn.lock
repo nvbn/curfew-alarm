@@ -5211,10 +5211,10 @@ expo-location@~10.0.0:
   resolved "https://registry.yarnpkg.com/expo-location/-/expo-location-10.0.0.tgz#2923411649434f2f079343b163b13c5c9eee8b2d"
   integrity sha512-QLEb0iaBv4/blLxxfKRj2/HPisY+1t+g6MgegqZ1j1U/0qih4dvzUQrxie9ZOZyQB9gnXFCRnZv3QzHEb52dcA==
 
-expo-network@~2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/expo-network/-/expo-network-2.4.0.tgz#f96fda92d68be1556f9e4ff8bc3b5c65b178b1f1"
-  integrity sha512-p9UxdgQbLGLfEJsD71eaNgPKCo2A4cbLTIYS10fL6FROT31H08Br7AFWx9H8jHLGLNWyjA0R1vTJ2ETDyjse/Q==
+expo-network@~3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/expo-network/-/expo-network-3.0.0.tgz#427cc9f2cd7a100fd0f35cfb3198db8e87050a66"
+  integrity sha512-/I0kBipfoJceGDBZvF1Uyo1NIrnV/77PwBrt3v6fMm4Bixnn+MO80BT5Vcd5BxG5eeASK5B9fbJzElweSIr8Gw==
 
 expo-notifications@~0.8.2:
   version "0.8.2"
@@ -9493,10 +9493,10 @@ react-native-safe-area-context@3.1.9:
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.1.9.tgz#48864ea976b0fa57142a2cc523e1fd3314e7247e"
   integrity sha512-wmcGbdyE/vBSL5IjDPReoJUEqxkZsywZw5gPwsVUV1NBpw5eTIdnL6Y0uNKHE25Z661moxPHQz6kwAkYQyorxA==
 
-react-native-screens@~2.15.0:
-  version "2.15.2"
-  resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.15.2.tgz#a449700e895b462937211ec72ed6f09652758f06"
-  integrity sha512-CagNf2APXkVoRlF3Mugr264FbKbrBg9eXUkqhIPVeZB8EsdS8XPrnt99yj/pzmT+yJMBY0dGrjXT8+68WYh6YQ==
+react-native-screens@~2.17.1:
+  version "2.17.1"
+  resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.17.1.tgz#c3c0ac750af48741c5b1635511e6af2a27b74309"
+  integrity sha512-B4gD5e4csvlVwlhf+RNqjQZ9mHTwe/iL3rXondgZxnKz4oW0QAmtLnLRKOrYVxoaJaF9Fy7jhjo//24/472APQ==
 
 react-native-svg@12.1.0:
   version "12.1.0"
