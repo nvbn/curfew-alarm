@@ -114,6 +114,20 @@ exports[`<Settings /> can be rendered on [object Object] 1`] = `
           >
             Is it still going?
           </Text>
+          <RCTSwitch
+            accessibilityRole="switch"
+            disabled={true}
+            onChange={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "height": 31,
+                "width": 51,
+              }
+            }
+            value={false}
+          />
         </View>
       </View>
       <View
@@ -157,6 +171,20 @@ exports[`<Settings /> can be rendered on [object Object] 1`] = `
           >
             Enable notifications
           </Text>
+          <RCTSwitch
+            accessibilityRole="switch"
+            disabled={true}
+            onChange={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "height": 31,
+                "width": 51,
+              }
+            }
+            value={false}
+          />
         </View>
       </View>
       <View
@@ -273,6 +301,12 @@ exports[`<Settings /> can be rendered on [object Object] 1`] = `
           >
             Go home minutes before:
           </Text>
+          <TextInput
+            allowFontScaling={true}
+            editable={false}
+            rejectResponderTermination={true}
+            underlineColorAndroid="transparent"
+          />
         </View>
       </View>
     </View>
@@ -399,6 +433,20 @@ exports[`<Settings /> can be rendered on [object Object] 2`] = `
           >
             Is it still going?
           </Text>
+          <RCTSwitch
+            accessibilityRole="switch"
+            disabled={true}
+            onChange={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "height": 31,
+                "width": 51,
+              }
+            }
+            value={false}
+          />
         </View>
       </View>
       <View
@@ -442,6 +490,20 @@ exports[`<Settings /> can be rendered on [object Object] 2`] = `
           >
             Enable notifications
           </Text>
+          <RCTSwitch
+            accessibilityRole="switch"
+            disabled={true}
+            onChange={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "height": 31,
+                "width": 51,
+              }
+            }
+            value={false}
+          />
         </View>
       </View>
       <View
@@ -536,6 +598,12 @@ exports[`<Settings /> can be rendered on [object Object] 2`] = `
           >
             Go home minutes before:
           </Text>
+          <TextInput
+            allowFontScaling={true}
+            editable={false}
+            rejectResponderTermination={true}
+            underlineColorAndroid="transparent"
+          />
         </View>
       </View>
     </View>

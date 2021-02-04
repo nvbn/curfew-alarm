@@ -1,9 +1,9 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 
-import Constants from "../contexts/Constants";
-import Notifications from "../contexts/Notifications";
-import PersistentStorage from "../contexts/PersistentStorage";
-import Platform from "../contexts/Platform";
+import { ConstantsCtx } from "../dependencies/Constants";
+import { NotificationsCtx } from "../dependencies/Notifications";
+import { PersistentStorageCtx } from "../dependencies/PersistentStorage";
+import { PlatformCtx } from "../dependencies/Platform";
 import { Future, FUTURE_NOT_READY, isReady } from "../utils/future";
 import {
   REGISTER_OK,
@@ -15,10 +15,10 @@ import {
  * and allows to re-request permissions.
  */
 const useNotifications = (): [Future<boolean>, () => void] => {
-  const constants = useContext(Constants);
-  const platform = useContext(Platform);
-  const notifications = useContext(Notifications);
-  const storage = useContext(PersistentStorage);
+  const constants = useContext(ConstantsCtx);
+  const platform = useContext(PlatformCtx);
+  const notifications = useContext(NotificationsCtx);
+  const storage = useContext(PersistentStorageCtx);
 
   const [hasPermission, setHasPermission] = useState<Future<boolean>>(
     FUTURE_NOT_READY,

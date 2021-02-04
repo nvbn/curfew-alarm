@@ -1,8 +1,8 @@
-import IConstants from "../dependencies/IConstants";
-import IDateTime from "../dependencies/IDateTime";
-import INetwork from "../dependencies/INetwork";
-import { INotificationSender } from "../dependencies/INotifications";
-import IPersistentStorage from "../dependencies/IPersistentStorage";
+import { IConstants } from "../dependencies/Constants";
+import { IDateTime } from "../dependencies/DateTime";
+import { INetwork } from "../dependencies/Network";
+import { INotificationSender } from "../dependencies/Notifications";
+import { IPersistentStorage } from "../dependencies/PersistentStorage";
 import i18n from "../utils/i18n";
 import { isAtHome } from "../utils/location";
 import { scheduleNotification } from "../utils/notifications";
@@ -15,6 +15,8 @@ import {
 import { dateToTime } from "../utils/time";
 
 export const NOTIFICATIONS_TASK_NAME = "NOTIFICATIONS_TASK";
+
+const PREVIOUS_STATUS_STORAGE_KEY = "PREVIOUS_STATUS";
 
 /**
  * Periodically sends notifications depending on conditions
@@ -33,6 +35,7 @@ const notificationsSender = async (
 
   const isAtHomeStatus = await isAtHome(network);
 
+  const previousStatus = await storage.getItem(PREVIOUS_STATUS_STORAGE_KEY);
   const status = getStatus(
     settings.enabled,
     isAtHomeStatus,
@@ -41,6 +44,11 @@ const notificationsSender = async (
     settings.curfewEnd,
     settings.minutesToGoHome,
   );
+  await storage.setItem(PREVIOUS_STATUS_STORAGE_KEY, status);
+
+  if (previousStatus === status) {
+    return;
+  }
 
   switch (status) {
     case STATUS_GO_HOME_WHEN_TIME_TO_GO_HOME:

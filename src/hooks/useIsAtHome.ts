@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 
-import Network from "../contexts/Network";
+import { NetworkCtx } from "../dependencies/Network";
 import { Future, FUTURE_NOT_READY } from "../utils/future";
 import { isAtHome } from "../utils/location";
 
@@ -8,7 +8,7 @@ import { isAtHome } from "../utils/location";
  * A hook that exposes at home or not status.
  */
 const useIsAtHome = (deps: unknown[] = []): Future<boolean> => {
-  const network = useContext(Network);
+  const network = useContext(NetworkCtx);
 
   const [isAtHomeStatus, setIsAtHomeStatus] = useState<Future<boolean>>(
     FUTURE_NOT_READY,
