@@ -1,4 +1,4 @@
-import IPersistentStorage from "../dependencies/IPersistentStorage";
+import { IPersistentStorage } from "../dependencies/PersistentStorage";
 import { isValidNumber } from "./numbers";
 import { isValidTime, Time } from "./time";
 

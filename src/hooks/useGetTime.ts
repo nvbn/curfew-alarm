@@ -1,13 +1,13 @@
 import { useContext } from "react";
 
-import DateTime from "../contexts/DateTime";
+import { DateTimeCtx } from "../dependencies/DateTime";
 import { dateToTime, Time } from "../utils/time";
 
 /**
  * Provides access to the current internal Time, it exists only to simplify testing;
  */
 const useGetTime = (): (() => Time) => {
-  const getDate = useContext(DateTime);
+  const getDate = useContext(DateTimeCtx);
 
   return () => dateToTime(getDate());
 };
