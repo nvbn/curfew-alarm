@@ -5174,10 +5174,10 @@ expo-background-fetch@~8.6.0:
   dependencies:
     expo-task-manager "~8.6.0"
 
-expo-constants@*:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-10.0.0.tgz#284a24897f151aa227fa6eef55163ddf70193aa9"
-  integrity sha512-UA+mCQlwdqKTR/ND6qs+Cezabq7eXrurz8vh7tHBew72tQ2mNcuq/MNIEO4RjHg1El0f2C6LwZcm01hcpZ3w5A==
+expo-constants@*, expo-constants@~10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-10.0.1.tgz#a6cf6998c70ef6e1772a7c4096723482194c5828"
+  integrity sha512-SnMIX1PnTz3AgGcFd+paCb8Ur0WfEiBjEZ7TxCdwpk7XVQO4etCzn6auNutCd4PBc4YVNvmKF9e0WFgLxy4NRQ==
   dependencies:
     "@expo/config" "^3.3.18"
     uuid "^3.3.2"
