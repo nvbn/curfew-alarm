@@ -5247,10 +5247,10 @@ expo-linking@~2.0.0:
     qs "^6.5.0"
     url-parse "^1.4.4"
 
-expo-localization@~9.1.0:
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/expo-localization/-/expo-localization-9.1.0.tgz#463381568082fdcb28ad4e4c533a6f9471a3f78a"
-  integrity sha512-0KYVUOJAHVRS/5oq0Bcf2i0imKOIFdpLnnNSG9XeaskkNgNSnbzeTQsoDvHi9UGYLwwtUo9HLciQJ/xcoSiftw==
+expo-localization@~14.0.0:
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/expo-localization/-/expo-localization-14.0.0.tgz#d276b5a36045a15cff622125bd62a775f2015b8d"
+  integrity sha512-Rx4ZAANTTVuY6EnM3WXjNWn+CSpDUOaJziHPB4Az+lb4r3JMQ1H+go9s8KY9DYP0IiRM3sQhiyFQqSWzsUgvHA==
   dependencies:
     rtl-detect "^1.0.2"
 
